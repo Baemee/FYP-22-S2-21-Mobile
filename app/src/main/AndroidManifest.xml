@@ -10,6 +10,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP22S2221Mobile">
         <activity
+            android:name=".UpdatePassword"
+            android:exported="false" />
+        <activity
+            android:name=".Report"
+            android:exported="false" />
+        <activity
+            android:name=".WaterUsageHistory"
+            android:exported="false" />
+        <activity
+            android:name=".WaterUsage"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentPage"
+            android:exported="false" />
+        <activity
+            android:name=".homepage"
+            android:exported="false" />
+        <activity
+            android:name=".CreateReport"
+            android:exported="false" />
+        <activity
+            android:name=".Bills"
+            android:exported="false" />
+        <activity
+            android:name=".AlertDetail"
+            android:exported="false" />
+        <activity
+            android:name=".Alert"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

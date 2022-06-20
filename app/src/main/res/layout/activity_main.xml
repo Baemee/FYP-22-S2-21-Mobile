@@ -26,12 +26,12 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="@+id/backgroundsquare"
         app:layout_constraintStart_toStartOf="@+id/backgroundsquare"
         android:layout_marginTop="20dp"
         android:layout_marginStart="40dp"
         />
+
 
     <TextView
         android:id="@+id/tv_UserName"

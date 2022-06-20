@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateReport">
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="450dp"
+        android:id="@+id/tv_CreateReportBox"
+        android:background="@drawable/button_border"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_ReportTitle"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:text="Title of issue"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_CreateReportBox"
+        app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
+        app:layout_constraintBottom_toTopOf="@id/tv_ReportDescription"
+        />
+
+    <EditText
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:id="@+id/et_title"
+        android:background="@drawable/whitebox"
+        android:textSize="15dp"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_ReportTitle"
+        app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_ReportDescription"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+
+        app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
+        app:layout_constraintBottom_toTopOf="@+id/et_ReportDescription"
+        />
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="250dp"
+        android:id="@+id/et_ReportDescription"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:background="@drawable/whitebox"
+
+        app:layout_constraintTop_toBottomOf="@+id/et_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_CreateReportBox"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Submit"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Submit"
+        android:id="@+id/btn_Submit"
+
+        app:layout_constraintTop_toBottomOf="@+id/et_ReportDescription"
+        app:layout_constraintEnd_toEndOf="@+id/et_ReportDescription"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_CreateReportBox"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

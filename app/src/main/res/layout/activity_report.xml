@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Report">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:id="@+id/tv_ReportTitle"
+        android:background="@drawable/textview_border"
+        android:textColor="@color/black"
+        android:text="Report Title"
+        android:textAlignment="center"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
+        app:layout_constraintBottom_toTopOf="@+id/tv_ResolveBox"
+        android:layout_marginTop="15dp"
+
+        />
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:id="@+id/tv_ResolveBox"
+        android:background="@drawable/button_border"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_ReportTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textSize="12dp"
+        android:textColor="@color/black"
+        android:id="@+id/tv_ReportDate"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_ResolveBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resolve"
+        android:id="@+id/btn_Resolve"
+        android:background="@drawable/button_border"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_ResolveBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ResolveReturn"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:id="@+id/btn_ResolveReturn"
+        android:background="@drawable/button_border"
+
+        app:layout_constraintTop_toBottomOf="@+id/btn_Resolve"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

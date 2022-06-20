@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AlertDetail">
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:id="@+id/tv_AlertDetailBox"
+        android:background="@drawable/button_border"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_AlertTitle"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:background="@drawable/whitebox"
+        android:textAlignment="center"
+        android:padding="3dp"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_AlertDetailBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_AlertDetail"
+        app:layout_constraintBottom_toTopOf="@+id/tv_AlertDetail"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_AlertDate"
+        android:text="YY/MM/DD"
+        android:textColor="@color/black"
+        android:background="@drawable/whitebox"
+        android:textAlignment="center"
+        android:padding="3dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_AlertTitle"
+        app:layout_constraintStart_toStartOf="@+id/tv_AlertDetail"
+        app:layout_constraintBottom_toTopOf="@+id/tv_AlertDetail"
+
+        />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/tv_AlertDetail"
+        android:text="Details"
+        android:textColor="@color/black"
+        android:background="@drawable/whitebox"
+        android:padding="3dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_AlertTitle"
+        app:layout_constraintStart_toStartOf="@+id/tv_AlertDetailBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_AlertDetailBox"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_AlertDetailBox"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/greybox"
+        android:backgroundTint="@color/grey"
+        android:id="@+id/btn_Return"
+        android:text="Return"
+        android:textColor="@color/black"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_AlertDetailBox"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
