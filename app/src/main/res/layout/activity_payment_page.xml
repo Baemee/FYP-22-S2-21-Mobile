@@ -25,6 +25,7 @@
         android:textSize="30dp"
         android:text="PAYMENT"
         android:textColor="@color/black"
+
         android:textStyle="bold"
 
         app:layout_constraintTop_toTopOf="@+id/backgroundsquare"
