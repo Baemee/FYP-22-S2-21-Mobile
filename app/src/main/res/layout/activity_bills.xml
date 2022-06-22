@@ -107,6 +107,7 @@
     <Button
         android:layout_width="60dp"
         android:layout_height="30dp"
+        android:id="@+id/btn_View_1"
         android:text="View"
         android:textSize="9dp"
 
