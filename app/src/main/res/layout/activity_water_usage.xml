@@ -182,19 +182,18 @@
         />
 
     <TextView
+        android:id="@+id/tv_HistoryLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_HistoryLength"
+        android:layout_marginStart="10dp"
         android:text="History of your water usage"
         android:textColor="@color/black"
+
         android:textSize="15dp"
-
-        app:layout_constraintTop_toTopOf="@+id/tv_HistoryBox"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_HistoryBox"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="10dp"
 
-        />
+        app:layout_constraintTop_toTopOf="@+id/tv_HistoryBox" />
 
 
 

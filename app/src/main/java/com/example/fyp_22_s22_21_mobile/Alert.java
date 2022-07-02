@@ -15,16 +15,8 @@ public class Alert extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert);
 
-    TextView tv_Detail_1 = (TextView)findViewById(R.id.tv_Detail_1);
         Button btn_Return = (Button) findViewById(R.id.btn_Return);
 
-    tv_Detail_1.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), AlertDetail.class);
-            startActivity(intent);
-        }
-    });
 
     btn_Return.setOnClickListener(new View.OnClickListener() {
         @Override
