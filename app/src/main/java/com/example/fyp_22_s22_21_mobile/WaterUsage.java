@@ -5,15 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,10 +50,11 @@ public class WaterUsage extends AppCompatActivity {
         setContentView(R.layout.activity_water_usage);
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
-        String key = "Bearer " + Token.getString("token", String.valueOf(1));
+        String key = Token.getString("token", String.valueOf(1));
         String username = Token.getString("username", String.valueOf(1));
         String userId = Token.getString("userId", String.valueOf(1));
 
+        Log.i("key", key);
 
         TextView tv_Cost = (TextView) findViewById(R.id.tv_Cost);
         TextView tv_calmonth = (TextView) findViewById(R.id.tv_calmonth);
@@ -88,6 +93,7 @@ public class WaterUsage extends AppCompatActivity {
 
         tv_calmonth.setText(month);
 
+
         double cost = 0.00; //later set get data from the DB
         String price = String.valueOf(cost);
         tv_Cost.setText(price);
@@ -114,7 +120,6 @@ public class WaterUsage extends AppCompatActivity {
                     Double tLiter = response.getDouble("totalUsage");
                     String tLiter_s = tLiter.toString();
                     tv_TodayL.setText(tLiter_s + "L");
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -127,13 +132,14 @@ public class WaterUsage extends AppCompatActivity {
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String,String> ();
-                headers.put("Authorization", key);
+                Map<String, String> headers = new HashMap<String,String>();
+                headers.put("Authorization","Bearer " + key);
                 return headers;
-                }
-            };
-        }
+            }
+        };
 
-        int yesterdayL = 0;
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+    }
 
     }

@@ -51,9 +51,16 @@ public class MainActivity extends AppCompatActivity {
         EditText et_password = (EditText) findViewById(R.id.et_Password);
         TextView tv_Login = (TextView)findViewById(R.id.tv_LoginPage);
 
+        final String[] test = new String[1];
+
         btn_Login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Token = getSharedPreferences("user", MODE_PRIVATE);
+                SharedPreferences.Editor editor = Token.edit();
+                editor.clear();
+                editor.commit();
 
                 String username = et_ID.getText().toString();
                 String password = et_password.getText().toString();
@@ -73,19 +80,17 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             String jsonKey = response.getString("token");
-                            String userId = response.getString("userId");
+                            test[0] = jsonKey;
                             Token = getSharedPreferences("user", MODE_PRIVATE);
                             SharedPreferences.Editor editor = Token.edit();
                             editor.putString("token", jsonKey);
                             editor.putString("username", username);
-                            editor.putString("userId",userId);
                             editor.apply();
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, test[0], Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), homepage.class);
                         startActivity(intent);
 
