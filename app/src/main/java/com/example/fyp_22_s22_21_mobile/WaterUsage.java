@@ -72,7 +72,7 @@ public class WaterUsage extends AppCompatActivity {
 
         RequestWaterUsageTotal(tv_TodayL, urlToday);
 
-        dateYesterday = new Date(now - -24 * 60 * 60 * 1000);
+        dateYesterday = new Date(now - 24 * 60 * 60 * 1000);
         getDate = simpleDate.format(dateYesterday); //get current time and change to yyyy-mm-dd format
         String urlYesterday = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + getDate + "&toDate=" + getDate + "&total=true";
 
