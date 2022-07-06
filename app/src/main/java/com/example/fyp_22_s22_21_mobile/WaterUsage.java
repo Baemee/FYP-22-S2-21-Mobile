@@ -70,16 +70,16 @@ public class WaterUsage extends AppCompatActivity {
         tv_Today.setText(getDate);
         tv_HistoryBox.setText(urlToday); // testing
 
-        RequestWaterUsageTotal(tv_TodayL, urlToday);
+        requestWaterUsageTotal(tv_TodayL, urlToday);
 
         dateYesterday = new Date(now - 24 * 60 * 60 * 1000);
         getDate = simpleDate.format(dateYesterday); //get current time and change to yyyy-mm-dd format
         String urlYesterday = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + getDate + "&toDate=" + getDate + "&total=true";
 
-        RequestWaterUsageTotal(tv_YesterdayL, urlYesterday);
+        requestWaterUsageTotal(tv_YesterdayL, urlYesterday);
     }
 
-    protected void RequestWaterUsageTotal(TextView displayView, String url) {
+    protected void requestWaterUsageTotal(TextView displayView, String url) {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
