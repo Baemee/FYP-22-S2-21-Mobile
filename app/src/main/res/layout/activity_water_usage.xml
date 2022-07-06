@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:hint="0L"
             android:textColor="@color/black"
-            android:textSize="40dp"
+            android:textSize="30dp"
 
             app:layout_constraintStart_toStartOf="@+id/tv_Today"
             app:layout_constraintTop_toBottomOf="@+id/tv_Today"
@@ -150,7 +150,7 @@
             android:layout_height="wrap_content"
             android:hint="0L"
             android:textColor="@color/black"
-            android:textSize="40dp"
+            android:textSize="30dp"
 
             app:layout_constraintStart_toStartOf="@+id/tv_Yesterday"
             app:layout_constraintTop_toBottomOf="@+id/tv_Yesterday"
