@@ -23,7 +23,7 @@ public class UpdatePassword extends AppCompatActivity {
         btn_cancelPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), homepage.class);
+                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
                 startActivity(intent);
 
             }

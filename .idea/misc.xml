@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/drawable/blackstroke.xml" value="0.2645" />
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/drawable/button_border.xml" value="0.2645" />
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/drawable/greybox.xml" value="0.2645" />
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bills.xml" value="0.259375" />
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_create_report.xml" value="0.259375" />
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_homepage.xml" value="0.4" />
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_water_usage.xml" value="0.264" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/drawable/blackstrok.xml" value="0.329" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/drawable/blackstroke.xml" value="0.329" />
