@@ -26,7 +26,7 @@
             android:name=".PaymentPage"
             android:exported="false" />
         <activity
-            android:name=".homepage"
+            android:name=".HomePageActivity"
             android:exported="false" />
         <activity
             android:name=".CreateReport"

@@ -14,8 +14,9 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="button">
-        <item name="android:backgroundTint">@color/grey</item>
+        <item name="android:backgroundTint">@color/lightgrey</item>
         <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>
