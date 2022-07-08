@@ -13,19 +13,15 @@ public class UpdatePassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_update_password);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_homepage);
-
-        Button btn_cancelPassword = (Button)findViewById(R.id.btn_cancelPassword);
-
+        Button btn_cancelPassword = (Button) findViewById(R.id.btn_cancelPassword);
         btn_cancelPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
                 startActivity(intent);
-
             }
         });
 
