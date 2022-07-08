@@ -48,6 +48,7 @@ public class UpdatePassword extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            jsonObject.put("updatePassword", true);
                             //String jsonKey = response.getString("token");
                             String userId = response.getJSONObject("user").getString("userId");
                             String username = response.getJSONObject("user").getString("username");

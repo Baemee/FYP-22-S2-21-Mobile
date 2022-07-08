@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btn_Login = findViewById(R.id.btn_Login);
+        Button btn_Exit = (Button) findViewById(R.id.btn_Exit);
         EditText et_ID = findViewById(R.id.et_ID);
         EditText et_password = findViewById(R.id.et_Password);
 
@@ -92,6 +93,14 @@ public class MainActivity extends AppCompatActivity {
                 requestQueue.add(jsonObjectRequest);
             }
         });
+
+        btn_Exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.this.finish();
+            }
+        });
+
     }
 
 }
