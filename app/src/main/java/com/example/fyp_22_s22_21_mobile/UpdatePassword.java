@@ -47,6 +47,7 @@ public class UpdatePassword extends AppCompatActivity {
         setContentView(R.layout.activity_update_password);
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
+
         Button btn_savePassword = findViewById(R.id.btn_savePassword);
         EditText et_NewPassword = findViewById(R.id.et_NewPassword);
         EditText et_ConfirmPassword = findViewById(R.id.et_ConfirmPassword);
@@ -64,8 +65,7 @@ public class UpdatePassword extends AppCompatActivity {
             public void onClick(View view) {
                 String password1 = et_NewPassword.getText().toString();
                 String cfmPassword = et_ConfirmPassword.getText().toString();
-                Log.i("test", password1.length()+"");
-                Log.i("test", cfmPassword.length()+"");
+
                 if (!password1.equals(cfmPassword)) {
                     Toast.makeText(UpdatePassword.this, "Password and Confirm password is different", Toast.LENGTH_LONG).show();
 
