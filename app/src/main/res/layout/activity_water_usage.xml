@@ -18,6 +18,7 @@
             android:layout_marginTop="20dp"
 
             android:background="@drawable/button_border"
+            android:backgroundTint="@color/lightblue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -88,6 +89,7 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:background="@drawable/button_border"
+            android:backgroundTint="@color/lightblue"
 
             app:layout_constraintBottom_toTopOf="@+id/tv_HistoryBox"
             app:layout_constraintStart_toStartOf="@+id/tv_waterUsageBox"
@@ -124,7 +126,7 @@
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:background="@drawable/button_border"
-
+            android:backgroundTint="@color/lightblue"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_TodayBox"
@@ -162,6 +164,7 @@
             android:layout_width="300dp"
             android:layout_height="400dp"
             android:background="@drawable/button_border"
+            android:backgroundTint="@color/lightblue"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_TodayBox"

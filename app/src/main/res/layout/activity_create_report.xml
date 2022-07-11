@@ -12,6 +12,7 @@
         android:layout_height="450dp"
         android:id="@+id/tv_CreateReportBox"
         android:background="@drawable/textview_border"
+        android:backgroundTint="@color/lightblue"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +39,7 @@
         android:id="@+id/et_title"
         android:background="@drawable/blackstroke"
         android:textSize="15dp"
+        android:backgroundTint="@color/white"
 
         app:layout_constraintTop_toBottomOf="@id/tv_ReportTitle"
         app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
@@ -62,6 +64,8 @@
         android:textSize="15dp"
         android:textColor="@color/black"
         android:background="@drawable/blackstroke"
+        android:backgroundTint="@color/white"
+        android:gravity="top|left"
 
         app:layout_constraintTop_toBottomOf="@+id/et_title"
         app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox"

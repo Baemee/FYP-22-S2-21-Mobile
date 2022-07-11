@@ -11,6 +11,7 @@
         android:layout_height="500dp"
         android:id="@+id/tv_AlertDetailBox"
         android:background="@drawable/button_border"
+        android:backgroundTint="@color/lightblue"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -23,17 +23,17 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CreateReport extends AppCompatActivity
 {
     String key;
-    String reportID;
     String custID;
     int priority;
-    //String createdAt;
     String status;
+    String timeStamp;
 
     private SharedPreferences Token;
 
@@ -51,11 +51,7 @@ public class CreateReport extends AppCompatActivity
         EditText et_title = findViewById(R.id.et_title);
         EditText et_ReportDescription = findViewById(R.id.et_ReportDescription);
 
-        reportID = Token.getString("reportId", String.valueOf(1));
-        custID = Token.getString("customerId", String.valueOf(1));
-       // createdAt = Token.getString("createdAt", String.valueOf(1));
-        status = Token.getString("status", String.valueOf(1));
-        priority = Token.getInt("priority",Integer.valueOf(1));
+        custID = Token.getString("userId", String.valueOf(1));
 
         btn_Submit.setOnClickListener(new View.OnClickListener()
         {
@@ -64,72 +60,74 @@ public class CreateReport extends AppCompatActivity
             {
                 String title = et_title.getText().toString();
                 String description = et_ReportDescription.getText().toString();
+                timeStamp = Instant.now().toString();
 
-                JSONObject jsonObject = new JSONObject();
-                try
+                if (title.equals(""))
                 {
-                    jsonObject.put("title", title);
-                    jsonObject.put("description", description);
-                    jsonObject.put("reportId", reportID);
-                    jsonObject.put("customerId",custID);
-                    //jsonObject.put("createdAt",createdAt);
-                    jsonObject.put("status",status);
-                    jsonObject.put("priority",priority);
-                    //Log.i("test",createdAt);
+                    Toast.makeText(CreateReport.this, "Title cannot be empty", Toast.LENGTH_LONG).show();
                 }
-                catch (JSONException e)
+                else if (description.equals(""))
                 {
-                    e.printStackTrace();
+                    Toast.makeText(CreateReport.this, "Description cannot be empty", Toast.LENGTH_LONG).show();
                 }
+                else {
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("title", title);
+                        jsonObject.put("description", description);
+                        jsonObject.put("customerId", custID);
+                        jsonObject.put("createdAt",timeStamp);
+                        jsonObject.put("status", "Active");
+                        jsonObject.put("priority", 1);
 
-                String url = getString(R.string.base_url) + "api/ReportTicket";
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response)
-                    {
-
-                        SharedPreferences.Editor editor = Token.edit();
-                        editor.putString("title", title);
-                        editor.putString("description", description);
-                        editor.apply();
-
-                        Toast.makeText(CreateReport.this, "Report Ticket created", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                        startActivity(intent);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                }, new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        Toast.makeText(CreateReport.this,
-                                        "An error occurred. Network response code " + error.networkResponse.statusCode,
-                                        Toast.LENGTH_LONG)
-                                .show();
-                        NetworkResponse networkResponse = error.networkResponse;
-                        String errorString = new String(networkResponse.data);
-                        Log.i("Test", errorString);
-                    }
-                })
-                {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError
-                    {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("Authorization", key);
-                        return headers;
-                    }
-                };
 
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(jsonObjectRequest);
+                    String url = getString(R.string.base_url) + "api/ReportTicket";
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            SharedPreferences.Editor editor = Token.edit();
+                            editor.putString("title", title);
+                            editor.putString("description", description);
+                            editor.apply();
+
+                            Toast.makeText(CreateReport.this, "Report Ticket created", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), ReportMain.class);
+                            startActivity(intent);
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(CreateReport.this,
+                                            "An error occurred. Network response code " + error.networkResponse.statusCode,
+                                            Toast.LENGTH_LONG)
+                                    .show();
+                            NetworkResponse networkResponse = error.networkResponse;
+                            String errorString = new String(networkResponse.data);
+                            Log.i("Test", "Error" + errorString);
+                        }
+                    }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Authorization", key);
+                            return headers;
+                        }
+                    };
+
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    requestQueue.add(jsonObjectRequest);
+                }
             }
         });
         btn_Cancel.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ReportMain.class);
                 startActivity(intent);
             }
         });
