@@ -11,7 +11,8 @@
         android:layout_width="300dp"
         android:layout_height="450dp"
         android:id="@+id/tv_CreateReportBox"
-        android:background="@drawable/button_border"
+        android:background="@drawable/textview_border"
+        android:backgroundTint="@color/lightblue"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +37,9 @@
         android:layout_width="140dp"
         android:layout_height="20dp"
         android:id="@+id/et_title"
-        android:background="@drawable/whitebox"
+        android:background="@drawable/blackstroke"
         android:textSize="15dp"
+        android:backgroundTint="@color/white"
 
         app:layout_constraintTop_toBottomOf="@id/tv_ReportTitle"
         app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
@@ -61,7 +63,9 @@
         android:id="@+id/et_ReportDescription"
         android:textSize="15dp"
         android:textColor="@color/black"
-        android:background="@drawable/whitebox"
+        android:background="@drawable/blackstroke"
+        android:backgroundTint="@color/white"
+        android:gravity="top|left"
 
         app:layout_constraintTop_toBottomOf="@+id/et_title"
         app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox"
@@ -79,6 +83,18 @@
         app:layout_constraintEnd_toEndOf="@+id/et_ReportDescription"
         app:layout_constraintBottom_toBottomOf="@+id/tv_CreateReportBox"
         />
+
+    <Button
+        android:id="@+id/btn_CancelReport"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="76dp"
+        android:text="Cancel"
+
+        app:layout_constraintBottom_toBottomOf="@+id/btn_Submit"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Submit"
+        app:layout_constraintTop_toBottomOf="@+id/et_ReportDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

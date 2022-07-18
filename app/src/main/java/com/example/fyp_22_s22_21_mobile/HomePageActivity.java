@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class homepage extends AppCompatActivity {
+public class HomePageActivity extends AppCompatActivity {
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
@@ -74,7 +74,7 @@ public class homepage extends AppCompatActivity {
         btn_Report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Report.class);
+                Intent intent = new Intent(getApplicationContext(), ReportMain.class);
                 startActivity(intent);
 
             }
@@ -84,7 +84,9 @@ public class homepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
 

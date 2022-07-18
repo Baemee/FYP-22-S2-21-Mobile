@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
+        android:id="@+id/backgroundsquare"
         android:layout_width="380dp"
         android:layout_height="280dp"
-        android:id="@+id/backgroundsquare"
         android:background="@drawable/textview_border"
+        android:backgroundTint="@color/lightblue"
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
     <TextView
         android:id="@+id/tv_LoginPage"
@@ -51,6 +54,8 @@
         android:id="@+id/et_ID"
         android:inputType="text"
         android:background="@drawable/textview_border"
+        android:backgroundTint="@color/white"
+
         app:layout_constraintTop_toBottomOf="@+id/tv_LoginPage"
         app:layout_constraintStart_toEndOf="@+id/tv_UserName"
         android:layout_marginTop="20dp"
@@ -64,6 +69,7 @@
         android:text="Password : "
         android:textAlignment="center"
         android:textColor="@color/black"
+
         app:layout_constraintStart_toStartOf="@+id/tv_LoginPage"
         app:layout_constraintTop_toBottomOf="@+id/tv_UserName"
         android:layout_marginTop="15dp"
@@ -73,8 +79,9 @@
         android:layout_width="190dp"
         android:layout_height="20dp"
         android:id="@+id/et_Password"
-        android:text=""
         android:background="@drawable/textview_border"
+        android:inputType = "textPassword"
+        android:backgroundTint="@color/white"
 
         app:layout_constraintTop_toBottomOf="@+id/et_ID"
         android:layout_marginTop="15dp"
@@ -82,45 +89,29 @@
         android:layout_marginStart="10dp"
         />
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rd_Remember"
-        android:text="Remember me"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-
-        app:layout_constraintTop_toBottomOf="@+id/et_Password"
-        app:layout_constraintStart_toStartOf="@+id/et_Password"
-        />
-
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
         android:id="@+id/btn_Login"
-        android:text="Login"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/grey"
-        android:textAlignment="center"
-        android:textSize="15dp"
-
-        app:layout_constraintTop_toBottomOf="@+id/rd_Remember"
-        app:layout_constraintStart_toStartOf="@+id/tv_LoginPage"
-        app:layout_constraintEnd_toStartOf="@+id/btn_Exit"
-        />
-
-    <Button
+        style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:id="@+id/btn_Exit"
-        android:text="Exit"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:backgroundTint="@color/grey"
-        android:textSize="15dp"
+        android:text="Login"
+        android:textSize="15sp"
 
-        app:layout_constraintTop_toBottomOf="@+id/rd_Remember"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Exit"
+        app:layout_constraintStart_toStartOf="@+id/tv_LoginPage"
+        app:layout_constraintTop_toTopOf="@+id/btn_Exit" />
+
+    <Button
+        android:id="@+id/btn_Exit"
+        style="@style/button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+
+        android:text="Exit"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_Password"
         app:layout_constraintStart_toEndOf="@+id/btn_Login"
-        app:layout_constraintEnd_toEndOf="@+id/et_Password"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_Password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

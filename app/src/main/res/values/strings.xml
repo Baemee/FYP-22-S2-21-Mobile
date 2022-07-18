@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">FYP-22-S22-21-Mobile</string>
-
+    <string name="base_url">http://10.0.2.2:5000/</string>
     <string name="Login"><b><u>Login</u></b></string>
 
-    <string name="confirm">Confirm New <br></br>
-        Password: </string>
+    <string name="confirm">
+        Confirm New <br></br>
+        Password:
+    </string>
 
 </resources>

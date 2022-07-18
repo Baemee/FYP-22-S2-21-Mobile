@@ -7,24 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Report extends AppCompatActivity {
+public class ReportMain extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_report_main);
 
-        Button btn_Resolve = (Button)findViewById(R.id.btn_Resolve);
-        Button btn_Return = (Button)findViewById(R.id.btn_Return);
+        Button btn_create = (Button) findViewById(R.id.btn_create);
+        Button btn_back = (Button) findViewById(R.id.btn_back);
 
-        btn_Resolve.setOnClickListener(new View.OnClickListener() {
+        btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplicationContext(), CreateReport.class);
+                startActivity(intent);
             }
         });
 
-        btn_Return.setOnClickListener(new View.OnClickListener() {
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
