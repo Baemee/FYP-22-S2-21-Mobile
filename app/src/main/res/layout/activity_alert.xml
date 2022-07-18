@@ -19,15 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:layout_width="50dp"
-        android:layout_height="500dp"
-        android:id="@+id/list_date"
-        app:layout_constraintTop_toTopOf="@+id/tv_AlertBox"
-        app:layout_constraintStart_toStartOf="@+id/tv_AlertBox"/>
-
-
-
 
     <Button
         android:id="@+id/btn_Return"
@@ -45,6 +36,22 @@
 
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_alert"
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_AlertBox"
+        app:layout_constraintTop_toTopOf="@+id/tv_AlertBox"
+        android:paddingBottom="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_test"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

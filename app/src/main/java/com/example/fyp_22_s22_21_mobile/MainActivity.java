@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Invalid username or password" , Toast.LENGTH_LONG).show();
                         else
                             Toast.makeText(MainActivity.this,
-                                    "An error occurred. Network response code " + error.networkResponse.statusCode ,
-                                    Toast.LENGTH_LONG)
+                                            "An error occurred. Network response code " + error.networkResponse.statusCode ,
+                                            Toast.LENGTH_LONG)
                                     .show();
                     }
                 });

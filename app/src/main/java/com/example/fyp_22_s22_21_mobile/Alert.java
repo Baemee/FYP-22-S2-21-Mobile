@@ -54,21 +54,21 @@ public class Alert extends AppCompatActivity {
     {
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                try {
-                    int length = response.length();
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            int length = response.length();
 
-                    for(int i = 0; i<length; i++)
-                    {
-                        Log.i("Response", response.getJSONObject(i).getString("alertId"));
+                            for(int i = 0; i<length; i++)
+                            {
+                                Log.i("Response", response.getJSONObject(i).getString("alertId"));
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Response error", error.getMessage());
