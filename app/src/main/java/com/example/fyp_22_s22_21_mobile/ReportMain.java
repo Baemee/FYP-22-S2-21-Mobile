@@ -17,7 +17,7 @@ public class ReportMain extends AppCompatActivity {
         Button btn_create = (Button) findViewById(R.id.btn_create);
         Button btn_back = (Button) findViewById(R.id.btn_back);
 
-        btn_create.setOnClickListener(new View.OnClickListener() {
+        btn_create.setOnClickListener(new View.OnClickListener( ) {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CreateReport.class);
