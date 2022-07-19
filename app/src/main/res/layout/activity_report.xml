@@ -19,7 +19,6 @@
         app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
         app:layout_constraintBottom_toTopOf="@+id/tv_ResolveBox"
         android:layout_marginTop="15dp"
-
         />
 
     <TextView

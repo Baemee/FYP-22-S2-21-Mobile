@@ -47,7 +47,7 @@ public class WaterUsage extends AppCompatActivity {
         key = "Bearer " + Token.getString("token", String.valueOf(1));
 
         TextView tv_Cost = findViewById(R.id.tv_Cost);
-        TextView tv_CalMonth = findViewById(R.id.tv_CalMonth);
+        TextView tv_CalMonth = findViewById(R.id.tv_calmonth);
         TextView tv_TodayL = findViewById(R.id.tv_TodayL);
         TextView tv_YesterdayL = findViewById(R.id.tv_YesterdayL);
         TextView tv_Today = findViewById(R.id.tv_Today);
