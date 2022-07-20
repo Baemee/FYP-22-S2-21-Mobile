@@ -181,6 +181,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_HistoryLength"
+        app:layout_constraintStart_toStartOf="@+id/tv_HistoryBox"
+        app:layout_constraintEnd_toStartOf="@+id/et_endDate"
+        app:layout_constraintBottom_toTopOf="@id/rv_waterUsageHistory"
+        android:id="@+id/et_startDate"
+        android:hint="2022-06-22"
+        android:textSize="15dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_HistoryLength"
+        app:layout_constraintStart_toEndOf="@+id/et_startDate"
+        app:layout_constraintEnd_toEndOf="@+id/tv_HistoryBox"
+        app:layout_constraintBottom_toTopOf="@id/rv_waterUsageHistory"
+        android:id="@+id/et_endDate"
+        android:hint="2022-07-22"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/et_startDate"
+        app:layout_constraintTop_toTopOf="@+id/et_startDate"
+        app:layout_constraintEnd_toStartOf="@+id/et_endDate"
+        app:layout_constraintBottom_toBottomOf="@+id/et_startDate"
+        android:textSize="25dp"
+        android:text="~"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_HistoryBox"
+        app:layout_constraintTop_toBottomOf="@+id/et_startDate"
+        app:layout_constraintStart_toStartOf="@+id/tv_HistoryBox"
+        android:id="@+id/rv_waterUsageHistory"
+
+        />
+
     <TextView
         android:id="@+id/tv_HistoryLength"
         android:layout_width="wrap_content"
@@ -193,6 +239,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_HistoryBox"
 
         app:layout_constraintTop_toTopOf="@+id/tv_HistoryBox" />
+
 
 
 
