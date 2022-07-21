@@ -42,11 +42,9 @@ public class AlertDetail extends AppCompatActivity {
         setContentView(R.layout.activity_alert_detail);
 
         Button btn_Return = (Button) findViewById(R.id.btn_Return);
-
         TextView tv_AlertTitle = (TextView) findViewById(R.id.tv_AlertTitle);
         TextView tv_AlertDate = (TextView) findViewById(R.id.tv_AlertDate);
         TextView tv_AlertDetail = (TextView) findViewById(R.id.tv_AlertDetail);
-
 
         Intent intent = getIntent();
         alertId = intent.getStringExtra("alertId");
@@ -75,10 +73,7 @@ public class AlertDetail extends AppCompatActivity {
                 tv_AlertTitle.setText(alertTitle);
                 tv_AlertDate.setText(alertDate);
                 tv_AlertDetail.setText(alertDescription);
-
                 }
-
-
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -96,7 +91,6 @@ public class AlertDetail extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
-
 
         btn_Return.setOnClickListener(new View.OnClickListener() {
             @Override

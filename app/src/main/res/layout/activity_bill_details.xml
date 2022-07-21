@@ -10,7 +10,8 @@
         android:id="@+id/textView"
         android:layout_width="376dp"
         android:layout_height="592dp"
-        android:backgroundTint="@color/lightblue"
+        android:layout_marginTop="16dp"
+        android:background="@color/lightblue"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
@@ -24,6 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:text="Bill ID"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_billmonth"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/textView"
@@ -33,9 +35,10 @@
         android:id="@+id/tv_getBillId"
         android:layout_width="296dp"
         android:layout_height="20dp"
-
+        android:background="@color/white"
         android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_getbillMth"
         app:layout_constraintStart_toEndOf="@+id/tv_billid"
         app:layout_constraintTop_toTopOf="@+id/textView"
@@ -47,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Month"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_year"
         app:layout_constraintEnd_toStartOf="@+id/tv_getbillMth"
         app:layout_constraintHorizontal_bias="0.0"
@@ -56,8 +60,9 @@
         android:id="@+id/tv_getbillMth"
         android:layout_width="56dp"
         android:layout_height="20dp"
-
+        android:background="@color/white"
         android:layout_marginBottom="16dp"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_getBillYr"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
@@ -69,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Year"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_billusage"
         app:layout_constraintEnd_toStartOf="@+id/tv_getBillYr"
         app:layout_constraintHorizontal_bias="0.0"
@@ -78,8 +84,9 @@
         android:id="@+id/tv_getBillYr"
         android:layout_width="59dp"
         android:layout_height="20dp"
-
+        android:background="@color/white"
         android:layout_marginBottom="16dp"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_getWaterUsage"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
@@ -91,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:text="Usage"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_rate"
         app:layout_constraintEnd_toStartOf="@+id/tv_getWaterUsage"
         app:layout_constraintHorizontal_bias="0.0"
@@ -100,8 +108,9 @@
         android:id="@+id/tv_getWaterUsage"
         android:layout_width="105dp"
         android:layout_height="20dp"
-
         android:layout_marginBottom="12dp"
+        android:background="@color/white"
+
         app:layout_constraintBottom_toTopOf="@+id/getRate"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
@@ -113,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:text="Rate"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_amount"
         app:layout_constraintEnd_toStartOf="@+id/getRate"
         app:layout_constraintHorizontal_bias="0.0"
@@ -122,8 +132,9 @@
         android:id="@+id/getRate"
         android:layout_width="63dp"
         android:layout_height="20dp"
-
         android:layout_marginBottom="12dp"
+        android:background="@color/white"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_getBillAmount"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
@@ -135,6 +146,7 @@
         android:layout_height="20dp"
         android:layout_marginBottom="12dp"
         android:text="Amount"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_deadline"
         app:layout_constraintEnd_toStartOf="@+id/tv_getBillAmount"
         app:layout_constraintHorizontal_bias="0.0"
@@ -144,8 +156,9 @@
         android:id="@+id/tv_getBillAmount"
         android:layout_width="108dp"
         android:layout_height="20dp"
-
         android:layout_marginBottom="8dp"
+        android:background="@color/white"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_getDateline"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
@@ -166,8 +179,9 @@
         android:id="@+id/tv_getDateline"
         android:layout_width="80dp"
         android:layout_height="20dp"
-
         android:layout_marginBottom="16dp"
+        android:background="@color/white"
+
         app:layout_constraintBottom_toTopOf="@+id/tv_getPayment"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.005"
@@ -179,6 +193,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="256dp"
         android:text="Payment"
+
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/tv_getPayment"
         app:layout_constraintHorizontal_bias="0.0"
@@ -188,8 +203,9 @@
         android:id="@+id/tv_getPayment"
         android:layout_width="106dp"
         android:layout_height="20dp"
-
         android:layout_marginBottom="256dp"
+        android:background="@color/white"
+
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.005"

@@ -36,7 +36,6 @@ public class Bills extends AppCompatActivity {
     double usage;
     //String status;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +43,6 @@ public class Bills extends AppCompatActivity {
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
-
         //Button btn_View = (Button) findViewById(R.id.btn_View_1);
         TextView tv_billDate = findViewById(R.id.tv_billDate);
 
@@ -82,9 +80,7 @@ public class Bills extends AppCompatActivity {
                                 tv_billDate.append(date+"\n");
                                 tv_billAmount.append(String.format("%.2f",amount)+"\n");
                                 tv_billUsage.append(String.format("%.2f",usage)+"\n");
-
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -97,8 +93,9 @@ public class Bills extends AppCompatActivity {
                                 "An error occurred.",
                                 Toast.LENGTH_LONG)
                         .show();
-            }
-        }) {
+                }
+        })
+        {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();

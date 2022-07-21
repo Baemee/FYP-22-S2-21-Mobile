@@ -38,11 +38,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_alert"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
+        android:layout_width="326dp"
+        android:layout_height="479dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:paddingBottom="40dp"
         app:layout_constraintStart_toStartOf="@+id/tv_AlertBox"
-        app:layout_constraintTop_toTopOf="@+id/tv_AlertBox"
-        android:paddingBottom="40dp"/>
+        app:layout_constraintTop_toTopOf="@+id/tv_AlertBox" />
 
     <TextView
         android:layout_width="wrap_content"

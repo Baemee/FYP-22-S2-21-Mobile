@@ -78,7 +78,6 @@ public class CreateReport extends AppCompatActivity
                         jsonObject.put("customerId", custID);
                         jsonObject.put("createdAt",timeStamp);
                         jsonObject.put("status", "Active");
-                        jsonObject.put("priority", 1);
 
                     } catch (JSONException e) {
                         e.printStackTrace();

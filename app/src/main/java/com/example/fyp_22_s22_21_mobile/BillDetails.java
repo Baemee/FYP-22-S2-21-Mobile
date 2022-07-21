@@ -36,7 +36,6 @@ public class BillDetails extends AppCompatActivity {
     String deadline;
     String payment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +75,7 @@ public class BillDetails extends AppCompatActivity {
                                 usage = response.getJSONObject(i).getDouble("totalUsage");
                                 deadline = response.getJSONObject(i).getString("deadline");
                                 payment = response.getJSONObject(i).getString("payment");
+
                                 if (payment.equals("null"))
                                     payment="Unpaid";
                                 else
@@ -91,7 +91,6 @@ public class BillDetails extends AppCompatActivity {
                                 tv_payment.append(payment+"\n");
 
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -104,8 +103,9 @@ public class BillDetails extends AppCompatActivity {
                                 "An error occurred.",
                                 Toast.LENGTH_LONG)
                         .show();
-            }
-        }) {
+                }
+        })
+        {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
