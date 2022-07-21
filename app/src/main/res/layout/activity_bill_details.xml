@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BillDetails">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="376dp"
+        android:layout_height="592dp"
+        android:backgroundTint="@color/lightblue"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_billid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Bill ID"
+        app:layout_constraintBottom_toTopOf="@+id/tv_billmonth"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.811" />
+
+    <TextView
+        android:id="@+id/tv_getBillId"
+        android:layout_width="296dp"
+        android:layout_height="20dp"
+
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_getbillMth"
+        app:layout_constraintStart_toEndOf="@+id/tv_billid"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.822" />
+
+    <TextView
+        android:id="@+id/tv_billmonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Month"
+        app:layout_constraintBottom_toTopOf="@+id/tv_year"
+        app:layout_constraintEnd_toStartOf="@+id/tv_getbillMth"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_billid" />
+
+    <TextView
+        android:id="@+id/tv_getbillMth"
+        android:layout_width="56dp"
+        android:layout_height="20dp"
+
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_getBillYr"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_getBillId" />
+
+    <TextView
+        android:id="@+id/tv_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Year"
+        app:layout_constraintBottom_toTopOf="@+id/tv_billusage"
+        app:layout_constraintEnd_toStartOf="@+id/tv_getBillYr"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_billmonth" />
+
+    <TextView
+        android:id="@+id/tv_getBillYr"
+        android:layout_width="59dp"
+        android:layout_height="20dp"
+
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_getWaterUsage"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_getbillMth" />
+
+    <TextView
+        android:id="@+id/tv_billusage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Usage"
+        app:layout_constraintBottom_toTopOf="@+id/tv_rate"
+        app:layout_constraintEnd_toStartOf="@+id/tv_getWaterUsage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_year" />
+
+    <TextView
+        android:id="@+id/tv_getWaterUsage"
+        android:layout_width="105dp"
+        android:layout_height="20dp"
+
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/getRate"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_getBillYr" />
+
+    <TextView
+        android:id="@+id/tv_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Rate"
+        app:layout_constraintBottom_toTopOf="@+id/tv_amount"
+        app:layout_constraintEnd_toStartOf="@+id/getRate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_billusage" />
+
+    <TextView
+        android:id="@+id/getRate"
+        android:layout_width="63dp"
+        android:layout_height="20dp"
+
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_getBillAmount"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_getWaterUsage" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="49dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="12dp"
+        android:text="Amount"
+        app:layout_constraintBottom_toTopOf="@+id/tv_deadline"
+        app:layout_constraintEnd_toStartOf="@+id/tv_getBillAmount"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_rate" />
+
+    <TextView
+        android:id="@+id/tv_getBillAmount"
+        android:layout_width="108dp"
+        android:layout_height="20dp"
+
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_getDateline"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/getRate" />
+
+    <TextView
+        android:id="@+id/tv_deadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Deadline"
+        app:layout_constraintBottom_toTopOf="@+id/tv_payment"
+        app:layout_constraintEnd_toStartOf="@+id/tv_getDateline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_amount" />
+
+    <TextView
+        android:id="@+id/tv_getDateline"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_getPayment"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="@+id/tv_getBillAmount" />
+
+    <TextView
+        android:id="@+id/tv_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="256dp"
+        android:text="Payment"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/tv_getPayment"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_deadline" />
+
+    <TextView
+        android:id="@+id/tv_getPayment"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+
+        android:layout_marginBottom="256dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="@+id/tv_getDateline" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

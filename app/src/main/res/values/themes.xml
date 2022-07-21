@@ -18,5 +18,12 @@
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="Theme.FYP22S2221Mobile.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.FYP22S2221Mobile.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.FYP22S2221Mobile.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

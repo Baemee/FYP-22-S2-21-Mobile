@@ -42,5 +42,47 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_create"
         app:layout_constraintVertical_bias="0.091" />
 
+    <TextView
+        android:id="@+id/tv_reportTitle"
+        android:layout_width="108dp"
+        android:layout_height="361dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_Report"
+        app:layout_constraintStart_toStartOf="@+id/tv_Report"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reporttitle" />
+
+    <TextView
+        android:id="@+id/tv_reporttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:text="Title"
+        app:layout_constraintEnd_toEndOf="@+id/tv_reportTitle"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="@+id/tv_Report"
+        app:layout_constraintTop_toTopOf="@+id/tv_Report" />
+
+    <TextView
+        android:id="@+id/tv_reportstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Status"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Report"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="@+id/tv_reportStatus"
+        app:layout_constraintTop_toTopOf="@+id/tv_Report" />
+
+    <TextView
+        android:id="@+id/tv_reportStatus"
+        android:layout_width="117dp"
+        android:layout_height="358dp"
+
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_Report"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Report"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reportstatus"
+        app:layout_constraintVertical_bias="0.562" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

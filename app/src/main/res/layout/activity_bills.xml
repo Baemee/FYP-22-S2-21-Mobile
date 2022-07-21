@@ -11,7 +11,7 @@
         android:layout_width="300dp"
         android:layout_height="450dp"
         android:id="@+id/tv_BillBox"
-        android:background="@drawable/button_border"
+        android:background="@drawable/blackstroke"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,101 +20,99 @@
         />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tv_BillDate"
-        android:text="Date"
+        android:layout_width="43dp"
+        android:layout_height="38dp"
+        android:text="Billing Month"
         android:textColor="@color/black"
+        android:maxLines="2"
+        android:lines="2"
 
-        app:layout_constraintTop_toTopOf="@+id/tv_BillBox"
-        app:layout_constraintStart_toStartOf="@+id/tv_BillBox"
         app:layout_constraintEnd_toStartOf="@+id/tv_BillAmount"
-        app:layout_constraintBottom_toTopOf="@+id/lv_BillDate"
+        app:layout_constraintStart_toStartOf="@+id/tv_BillBox"
+        app:layout_constraintTop_toTopOf="@+id/tv_BillBox"
 
         />
 
     <TextView
+        android:id="@+id/tv_BillAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_BillAmount"
         android:text="Amount"
         android:textColor="@color/black"
 
-        app:layout_constraintTop_toTopOf="@+id/tv_BillDate"
+        app:layout_constraintEnd_toStartOf="@+id/tv_BillUsage"
         app:layout_constraintStart_toEndOf="@+id/tv_BillDate"
-        app:layout_constraintEnd_toStartOf="@+id/tv_BillStatus"
+        app:layout_constraintTop_toTopOf="@+id/tv_BillDate"
 
 
         />
 
     <TextView
+        android:id="@+id/tv_BillUsage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_BillStatus"
-        android:text="Status"
+        android:text="Usage"
         android:textColor="@color/black"
 
-        app:layout_constraintTop_toTopOf="@+id/tv_BillAmount"
-        app:layout_constraintStart_toEndOf="@+id/tv_BillAmount"
         app:layout_constraintEnd_toStartOf="@+id/tv_Blank"
+        app:layout_constraintStart_toEndOf="@+id/tv_BillAmount"
+        app:layout_constraintTop_toTopOf="@+id/tv_BillAmount"
 
 
         />
 
     <TextView
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
         android:id="@+id/tv_Blank"
+        android:layout_width="77dp"
+        android:layout_height="19dp"
         android:textColor="@color/black"
 
-        app:layout_constraintTop_toTopOf="@+id/tv_BillAmount"
-        app:layout_constraintStart_toEndOf="@+id/tv_BillStatus"
         app:layout_constraintEnd_toEndOf="@+id/tv_BillBox"
-        />
-
-    <ListView
-        android:layout_width="40dp"
-        android:layout_height="360dp"
-        android:id="@+id/lv_BillDate"
-
-        app:layout_constraintStart_toStartOf="@+id/tv_BillDate"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BillDate"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
-
-        />
-
-    <ListView
-        android:layout_width="55dp"
-        android:layout_height="360dp"
-        android:id="@+id/lv_BillAmount"
-
-        app:layout_constraintStart_toStartOf="@+id/tv_BillAmount"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BillDate"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
-
-        />
-
-    <ListView
-        android:layout_width="55dp"
-        android:layout_height="360dp"
-        android:id="@+id/lv_BillStatus"
-
-        app:layout_constraintStart_toStartOf="@+id/tv_BillStatus"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BillDate"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
-        />
+        app:layout_constraintStart_toEndOf="@+id/tv_BillUsage"
+        app:layout_constraintTop_toTopOf="@+id/tv_BillAmount" />
 
     <Button
+        android:id="@+id/btn_View_1"
         android:layout_width="60dp"
         android:layout_height="30dp"
-        android:id="@+id/btn_View_1"
+        android:layout_marginTop="36dp"
         android:text="View"
+
         android:textSize="9dp"
 
-        app:layout_constraintStart_toStartOf="@+id/tv_Blank"
-        app:layout_constraintTop_toTopOf="@+id/lv_BillAmount"
         app:layout_constraintEnd_toEndOf="@+id/tv_BillBox"
+        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintStart_toEndOf="@+id/tv_billUsage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Blank" />
 
-        />
+    <TextView
+        android:id="@+id/tv_billDate"
+        android:layout_width="62dp"
+        android:layout_height="359dp"
+
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_BillBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_BillDate"
+        app:layout_constraintVertical_bias="0.339" />
+
+    <TextView
+        android:id="@+id/tv_billAmount"
+        android:layout_width="60dp"
+        android:layout_height="360dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
+        app:layout_constraintStart_toEndOf="@+id/tv_billDate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_BillAmount" />
+
+    <TextView
+        android:id="@+id/tv_billUsage"
+        android:layout_width="63dp"
+        android:layout_height="361dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
+        app:layout_constraintStart_toEndOf="@+id/tv_billAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tv_BillUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
