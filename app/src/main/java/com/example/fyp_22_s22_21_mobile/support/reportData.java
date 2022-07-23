@@ -5,12 +5,14 @@ public class reportData {
     private String vl_reporttitle;
     private String vl_reportdescription;
     private String status;
+    private String reportId;
 
-    public reportData(String vl_reportDate, String vl_reporttitle, String vl_reportdescription, String status) {
+    public reportData(String vl_reportDate, String vl_reporttitle, String vl_reportdescription, String status, String reportId) {
         this.vl_reportDate = vl_reportDate;
         this.vl_reporttitle = vl_reporttitle;
         this.vl_reportdescription = vl_reportdescription;
         this.status = status;
+        this.reportId = reportId;
     }
 
     public String getVl_reportDate() {
@@ -44,4 +46,8 @@ public class reportData {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getReportId(){ return reportId;}
+
+    public void setReportId(String reportId){ this.reportId = reportId; }
 }

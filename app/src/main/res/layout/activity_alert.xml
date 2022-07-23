@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/tv_AlertBox"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
+        android:layout_width="352dp"
+        android:layout_height="488dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/button_border"
         android:backgroundTint="@color/lightblue"
@@ -22,9 +22,9 @@
 
     <Button
         android:id="@+id/btn_Return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/greybox"
+        android:layout_width="99dp"
+        android:layout_height="44dp"
+        android:background="@drawable/button_border"
         android:backgroundTint="@color/grey"
         android:text="Return"
         android:textColor="#E1BEE7"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_AlertBox"
 
-        />
+        app:layout_constraintVertical_bias="0.244" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_alert"

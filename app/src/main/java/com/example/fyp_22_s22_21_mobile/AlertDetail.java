@@ -73,7 +73,7 @@ public class AlertDetail extends AppCompatActivity {
                 tv_AlertTitle.setText(alertTitle);
                 tv_AlertDate.setText(alertDate);
                 tv_AlertDetail.setText(alertDescription);
-                }
+            }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -101,4 +101,3 @@ public class AlertDetail extends AppCompatActivity {
         });
     }
 }
-
