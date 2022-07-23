@@ -17,6 +17,9 @@
             android:name=".BillDetails"
             android:exported="false" />
         <activity
+            android:name=".billPrice"
+            android:exported="false" />
+        <activity
             android:name=".ReportMain"
             android:exported="false" />
         <activity

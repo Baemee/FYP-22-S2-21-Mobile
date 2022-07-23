@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".billPrice">
+
+    <TextView
+        android:id="@+id/tv_billBackground"
+        android:layout_width="380dp"
+        android:layout_height="280dp"
+        android:background="@drawable/textview_border"
+        android:backgroundTint="@color/lightblue"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+
+    <TextView
+        android:id="@+id/tv_billTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+
+        android:text="Billed June 2022"
+        android:textSize="30dp"
+
+        app:layout_constraintStart_toStartOf="@id/tv_billBackground"
+        app:layout_constraintTop_toTopOf="@id/tv_billBackground" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_BillDate"
+        android:text="Date : "
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_billTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_billTitle"
+        app:layout_constraintBottom_toTopOf="@+id/tv_billRate"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_BillDate_cal"
+        android:text="2022-06"
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toEndOf="@+id/tv_BillDate"
+        app:layout_constraintTop_toTopOf="@+id/tv_BillDate"
+        app:layout_constraintEnd_toEndOf="@+id/tv_billTitle"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_billRate"
+        android:text="Rate : "
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_BillDate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_BillDate"
+        app:layout_constraintBottom_toTopOf="@+id/tv_billTotalUsage"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_billRate_cal"
+        android:text="10"
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_BillDate_cal"
+        app:layout_constraintTop_toTopOf="@+id/tv_billRate"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_billTotalUsage"
+        android:text="Usage : "
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_billRate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_billRate"
+        app:layout_constraintBottom_toTopOf="@+id/tv_billCost"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_billTotalUsage_cal"
+        android:text="2345.70L"
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_BillDate_cal"
+        app:layout_constraintTop_toTopOf="@+id/tv_billTotalUsage"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_billCost"
+        android:text="Cost : "
+        android:textSize="20dp"
+        android:textColor="@color/black"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_billTotalUsage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_billTotalUsage"
+        app:layout_constraintBottom_toTopOf="@+id/btn_billCheckOut"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_billCost_cal"
+        android:hint="$150.84"
+        android:textSize="20dp"
+
+        app:layout_constraintStart_toStartOf="@+id/tv_BillDate_cal"
+        app:layout_constraintTop_toTopOf="@+id/tv_billCost"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_billCheckOut"
+        android:text="CheckOut"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_billCost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_billBackground"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

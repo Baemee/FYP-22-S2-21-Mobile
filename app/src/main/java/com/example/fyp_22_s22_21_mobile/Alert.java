@@ -42,7 +42,6 @@ public class Alert extends AppCompatActivity {
     public RecyclerView.LayoutManager layoutManager;
 
     String url;
-
     String testing;
 
     @Override
