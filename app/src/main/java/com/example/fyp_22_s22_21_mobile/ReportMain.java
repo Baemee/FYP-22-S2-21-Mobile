@@ -39,9 +39,7 @@ public class ReportMain extends AppCompatActivity {
     SharedPreferences Token;
     String key;
     String url = "http://10.0.2.2:5000/api/ReportTicket/MyInfo?page="+1+"&pageSize="+50;
-    String result;
-    String title;
-    String status;
+    public static String reportID;
 
     private ArrayList <reportData> arrayList;
     private reportDataAdapter adapter;
@@ -75,12 +73,14 @@ public class ReportMain extends AppCompatActivity {
         String[] reportDescription = new String[100];
         String[] createdAt = new String[100];
         String[] status = new String[100];
+        String [] reportId = new String[100];
         reportData[] reportData = new reportData[100];
 
         reportTitle[0]="";
         reportDescription[0]="";
         createdAt[0]="";
         status[0]="";
+        reportId[0]="";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -96,8 +96,10 @@ public class ReportMain extends AppCompatActivity {
                     status[i] = jsonObject[i].optString("status");
                     reportDescription[i] = jsonObject[i].optString("description");
                     createdAt[i] = jsonObject[i].optString("createdAt");
+                    reportId[i]=jsonObject[i].optString("reportId");
+                    reportID = reportId[i];
 
-                    reportData[i] = new reportData(createdAt[i], reportTitle[i], reportDescription[i], status[i]);
+                    reportData[i] = new reportData(createdAt[i], reportTitle[i], reportDescription[i], status[i], reportId[i]);
                     arrayList.add(reportData[i]);
 
                 }
@@ -136,8 +138,5 @@ public class ReportMain extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
-
-
 }

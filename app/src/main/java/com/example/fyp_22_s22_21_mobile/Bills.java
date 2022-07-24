@@ -43,7 +43,7 @@ public class Bills extends AppCompatActivity {
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
-        //Button btn_View = (Button) findViewById(R.id.btn_View_1);
+        Button btn_back = (Button) findViewById(R.id.btn_back);
         TextView tv_billDate = findViewById(R.id.tv_billDate);
 
         requestBills(url);
@@ -52,6 +52,14 @@ public class Bills extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), billPrice.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,7 +101,7 @@ public class Bills extends AppCompatActivity {
                                 "An error occurred.",
                                 Toast.LENGTH_LONG)
                         .show();
-                }
+            }
         })
         {
             @Override

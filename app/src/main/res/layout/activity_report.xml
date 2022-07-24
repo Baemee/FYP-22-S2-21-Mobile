@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/tv_ResolveBox"
-        android:layout_width="350dp"
-        android:layout_height="500dp"
+        android:layout_width="341dp"
+        android:layout_height="448dp"
 
         android:layout_marginTop="52dp"
         android:background="@drawable/blackstroke"
@@ -36,30 +36,28 @@
 
     <Button
         android:id="@+id/btn_Resolve"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="99dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_border"
-        android:text="Resolve"
 
-        app:layout_constraintBottom_toTopOf="@+id/btn_ResolveReturn"
+        android:text="Resolve"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_ResolveBox"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tv_ResolveBox" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return"
         android:id="@+id/btn_ResolveReturn"
+        android:layout_width="99dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_border"
 
-        app:layout_constraintTop_toBottomOf="@+id/btn_Resolve"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Return"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Resolve" />
 
     <TextView
         android:id="@+id/tv_reporttitle"
@@ -95,8 +93,8 @@
 
     <TextView
         android:id="@+id/tv_resolve"
-        android:layout_width="328dp"
-        android:layout_height="401dp"
+        android:layout_width="330dp"
+        android:layout_height="342dp"
         android:background="@drawable/textview_border"
         android:backgroundTint="@color/white"
 
