@@ -51,7 +51,7 @@ public class Bills extends AppCompatActivity {
         tv_billDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), BillDetails.class);
+                Intent intent = new Intent(getApplicationContext(), billPrice.class);
                 startActivity(intent);
             }
         });

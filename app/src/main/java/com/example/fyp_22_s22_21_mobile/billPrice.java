@@ -2,23 +2,35 @@ package com.example.fyp_22_s22_21_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.braintreepayments.api.dropin.DropInActivity;
+import com.braintreepayments.api.dropin.DropInResult;
+import com.braintreepayments.api.interfaces.HttpResponseCallback;
+import com.braintreepayments.api.internal.HttpClient;
+import com.braintreepayments.api.models.PaymentMethodNonce;
 import com.example.fyp_22_s22_21_mobile.support.alertData;
 import com.example.fyp_22_s22_21_mobile.support.waterUsageData;
 
@@ -32,6 +44,11 @@ import java.util.Map;
 
 public class billPrice extends AppCompatActivity {
 
+
+    Button btn_pay;
+    TextView tv_amount;
+    TextView tv_totalPrice;
+
     SharedPreferences Token;
     String url;
 
@@ -39,7 +56,6 @@ public class billPrice extends AppCompatActivity {
     String title, date;
     int year, month, rate;
     double totalUsage, amount;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +69,11 @@ public class billPrice extends AppCompatActivity {
         TextView tv_billCost_cal = (TextView) findViewById(R.id.tv_billCost_cal);
 
         Button btn_billCheckOut = (Button) findViewById(R.id.btn_billCheckOut);
+
+
+        btn_pay = (Button)findViewById(R.id.btn_pay);
+
+        tv_totalPrice = (TextView) findViewById(R.id.tv_totalPrice);
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         String key = Token.getString("token", String.valueOf(1));
@@ -108,8 +129,6 @@ public class billPrice extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonArrayRequest);
 
-
-
         btn_billCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +139,8 @@ public class billPrice extends AppCompatActivity {
         });
 
     }
+
+
 
 
 }

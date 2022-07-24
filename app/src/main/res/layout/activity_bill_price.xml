@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".billPrice">
 
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        ></RelativeLayout>
+
     <TextView
         android:id="@+id/tv_billBackground"
         android:layout_width="380dp"
@@ -19,7 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498" />
-
     <TextView
         android:id="@+id/tv_billTitle"
         android:layout_width="wrap_content"
@@ -32,7 +41,6 @@
 
         app:layout_constraintStart_toStartOf="@id/tv_billBackground"
         app:layout_constraintTop_toTopOf="@id/tv_billBackground" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,7 +129,6 @@
         app:layout_constraintTop_toTopOf="@+id/tv_billCost"
 
         />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,4 +142,81 @@
 
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
+        android:id="@+id/waiting_group"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Loading a token..."
+            android:textSize="30sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
+        android:id="@+id/payment_group"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/tv_t_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Total Price"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_t_1"
+            app:layout_constraintStart_toStartOf="@+id/tv_t_1"
+            app:layout_constraintEnd_toEndOf="@+id/tv_t_1"
+            android:text="$2405.50"
+            android:textSize="25sp"
+            android:layout_marginTop="15sp"
+            android:id="@+id/tv_totalPrice"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_pay"
+            app:layout_constraintTop_toBottomOf="@+id/tv_totalPrice"
+            app:layout_constraintStart_toStartOf="@+id/tv_t_1"
+            app:layout_constraintEnd_toEndOf="@+id/tv_t_1"
+            android:text="Pay"
+            android:textSize="18sp"
+            android:layout_marginTop="15sp"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    ></androidx.constraintlayout.widget.ConstraintLayout>

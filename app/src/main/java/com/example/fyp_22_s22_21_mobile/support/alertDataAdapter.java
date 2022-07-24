@@ -19,7 +19,7 @@ public class alertDataAdapter extends RecyclerView.Adapter<alertDataAdapter.Cust
 
     private ArrayList<alertData> arrayList;
     private Context context;
-    private String alertId;
+    private String[] alertId = new String[1000];
 
     public alertDataAdapter(ArrayList<alertData> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -43,14 +43,14 @@ public class alertDataAdapter extends RecyclerView.Adapter<alertDataAdapter.Cust
         holder.vl_Date.setText(arrayList.get(position).getVl_Date());
         holder.vl_title.setText(arrayList.get(position).getVl_title());
         holder.vl_description.setText(arrayList.get(position).getVl_description());
-        alertId = arrayList.get(position).getAlert_Id();
+        alertId[position] = arrayList.get(position).getAlert_Id();
 
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, AlertDetail.class);
-                intent.putExtra("alertId", alertId);
+                intent.putExtra("alertId", alertId[position]);
                 context.startActivity(intent);
             }
         });
