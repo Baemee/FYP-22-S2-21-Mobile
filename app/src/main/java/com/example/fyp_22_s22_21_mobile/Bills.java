@@ -1,6 +1,8 @@
 package com.example.fyp_22_s22_21_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,23 +20,38 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.fyp_22_s22_21_mobile.support.BillData;
+import com.example.fyp_22_s22_21_mobile.support.BillDataAdapter;
+import com.example.fyp_22_s22_21_mobile.support.reportData;
+import com.example.fyp_22_s22_21_mobile.support.reportDataAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class Bills extends AppCompatActivity {
 
     SharedPreferences Token;
     String key;
-    String url = "http://10.0.2.2:5000/" + "api/Bill/MyInfo";
-    String date;
+    String url = "http://10.0.2.2:5000/api/Bill/MyInfo";
+    String sgtDate;
     double amount;
     double usage;
-    //String status;
+
+    private ArrayList<BillData> arrayList;
+    private BillDataAdapter adapter;
+    public RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +60,10 @@ public class Bills extends AppCompatActivity {
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
+
         Button btn_back = (Button) findViewById(R.id.btn_back);
-        TextView tv_billDate = findViewById(R.id.tv_billDate);
 
         requestBills(url);
-
-        tv_billDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), billPrice.class);
-                startActivity(intent);
-            }
-        });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,8 +74,88 @@ public class Bills extends AppCompatActivity {
         });
     }
 
-    protected void requestBills(String url)
-    {
+    protected void requestBills(String url) {
+        RecyclerView rv_bills = findViewById(R.id.rv_bills);
+        rv_bills.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        rv_bills.setLayoutManager(layoutManager);
+
+        arrayList = new ArrayList<>();
+
+        adapter = new BillDataAdapter(arrayList, this);
+        rv_bills.setAdapter(adapter);
+
+        String[] billAmt = new String[100];
+        String[] billUsage = new String[100];
+        String[] createdAt = new String[100];
+        String[] billId = new String[100];
+        BillData[] BillData = new BillData[100];
+
+        billAmt[0] = "";
+        billUsage[0] = "";
+        createdAt[0] = "";
+        billId[0] = "";
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                try {
+                    JSONObject[] jsonObject = new JSONObject[100];
+                    //JSONArray jsonArray = new JSONArray();
+                    //jsonArray = response.optJSONArray("");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                        jsonObject[i] = jsonArray.getJSONObject(i);
+
+                        billAmt[i] = jsonObject[i].optString("amount");
+                        billUsage[i] = jsonObject[i].optString("totalUsage");
+                        createdAt[i] = jsonObject[i].optString("createdAt");
+                        billId[i] = jsonObject[i].optString("billId");
+
+                        sgtDate = createdAt[i];
+                        //Convert UTC to SGT
+                        DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+                        utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                        Date utcDate = utcFormat.parse(sgtDate);
+
+                        DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy");
+                        sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
+                        sgtDate = sgtFormat.format(utcDate);
+                        createdAt[i] = sgtDate;
+
+                        BillData[i] = new BillData(createdAt[i], billAmt[i], billUsage[i], billId[i]);
+                        arrayList.add(BillData[i]);
+
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+                catch (JSONException | ParseException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Bills.this, "Error", Toast.LENGTH_LONG).show();
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", key);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonArrayRequest);
+
+    }
+}
+/*
         TextView tv_billDate = findViewById(R.id.tv_billDate);
         TextView tv_billAmount = findViewById(R.id.tv_billAmount);
         TextView tv_billUsage = findViewById(R.id.tv_billUsage);
@@ -115,4 +204,4 @@ public class Bills extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
     }
-}
+}*/

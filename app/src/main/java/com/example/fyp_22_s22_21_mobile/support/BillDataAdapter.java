@@ -71,7 +71,7 @@ public class BillDataAdapter extends RecyclerView.Adapter<BillDataAdapter.Custom
             super(itemView);
             this.vl_BillDate = (TextView) itemView.findViewById(R.id.vl_BillDate);
             this.vl_BillAmt = (TextView) itemView.findViewById(R.id.vl_BillAmt);
-            this.vl_BillUsage = (TextView) itemView.findViewById(R.id.vl_Usage);
+            this.vl_BillUsage = (TextView) itemView.findViewById(R.id.vl_BillUsage);
         }
     }
 }

@@ -58,8 +58,7 @@ public class ReportMain extends AppCompatActivity {
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
         String key = Token.getString("token", String.valueOf(1));
-        String username = Token.getString("username", String.valueOf(1));
-        String userId = Token.getString("userId", String.valueOf(1));
+
 
         Button btn_create = (Button) findViewById(R.id.btn_create);
         Button btn_back = (Button) findViewById(R.id.btn_back);

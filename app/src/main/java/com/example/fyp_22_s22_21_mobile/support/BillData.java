@@ -21,9 +21,7 @@ public class BillData {
         this.vl_BillDate = vl_BillDate;
     }
 
-    public String getvl_BillAmt() {
-        return vl_BillAmt;
-    }
+    public String getvl_BillAmt() {return vl_BillAmt;}
 
     public void setvl_BillAmt(String vl_BillAmt) {
         this.vl_BillAmt = vl_BillAmt;
