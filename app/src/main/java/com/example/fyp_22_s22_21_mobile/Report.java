@@ -22,8 +22,13 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class Report extends AppCompatActivity {
 
@@ -77,7 +82,7 @@ public class Report extends AppCompatActivity {
         String username = Token.getString("username", String.valueOf(1));
         String userId = Token.getString("userId", String.valueOf(1));
 
-        url = "http://10.0.2.2:5000/api/ReportTicket/MyInfo/" + ReportMain.reportID; //ReportMain
+        url = "http://10.0.2.2:5000/api/ReportTicket/MyInfo/" + reportId;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -88,7 +93,16 @@ public class Report extends AppCompatActivity {
                     description = response.getString("description");
                     date = response.getString("createdAt");
 
-                } catch (JSONException e) {
+                    //Convert UTC to SGT
+                    DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    Date utcDate = utcFormat.parse(date);
+
+                    DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+                    sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
+                    date = sgtFormat.format(utcDate);
+
+                } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
 
