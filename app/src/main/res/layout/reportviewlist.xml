@@ -26,7 +26,7 @@
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:id="@+id/vl_reportdescription"
-        android:text="Description example"
+        android:id="@+id/vl_status"
+        android:text="Status"
         />
 </LinearLayout>

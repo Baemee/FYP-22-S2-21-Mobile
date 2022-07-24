@@ -23,8 +23,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class AlertDetail extends AppCompatActivity {
 
@@ -66,7 +71,16 @@ public class AlertDetail extends AppCompatActivity {
                     alertDescription = response.getString("alertDescription");
                     alertDate = response.getString("createdAt");
 
-                } catch (JSONException e) {
+                    //Convert UTC to SGT
+                    DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    Date utcDate = utcFormat.parse(alertDate);
+
+                    DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+                    sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
+                    alertDate = sgtFormat.format(utcDate);
+
+                } catch (JSONException | ParseException e) {
                     e.printStackTrace();
                 }
 

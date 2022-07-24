@@ -28,10 +28,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.Array;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class Alert extends AppCompatActivity {
 
@@ -42,7 +47,7 @@ public class Alert extends AppCompatActivity {
     public RecyclerView.LayoutManager layoutManager;
 
     String url;
-
+    String sgtDate;
     String testing;
 
     @Override
@@ -94,6 +99,22 @@ public class Alert extends AppCompatActivity {
                     alertTitle[i] = jsonObject[i].optString("alertTitle");
                     alertDescription[i] = jsonObject[i].optString("alertDescription");
                     createdAt[i] = jsonObject[i].optString("createdAt");
+
+                    sgtDate = createdAt[i];
+                    try{
+                        //Convert UTC to SGT
+                        DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                        utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                        Date utcDate = utcFormat.parse(sgtDate);
+
+                        DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy");
+                        sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
+                        sgtDate = sgtFormat.format(utcDate);
+                        createdAt[i] = sgtDate;
+                    }
+                    catch (ParseException e){
+                        e.printStackTrace();
+                    }
 
                     alertData[i] = new alertData(createdAt[i], alertTitle[i], alertDescription[i], alertId[i]);
                     arrayList.add(alertData[i]);

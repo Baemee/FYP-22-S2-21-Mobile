@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class BillDataAdapter extends RecyclerView.Adapter<BillDataAdapter.CustomViewHolder>{
     private ArrayList<BillData> arrayList;
     private Context context;
-    private String BillId;
+    private String[] BillId = new String[1000];
 
     public BillDataAdapter(ArrayList<BillData> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -43,13 +43,14 @@ public class BillDataAdapter extends RecyclerView.Adapter<BillDataAdapter.Custom
         holder.vl_BillDate.setText(arrayList.get(position).getvl_BillDate());
         holder.vl_BillAmt.setText(arrayList.get(position).getvl_BillAmt());
         holder.vl_BillUsage.setText(arrayList.get(position).getvl_BillUsage());
+        BillId[position]=arrayList.get(position).getBillId();
 
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, BillDetails.class);
-                intent.putExtra("billId", BillId);
+                intent.putExtra("billId", BillId[position]);
                 context.startActivity(intent);
             }
         });
