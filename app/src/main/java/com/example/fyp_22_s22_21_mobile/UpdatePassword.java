@@ -51,7 +51,7 @@ public class UpdatePassword extends AppCompatActivity {
         Button btn_savePassword = findViewById(R.id.btn_savePassword);
         EditText et_NewPassword = findViewById(R.id.et_NewPassword);
         EditText et_ConfirmPassword = findViewById(R.id.et_ConfirmPassword);
-        Button btn_cancelPassword = (Button) findViewById(R.id.btn_cancelPassword);
+
         key = "Bearer " + Token.getString("token", String.valueOf(1));
         username = Token.getString("username", String.valueOf(1));
         userId = Token.getString("userId", String.valueOf(1));
@@ -126,20 +126,8 @@ public class UpdatePassword extends AppCompatActivity {
 
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     requestQueue.add(jsonObjectRequest);
-
                 }
             }
         });
-
-        btn_cancelPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
-
-
 }

@@ -15,6 +15,8 @@ import com.example.fyp_22_s22_21_mobile.BillDetails;
 import com.example.fyp_22_s22_21_mobile.R;
 import com.example.fyp_22_s22_21_mobile.Report;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class BillDataAdapter extends RecyclerView.Adapter<BillDataAdapter.CustomViewHolder>{
@@ -40,9 +42,10 @@ public class BillDataAdapter extends RecyclerView.Adapter<BillDataAdapter.Custom
     @Override
     public void onBindViewHolder(@NonNull BillDataAdapter.CustomViewHolder holder, int position) {
 
-        holder.vl_BillDate.setText(arrayList.get(position).getvl_BillDate());
+        holder.vl_BillMth.setText(arrayList.get(position).getvl_BillMth());
+        holder.vl_BillYr.setText(arrayList.get(position).getvl_BillYr());
         holder.vl_BillAmt.setText(arrayList.get(position).getvl_BillAmt());
-        holder.vl_BillUsage.setText(arrayList.get(position).getvl_BillUsage());
+        holder.vl_BillDue.setText(arrayList.get(position).getvl_BillDue());
         BillId[position]=arrayList.get(position).getBillId();
 
         holder.itemView.setTag(position);
@@ -63,15 +66,19 @@ public class BillDataAdapter extends RecyclerView.Adapter<BillDataAdapter.Custom
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
-        protected TextView vl_BillDate;
+        protected TextView vl_BillMth;
+        protected TextView vl_BillYr;
         protected TextView vl_BillAmt;
-        protected TextView vl_BillUsage;
+        protected TextView vl_BillDue;
+        //protected TextView vl_BillId;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.vl_BillDate = (TextView) itemView.findViewById(R.id.vl_BillDate);
+            this.vl_BillMth = (TextView) itemView.findViewById(R.id.vl_BillMth);
+            this.vl_BillYr = (TextView) itemView.findViewById(R.id.vl_BillYr);
             this.vl_BillAmt = (TextView) itemView.findViewById(R.id.vl_BillAmt);
-            this.vl_BillUsage = (TextView) itemView.findViewById(R.id.vl_BillUsage);
+            this.vl_BillDue = (TextView) itemView.findViewById(R.id.vl_BillDue);
+            //this.vl_BillId = (TextView) itemView.findViewById(R.id.vl_BillId);
         }
     }
 }

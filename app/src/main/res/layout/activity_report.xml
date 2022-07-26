@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/tv_ResolveBox"
-        android:layout_width="341dp"
-        android:layout_height="448dp"
+        android:layout_width="350dp"
+        android:layout_height="558dp"
 
         android:layout_marginTop="52dp"
-        android:background="@drawable/blackstroke"
+        android:background="@drawable/button_border"
         android:backgroundTint="@color/lightblue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -20,87 +20,120 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_box"
+        android:layout_width="271dp"
+        android:layout_height="498dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ResolveBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_ResolveBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox" />
+
+    <TextView
         android:id="@+id/tv_ReportTitle"
         android:layout_width="150dp"
         android:layout_height="20dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="76dp"
         android:background="@drawable/textview_border"
-        android:backgroundTint="@color/white"
+
         android:textAlignment="center"
         android:textColor="@color/black"
 
-        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="@+id/tv_report"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_reporttitle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reporttitle" />
 
     <Button
         android:id="@+id/btn_Resolve"
         android:layout_width="99dp"
         android:layout_height="44dp"
-        android:layout_marginTop="12dp"
         android:background="@drawable/button_border"
-
         android:text="Resolve"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/tv_ResolveBox" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_ResolveReturn"
         android:layout_width="99dp"
         android:layout_height="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/button_border"
-
         android:text="Return"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Resolve" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_resolve" />
 
     <TextView
         android:id="@+id/tv_reporttitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Title"
-        app:layout_constraintBottom_toTopOf="@+id/tv_reportdate"
-        app:layout_constraintEnd_toStartOf="@+id/tv_ReportTitle"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox" />
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:text="Title of issue"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tv_report"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_report" />
 
     <TextView
         android:id="@+id/tv_reportdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="Date"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_reportDate"
-        app:layout_constraintEnd_toStartOf="@+id/tv_reportDate"
-        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox" />
-
-    <TextView
-        android:id="@+id/tv_reportDate"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/textview_border"
-        android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/tv_ReportTitle"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tv_reportDate"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_ReportTitle"
         app:layout_constraintTop_toBottomOf="@+id/tv_ReportTitle" />
 
     <TextView
-        android:id="@+id/tv_resolve"
-        android:layout_width="330dp"
-        android:layout_height="342dp"
+        android:id="@+id/tv_reportDate"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
         android:background="@drawable/textview_border"
-        android:backgroundTint="@color/white"
 
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ResolveBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_ReportTitle"
+        app:layout_constraintStart_toStartOf="@+id/tv_ReportTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reportdate" />
+
+    <TextView
+        android:id="@+id/tv_resolve"
+        android:layout_width="214dp"
+        android:layout_height="148dp"
+        android:background="@drawable/textview_border"
+
+
         app:layout_constraintEnd_toEndOf="@+id/tv_ResolveBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_reportDate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+    <TextView
+        android:id="@+id/tv_report"
+        android:layout_width="153dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:text="Report Detail"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
-        app:layout_constraintTop_toBottomOf="@+id/tv_reportDate" />
+        app:layout_constraintTop_toTopOf="@+id/tv_ResolveBox" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Description"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/tv_resolve"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_reportdate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_reportdate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

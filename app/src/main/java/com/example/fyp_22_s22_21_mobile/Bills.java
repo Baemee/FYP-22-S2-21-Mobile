@@ -46,6 +46,7 @@ public class Bills extends AppCompatActivity {
     String key;
     String url = "http://10.0.2.2:5000/api/Bill/MyInfo";
     String sgtDate;
+    String sgtDue;
     double amount;
     double usage;
 
@@ -90,12 +91,18 @@ public class Bills extends AppCompatActivity {
         String[] billUsage = new String[100];
         String[] createdAt = new String[100];
         String[] billId = new String[100];
+        String [] billMth = new String[100];
+        String [] billYr = new String[100];
+        String [] billDue = new String [100];
         BillData[] BillData = new BillData[100];
 
         billAmt[0] = "";
         billUsage[0] = "";
         createdAt[0] = "";
         billId[0] = "";
+        billMth[0]="";
+        billYr[0]="";
+        billDue[0]="";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -112,19 +119,26 @@ public class Bills extends AppCompatActivity {
                         billUsage[i] = jsonObject[i].optString("totalUsage");
                         createdAt[i] = jsonObject[i].optString("createdAt");
                         billId[i] = jsonObject[i].optString("billId");
+                        billMth[i]=jsonObject[i].optString("month");
+                        billYr[i]=jsonObject[i].optString("year");
+                        billDue[i]=jsonObject[i].optString("deadline");
 
                         sgtDate = createdAt[i];
+                        sgtDue = billDue[i];
                         //Convert UTC to SGT
                         DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
                         utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
                         Date utcDate = utcFormat.parse(sgtDate);
+                        utcDate = utcFormat.parse(sgtDue);
 
                         DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy");
                         sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
                         sgtDate = sgtFormat.format(utcDate);
+                        sgtDue = sgtFormat.format(utcDate);
                         createdAt[i] = sgtDate;
+                        billDue[i] = sgtDue;
 
-                        BillData[i] = new BillData(createdAt[i], billAmt[i], billUsage[i], billId[i]);
+                        BillData[i] = new BillData(billMth[i],billYr[i], billAmt[i], billId[i], billDue[i]);
                         arrayList.add(BillData[i]);
 
                         adapter.notifyDataSetChanged();
