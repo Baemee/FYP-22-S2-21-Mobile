@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.braintreepayments.api.dropin.DropInActivity;
+import com.braintreepayments.api.dropin.DropInRequest;
 import com.braintreepayments.api.dropin.DropInResult;
 import com.braintreepayments.api.interfaces.HttpResponseCallback;
 import com.braintreepayments.api.internal.HttpClient;
@@ -44,6 +46,7 @@ import java.util.Map;
 
 public class billPrice extends AppCompatActivity {
 
+    private static final int REQUEST_CODE = 1234;
 
     Button btn_pay;
     TextView tv_amount;
@@ -57,6 +60,16 @@ public class billPrice extends AppCompatActivity {
     int year, month, rate;
     double totalUsage, amount;
 
+    final String API_GET_TOKEN = "http://10.0.2.2/braintree/main.php";
+    final String API_CHECK_OUT = "http://10.0.2.2/braintree/checkout.php";
+
+    String token_pay, amount_pay;
+    HashMap<String, String> paramsHash;
+    Button btn_billCheckOut;
+    TextView tv_billCost_cal;
+    LinearLayout group_payment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,10 +79,9 @@ public class billPrice extends AppCompatActivity {
         TextView tv_BillDate_cal = (TextView) findViewById(R.id.tv_BillDate_cal);
         TextView tv_billRate_cal = (TextView) findViewById(R.id.tv_billRate_cal);
         TextView tv_billTotalUsage_cal = (TextView) findViewById(R.id.tv_billTotalUsage_cal);
-        TextView tv_billCost_cal = (TextView) findViewById(R.id.tv_billCost_cal);
 
-        Button btn_billCheckOut = (Button) findViewById(R.id.btn_billCheckOut);
-
+        tv_billCost_cal = (TextView) findViewById(R.id.tv_billCost_cal);
+        btn_billCheckOut = (Button) findViewById(R.id.btn_billCheckOut);
 
         btn_pay = (Button)findViewById(R.id.btn_pay);
 
@@ -129,18 +141,142 @@ public class billPrice extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonArrayRequest);
 
+        new getToken().execute();
+
         btn_billCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PaymentPage.class);
-                intent.putExtra("amount", amount);
-                startActivity(intent);
+                submitPayment();
             }
         });
 
+
+
+
     }
 
+    private class getToken extends AsyncTask {
+        ProgressDialog mDialog;
 
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            HttpClient client=new HttpClient();
+            client.get(API_GET_TOKEN, new HttpResponseCallback() {
+                @Override
+                public void success(final String responseBody) {
+                    mDialog.dismiss();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            token_pay=responseBody;
+                        }
+                    });
+                }
 
+                @Override
+                public void failure(Exception exception) {
+                    mDialog.dismiss();
+                    Log.d("Err",exception.toString());
+                }
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mDialog=new ProgressDialog(billPrice.this,android.R.style.Theme_DeviceDefault_Light_Dialog);
+            mDialog.setCancelable(false);
+            mDialog.setMessage("Loading Wallet, Please Wait");
+            mDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Object o){
+            super.onPostExecute(o);
+        }
+    }
+
+    private void submitPayment() {
+        String payValue=tv_billCost_cal.getText().toString();
+        if(!payValue.isEmpty())
+        {
+            DropInRequest dropInRequest=new DropInRequest().clientToken(token_pay);
+            startActivityForResult(dropInRequest.getIntent(this),REQUEST_CODE);
+        }
+        else
+            Toast.makeText(this, "Error getting an price", Toast.LENGTH_SHORT).show();
+    }
+
+    private void sendPayments(){
+        RequestQueue queue= Volley.newRequestQueue(billPrice.this);
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, API_CHECK_OUT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.toString().contains("Successful")){
+                            Toast.makeText(billPrice.this, "Payment Success", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(billPrice.this, "Payment Failed", Toast.LENGTH_SHORT).show();
+                        }
+                        Log.d("Response",response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Err",error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                if(paramsHash==null)
+                    return null;
+                Map<String,String> params=new HashMap<>();
+                for(String key:paramsHash.keySet())
+                {
+                    params.put(key,paramsHash.get(key));
+                }
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+                params.put("Content-type","application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        RetryPolicy mRetryPolicy=new DefaultRetryPolicy(0,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(mRetryPolicy);
+        queue.add(stringRequest);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                DropInResult result = data.getParcelableExtra(DropInResult.EXTRA_DROP_IN_RESULT);
+                PaymentMethodNonce nonce = result.getPaymentMethodNonce();
+                String strNounce = nonce.getNonce();
+                if (!tv_totalPrice.getText().toString().isEmpty()) {
+                    amount_pay = tv_totalPrice.getText().toString();
+                    paramsHash = new HashMap<>();
+                    paramsHash.put("amount", amount_pay);
+                    paramsHash.put("nonce", strNounce);
+
+                    sendPayments();
+                } else {
+                    Toast.makeText(this, "Please enter a valid amount", Toast.LENGTH_SHORT).show();
+                }
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "User canceled", Toast.LENGTH_SHORT).show();
+            } else {
+                Exception error = (Exception) data.getSerializableExtra(DropInActivity.EXTRA_ERROR);
+                Log.d("Err", error.toString());
+            }
+        }
+    }
 
 }
