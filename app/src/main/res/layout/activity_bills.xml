@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/tv_BillBox"
-        android:layout_width="300dp"
-        android:layout_height="450dp"
+        android:layout_width="366dp"
+        android:layout_height="391dp"
         android:background="@drawable/blackstroke"
         android:backgroundTint="@color/lightblue"
 
@@ -23,95 +23,41 @@
         android:id="@+id/tv_BillDate"
         android:layout_width="43dp"
         android:layout_height="38dp"
-        android:text="Billing Month"
-        android:textColor="@color/black"
-        android:maxLines="2"
+        android:layout_marginStart="24dp"
         android:lines="2"
+        android:maxLines="2"
+        android:text="Billing Month"
 
-        app:layout_constraintEnd_toStartOf="@+id/tv_BillAmount"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/tv_BillBox"
-        app:layout_constraintTop_toTopOf="@+id/tv_BillBox"
-        />
+        app:layout_constraintTop_toTopOf="@+id/tv_BillBox" />
 
     <TextView
         android:id="@+id/tv_BillAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="52dp"
+        android:layout_height="18dp"
+
+        android:layout_marginTop="8dp"
         android:text="Amount"
         android:textColor="@color/black"
-
+        app:layout_constraintBottom_toTopOf="@+id/rv_bills"
         app:layout_constraintEnd_toStartOf="@+id/tv_BillUsage"
+        app:layout_constraintHorizontal_bias="0.377"
         app:layout_constraintStart_toEndOf="@+id/tv_BillDate"
-        app:layout_constraintTop_toTopOf="@+id/tv_BillDate"
-        />
+        app:layout_constraintTop_toTopOf="@+id/tv_BillBox"
+        app:layout_constraintVertical_bias="0.083" />
 
     <TextView
         android:id="@+id/tv_BillUsage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="68dp"
+
         android:text="Usage"
         android:textColor="@color/black"
-
-        app:layout_constraintEnd_toStartOf="@+id/tv_Blank"
-        app:layout_constraintStart_toEndOf="@+id/tv_BillAmount"
-        app:layout_constraintTop_toTopOf="@+id/tv_BillAmount"
-        />
-
-    <TextView
-        android:id="@+id/tv_Blank"
-        android:layout_width="77dp"
-        android:layout_height="19dp"
-        android:textColor="@color/black"
-
-        app:layout_constraintEnd_toEndOf="@+id/tv_BillBox"
-        app:layout_constraintStart_toEndOf="@+id/tv_BillUsage"
-        app:layout_constraintTop_toTopOf="@+id/tv_BillAmount" />
-
-    <Button
-        android:id="@+id/btn_View_1"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="36dp"
-        android:text="View"
-
-        android:textSize="9dp"
-
-        app:layout_constraintEnd_toEndOf="@+id/tv_BillBox"
-        app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toEndOf="@+id/tv_billUsage"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Blank" />
-
-    <TextView
-        android:id="@+id/tv_billDate"
-        android:layout_width="62dp"
-        android:layout_height="359dp"
-        android:background="@color/white"
-
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
-        app:layout_constraintStart_toStartOf="@+id/tv_BillBox"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BillDate"
-        app:layout_constraintVertical_bias="0.339" />
-
-    <TextView
-        android:id="@+id/tv_billAmount"
-        android:layout_width="60dp"
-        android:layout_height="360dp"
-        android:background="@color/white"
-
-        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
-        app:layout_constraintStart_toEndOf="@+id/tv_billDate"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BillAmount" />
-
-    <TextView
-        android:id="@+id/tv_billUsage"
-        android:layout_width="63dp"
-        android:layout_height="361dp"
-        android:background="@color/white"
-
-        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
-        app:layout_constraintStart_toEndOf="@+id/tv_billAmount"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BillUsage" />
+        app:layout_constraintEnd_toEndOf="@+id/rv_bills"
+        app:layout_constraintTop_toTopOf="@+id/tv_BillBox" />
 
     <Button
         android:id="@+id/btn_back"
@@ -123,5 +69,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_BillBox" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bills"
+        android:layout_width="365dp"
+        android:layout_height="349dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_BillBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_BillBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

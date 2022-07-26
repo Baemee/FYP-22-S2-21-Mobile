@@ -53,7 +53,7 @@ public class BillDetails extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Bills.class);
                 startActivity(intent);
             }
         });

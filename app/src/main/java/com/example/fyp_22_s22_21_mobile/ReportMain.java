@@ -30,16 +30,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class ReportMain extends AppCompatActivity {
 
     SharedPreferences Token;
     String key;
     String url = "http://10.0.2.2:5000/api/ReportTicket/MyInfo?page="+1+"&pageSize="+50;
-    public static String reportID;
+    String sgtDate;
 
     private ArrayList <reportData> arrayList;
     private reportDataAdapter adapter;
@@ -53,8 +58,7 @@ public class ReportMain extends AppCompatActivity {
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
         String key = Token.getString("token", String.valueOf(1));
-        String username = Token.getString("username", String.valueOf(1));
-        String userId = Token.getString("userId", String.valueOf(1));
+
 
         Button btn_create = (Button) findViewById(R.id.btn_create);
         Button btn_back = (Button) findViewById(R.id.btn_back);
@@ -97,7 +101,22 @@ public class ReportMain extends AppCompatActivity {
                     reportDescription[i] = jsonObject[i].optString("description");
                     createdAt[i] = jsonObject[i].optString("createdAt");
                     reportId[i]=jsonObject[i].optString("reportId");
-                    reportID = reportId[i];
+
+                    sgtDate = createdAt[i];
+                    try{
+                        //Convert UTC to SGT
+                        DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                        utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                        Date utcDate = utcFormat.parse(sgtDate);
+
+                        DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy");
+                        sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
+                        sgtDate = sgtFormat.format(utcDate);
+                        createdAt[i] = sgtDate;
+                    }
+                    catch (ParseException e){
+                        e.printStackTrace();
+                    }
 
                     reportData[i] = new reportData(createdAt[i], reportTitle[i], reportDescription[i], status[i], reportId[i]);
                     arrayList.add(reportData[i]);

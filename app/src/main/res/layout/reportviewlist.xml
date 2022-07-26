@@ -13,20 +13,19 @@
         />
 
     <TextView
-        android:id="@+id/vl_reportdescription"
+        android:id="@+id/vl_reporttitle"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="Description example"
+        android:text="title"
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/vl_reporttitle"
+        android:id="@+id/vl_status"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:text="Title-1"
+        android:text="status"
         android:textAlignment="center"
         android:textSize="13dp"
-        />
-
+    />
 
 </LinearLayout>

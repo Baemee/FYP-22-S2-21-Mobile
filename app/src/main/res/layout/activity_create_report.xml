@@ -8,95 +8,123 @@
 
 
     <TextView
-        android:layout_width="300dp"
-        android:layout_height="450dp"
-        android:id="@+id/tv_CreateReportBox"
-        android:background="@drawable/textview_border"
-        android:backgroundTint="@color/lightblue"
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/tv_CreateReportBox"
+        android:layout_width="350dp"
+        android:layout_height="558dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/button_border"
+        android:backgroundTint="@color/lightblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_box"
+        android:layout_width="258dp"
+        android:layout_height="474dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_CreateReportBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_CreateReportBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox" />
+
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_ReportTitle"
+
+        android:layout_marginTop="20dp"
+        android:text="Title of issue"
         android:textColor="@color/black"
         android:textSize="15dp"
-        android:text="Title of issue"
-
-        app:layout_constraintTop_toTopOf="@+id/tv_CreateReportBox"
-        app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
-        app:layout_constraintBottom_toTopOf="@id/tv_ReportDescription"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/tv_report"
+        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintStart_toStartOf="@+id/tv_report"
+        app:layout_constraintTop_toBottomOf="@+id/tv_report" />
 
     <EditText
+        android:id="@+id/et_title"
         android:layout_width="140dp"
         android:layout_height="20dp"
-        android:id="@+id/et_title"
-        android:background="@drawable/blackstroke"
-        android:textSize="15dp"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/textview_border"
 
-        app:layout_constraintTop_toBottomOf="@id/tv_ReportTitle"
-        app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
-        />
+        android:textSize="15dp"
+
+        app:layout_constraintEnd_toEndOf="@+id/tv_report"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
+        android:id="@+id/tv_ReportDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_ReportDescription"
+        android:layout_marginTop="20dp"
         android:text="Description"
         android:textColor="@color/black"
-        android:textSize="15dp"
 
-        app:layout_constraintStart_toStartOf="@id/et_ReportDescription"
-        app:layout_constraintBottom_toTopOf="@+id/et_ReportDescription"
-        />
+
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
     <EditText
-        android:layout_width="260dp"
-        android:layout_height="250dp"
         android:id="@+id/et_ReportDescription"
-        android:textSize="15dp"
-        android:textColor="@color/black"
-        android:background="@drawable/blackstroke"
-        android:backgroundTint="@color/white"
-        android:gravity="top|left"
+        android:layout_width="218dp"
+        android:layout_height="118dp"
+        android:background="@drawable/textview_border"
 
-        app:layout_constraintTop_toBottomOf="@+id/et_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox"
-        app:layout_constraintEnd_toEndOf="@+id/tv_CreateReportBox"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Submit"
-        />
+        android:gravity="top|left"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+
+        app:layout_constraintEnd_toEndOf="@+id/et_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_ReportDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ReportDescription" />
 
     <Button
+        android:id="@+id/btn_Submit"
         android:layout_width="99dp"
         android:layout_height="44dp"
-        android:text="Submit"
-        android:id="@+id/btn_Submit"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/button_border"
 
-        app:layout_constraintTop_toBottomOf="@+id/et_ReportDescription"
-        app:layout_constraintEnd_toEndOf="@+id/et_ReportDescription"
+        android:text="Submit"
         app:layout_constraintBottom_toBottomOf="@+id/tv_CreateReportBox"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/et_ReportDescription"
+        app:layout_constraintTop_toBottomOf="@+id/et_ReportDescription"
+        app:layout_constraintVertical_bias="0.717" />
 
     <Button
         android:id="@+id/btn_CancelReport"
         android:layout_width="99dp"
         android:layout_height="44dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="76dp"
-        android:text="Cancel"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/button_border"
+        android:text="Cancel"
 
         app:layout_constraintBottom_toBottomOf="@+id/btn_Submit"
         app:layout_constraintEnd_toStartOf="@+id/btn_Submit"
-        app:layout_constraintTop_toBottomOf="@+id/et_ReportDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/et_ReportDescription"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tv_report"
+        android:layout_width="153dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="48dp"
+        android:text="Report Detail"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox"
+        app:layout_constraintTop_toTopOf="@+id/tv_CreateReportBox" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
