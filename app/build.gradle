@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
-    implementation 'com.braintreepayments.api:drop-in:5.3.0'
+    implementation 'com.braintreepayments.api:drop-in:6.1.0'
     implementation 'org.webjars.npm:cardinal:1.0.0'
     implementation 'org.jfrog.cardinalcommerce.gradle:cardinalmobilesdk:2.2.6-1'
 
