@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -47,7 +48,7 @@ public class CreateReport extends AppCompatActivity
         key = "Bearer " + Token.getString("token", String.valueOf(1));
 
         Button btn_Submit = findViewById(R.id.btn_Submit);
-        Button btn_Cancel = findViewById(R.id.btn_CancelReport);
+        ImageView btn_Cancel = findViewById(R.id.img_back);
         EditText et_title = findViewById(R.id.et_title);
         EditText et_ReportDescription = findViewById(R.id.et_ReportDescription);
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".CreateReport">
 
     <TextView
@@ -31,20 +32,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Report" />
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="99dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="160dp"
-        android:background="@drawable/button_border"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_create"
-        app:layout_constraintTop_toBottomOf="@+id/btn_create"
-        app:layout_constraintVertical_bias="0.125" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_report"
@@ -88,6 +75,18 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_Report"
         app:layout_constraintTop_toTopOf="@+id/tv_Report"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigatin_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@navigation/bottom_nav"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

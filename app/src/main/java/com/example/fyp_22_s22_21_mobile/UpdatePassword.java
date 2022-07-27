@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -32,7 +34,6 @@ public class UpdatePassword extends AppCompatActivity {
     String key;
     String username;
     String userId;
-    String password;
     String fullName;
     String gender;
     String email;
@@ -49,6 +50,8 @@ public class UpdatePassword extends AppCompatActivity {
         Token = getSharedPreferences("user", MODE_PRIVATE);
 
         Button btn_savePassword = findViewById(R.id.btn_savePassword);
+        ImageView img_back = findViewById(R.id.img_back);
+        TextView tv_userID = findViewById(R.id.tv_userID);
         EditText et_NewPassword = findViewById(R.id.et_NewPassword);
         EditText et_ConfirmPassword = findViewById(R.id.et_ConfirmPassword);
 
@@ -59,6 +62,15 @@ public class UpdatePassword extends AppCompatActivity {
         gender = Token.getString("gender", String.valueOf(1));
         email = Token.getString("email", String.valueOf(1));
         phone = Token.getString("phone", String.valueOf(1));
+        tv_userID.setText(username);
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn_savePassword.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class Report extends AppCompatActivity {
         key = "Bearer " + Token.getString("token", String.valueOf(1));
 
         Button btn_Resolve = (Button)findViewById(R.id.btn_Resolve);
-        Button btn_Return = (Button)findViewById(R.id.btn_ResolveReturn);
+        ImageView btn_Return = findViewById(R.id.img_back);
 
         btn_Resolve.setOnClickListener(new View.OnClickListener() {
             @Override

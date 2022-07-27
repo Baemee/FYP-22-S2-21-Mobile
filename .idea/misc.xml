@@ -14,8 +14,7 @@
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/drawable/whitebox.xml" value="0.329" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_alert.xml" value="0.22" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_alert_detail.xml" value="0.3582427536231884" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bill_details.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bill_price.xml" value="0.25" />
+        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bill_price.xml" value="0.25609756097560976" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bills.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_create_report.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_homepage.xml" value="0.33" />
@@ -26,33 +25,34 @@
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_update_password.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_water_usage.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_water_usage_history.xml" value="0.3582427536231884" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/alertviewlist.xml" value="0.2427536231884058" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/billviewlist.xml" value="0.25" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/content_bill_details.xml" value="0.33" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/fragment_first.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/fragment_second.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/reportviewlist.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/GiYoul/Documents/GitHub/FYP-22-S2-21-Mobile/app/src/main/res/layout/waterusagehistorylist.xml" value="0.23324275362318841" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/blackstroke.xml" value="0.1" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.1" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/textview_border.xml" value="0.1" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_alert.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_alert_detail.xml" value="0.3214814814814815" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bill_details.xml" value="0.19791666666666666" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bill_price.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/button_border.xml" value="0.1" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/gradient_background.xml" value="0.1" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/home.xml" value="0.1" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/drawable/loginbackground.xml" value="0.1" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_alert.xml" value="0.4" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_alert_detail.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bill_details.xml" value="0.536" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bill_price.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_bills.xml" value="0.264" />
         <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_create_report.xml" value="0.4" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_homepage.xml" value="0.2" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_homepage.xml" value="0.536" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_main.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_payment_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_report.xml" value="0.4" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_report_main.xml" value="0.4" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_report_main.xml" value="0.536" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_report_page.xml" value="0.264" />
         <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_update_password.xml" value="0.4" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/billviewlist.xml" value="0.72" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/fragment_first.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/reportviewlist.xml" value="0.19791666666666666" />
-        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/menu/bottom_nav.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_water_usage.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/activity_water_usage_history.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/alertviewlist.xml" value="0.1875" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/billviewlist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/content_bill_details.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/fragment_first.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/fragment_profile.xml" value="0.3362487852283771" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/fragment_second.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/reportviewlist.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/layout/waterusagehistorylist.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/weijie/Documents/SIM/CSIT321 Project/Repo/Mobile/FYP-22-S2-21-Mobile/app/src/main/res/menu/bottom_nav.xml" value="0.17916666666666667" />
       </map>
     </option>
   </component>
