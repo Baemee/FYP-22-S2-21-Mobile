@@ -18,6 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.braintreepayments.api.DropInClient;
 import com.braintreepayments.api.DropInListener;
@@ -31,20 +32,28 @@ import com.google.android.gms.wallet.WalletConstants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class BillDetails extends AppCompatActivity implements DropInListener {
 
     //    private static final String SANDBOX_KEY = "sandbox_jy9bjhfx_pctg926vzs477j7t";
-    private static final String SANDBOX_KEY = "sandbox_tmxhyf7d_dcpspy2brwdjr3qn";
+    private static final String SANDBOX_KEY = "sandbox_d5y6j6pb_cfmsx5n4w9rxwxw9";
     private static final String MERCHANT_SERVER_URL = "https://sdk-sample-merchant-server.herokuapp.com";
-    private static final String SANDBOX_BASE_SERVER_URL = MERCHANT_SERVER_URL + "/braintree/sandbox";
+
+
     SharedPreferences Token;
     String key;
     String url = "http://10.0.2.2:5000/" + "api/Bill/MyInfo";
-    String billId;
+    String checkoutURL = "http://10.0.2.2:5000/" + "api/Payment";
+    String billId, Nonce;
     int mth;
     int yr;
     double usage;
@@ -54,6 +63,8 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     String payment;
 
     private DropInClient dropInClient;
+
+    JSONObject jsonObject = new JSONObject();
 
 
     private void createPaymentModule() {
@@ -107,6 +118,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
         requestBillsDetails(url);
         createPaymentModule();
+
     }
 
     protected void requestBillsDetails(String url) {
@@ -177,6 +189,44 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         requestQueue.add(jsonObjectRequest);
     }
 
+    protected void requestPayment(JSONObject jsonObject, String checkoutURL) {
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, checkoutURL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    String result = response.getString("success");
+                    if (result == "true") {
+                        Toast.makeText(BillDetails.this, "Payment has bee successfully paid", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(BillDetails.this, "Failed to make a purchase_2", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(BillDetails.this, "Failed to make a purchase_1", Toast.LENGTH_LONG).show();
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String,String>();
+                headers.put("Authorization",key);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+    }
+
     @Override
     public void onDropInSuccess(@NonNull DropInResult dropInResult) {
 
@@ -184,7 +234,17 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
         DropInPaymentMethod paymentMethodType = dropInResult.getPaymentMethodType();
         if (paymentMethodType != null) {
-            Toast.makeText(BillDetails.this, paymentMethodType.getLocalizedName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(BillDetails.this, paymentNonce.getString(), Toast.LENGTH_LONG).show();
+            Nonce = paymentNonce.getString();
+
+            try {
+                jsonObject.put("billId", billId);
+                jsonObject.put("paymentNonce", Nonce);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            requestPayment(jsonObject, checkoutURL);
         }
 
     }
@@ -193,6 +253,8 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     public void onDropInFailure(@NonNull Exception e) {
         Toast.makeText(BillDetails.this, "Failed to make a purchase", Toast.LENGTH_LONG).show();
     }
+
+
 
 
 }
