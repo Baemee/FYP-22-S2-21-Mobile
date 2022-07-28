@@ -12,7 +12,7 @@
         android:layout_width="352dp"
         android:layout_height="488dp"
         android:layout_marginTop="68dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,22 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
-        android:id="@+id/btn_Return"
-        android:layout_width="99dp"
-        android:layout_height="44dp"
-        android:background="@drawable/button_border"
-        android:backgroundTint="@color/grey"
-        android:text="Return"
-        android:textColor="#E1BEE7"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_AlertBox"
-
-        app:layout_constraintVertical_bias="0.244" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_alert"
@@ -66,6 +50,31 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@navigation/bottom_nav"/>
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="112dp"
+        android:text="Broadcast Alerts"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

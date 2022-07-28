@@ -127,7 +127,7 @@ public class CreateReport extends AppCompatActivity
         {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ReportMain.class);
+                Intent intent = new Intent(getApplicationContext(), ReportPage.class);
                 startActivity(intent);
             }
         });

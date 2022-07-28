@@ -12,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="140dp"
         android:id="@+id/tv_waterUsageBox"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
         android:id="@+id/tv_TodayBox"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
 
         app:layout_constraintStart_toStartOf="@+id/tv_waterUsageBox"
         app:layout_constraintTop_toBottomOf="@+id/tv_waterUsageBox"
@@ -134,7 +134,7 @@
     <TextView
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:id="@+id/tv_YesterdayBox"
 
 
@@ -174,7 +174,7 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="400dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:id="@+id/tv_HistoryBox"
 
         app:layout_constraintTop_toBottomOf="@+id/tv_TodayBox"

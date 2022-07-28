@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".ReportPage">
 
     <ImageView
@@ -13,10 +14,10 @@
         android:layout_marginStart="40dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_box"
         app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737"
+        app:layout_constraintVertical_bias="0.53"
         app:srcCompat="@drawable/back" />
 
     <TextView
@@ -32,24 +33,26 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752" />
+        app:layout_constraintVertical_bias="0.522" />
 
     <TextView
         android:id="@+id/tv_box"
         android:layout_width="412dp"
         android:layout_height="475dp"
-        android:background="@drawable/button_border"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_create"
         android:layout_width="371dp"
         android:layout_height="60dp"
         android:layout_marginTop="108dp"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/whitebutton_border"
         android:text="Create Report"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -58,12 +61,12 @@
         app:layout_constraintStart_toStartOf="@+id/tv_box"
         app:layout_constraintTop_toTopOf="@+id/tv_box" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_check"
         android:layout_width="371dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/whitebutton_border"
         android:text="Check Report"
         android:textColor="@color/black"
         android:textStyle="bold"
