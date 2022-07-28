@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".WaterUsageHistory">
 
 
@@ -22,7 +23,7 @@
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:id="@+id/tv_HistoryDetailBox"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
 
         app:layout_constraintTop_toBottomOf="@+id/et_searchBar"
@@ -87,7 +88,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:id="@+id/tv_CompareFirst"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
 
         app:layout_constraintTop_toBottomOf="@id/tv_Comparison"
@@ -127,7 +128,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:id="@+id/tv_CompareSecond"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
 
         app:layout_constraintTop_toTopOf="@+id/tv_CompareFirst"

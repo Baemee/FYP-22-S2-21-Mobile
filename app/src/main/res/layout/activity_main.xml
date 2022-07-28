@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/loginbackground"
     tools:context=".MainActivity">
 
 
@@ -11,8 +12,7 @@
         android:id="@+id/backgroundsquare"
         android:layout_width="295dp"
         android:layout_height="236dp"
-        android:background="@drawable/button_border"
-        android:backgroundTint="@color/lightblue"
+        android:background="@drawable/whiteborder"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,23 +54,26 @@
         android:layout_height="22dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/textview_border"
-        android:backgroundTint="@color/white"
+
         app:layout_constraintBottom_toTopOf="@+id/et_Password"
         app:layout_constraintEnd_toEndOf="@+id/et_Password"
         app:layout_constraintStart_toEndOf="@+id/tv_UserName" />
 
     <EditText
         android:id="@+id/et_ID"
-        android:layout_width="154dp"
-        android:layout_height="22dp"
+        android:layout_width="146dp"
+        android:layout_height="16dp"
         android:background="@drawable/textview_border"
         android:backgroundTint="@color/white"
+        android:hint="   Username"
         android:inputType="text"
 
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/tv_UserName" />
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.666" />
 
     <TextView
         android:id="@+id/tv_Password"
@@ -88,48 +91,48 @@
         android:id="@+id/textView6"
         android:layout_width="178dp"
         android:layout_height="22dp"
-        android:layout_marginTop="12dp"
         android:background="@drawable/textview_border"
-        android:backgroundTint="@color/white"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tv_Password"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/et_ID" />
+        app:layout_constraintStart_toStartOf="@+id/textView5" />
 
     <EditText
         android:id="@+id/et_Password"
-        android:layout_width="149dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="146dp"
+        android:layout_height="16dp"
         android:background="@drawable/textview_border"
-
         android:backgroundTint="@color/white"
+        android:hint="    Password"
         android:inputType="textPassword"
+
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/et_ID" />
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.666" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Login"
-        style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:text="Login"
         android:textSize="15sp"
+        android:background="@drawable/whitebutton_border"
 
         app:layout_constraintEnd_toStartOf="@+id/btn_Exit"
         app:layout_constraintStart_toStartOf="@+id/tv_LoginPage"
         app:layout_constraintTop_toTopOf="@+id/btn_Exit" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Exit"
-        style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
-
         android:text="Exit"
         android:textSize="15sp"
+        android:background="@drawable/whitebutton_border"
+
         app:layout_constraintEnd_toEndOf="@+id/et_Password"
         app:layout_constraintStart_toEndOf="@+id/btn_Login"
         app:layout_constraintTop_toBottomOf="@+id/et_Password" />
@@ -138,8 +141,9 @@
         android:id="@+id/imageView3"
         android:layout_width="19dp"
         android:layout_height="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toStartOf="@+id/et_Password"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/textView5"
         app:srcCompat="@drawable/ic_baseline_person_outline_24" />

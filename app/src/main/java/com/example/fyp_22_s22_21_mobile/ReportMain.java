@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,9 +60,7 @@ public class ReportMain extends AppCompatActivity {
         key = "Bearer " + Token.getString("token", String.valueOf(1));
         String key = Token.getString("token", String.valueOf(1));
 
-
-        Button btn_create = (Button) findViewById(R.id.btn_create);
-        Button btn_back = (Button) findViewById(R.id.btn_back);
+        ImageView img_back = findViewById(R.id.img_back);
         RecyclerView rv_report = findViewById(R.id.rv_report);
         rv_report.setHasFixedSize(true);
 
@@ -142,15 +141,7 @@ public class ReportMain extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
 
-        btn_create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CreateReport.class);
-                startActivity(intent);
-            }
-        });
-
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);

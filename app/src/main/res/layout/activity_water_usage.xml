@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".WaterUsage">
 
 
@@ -11,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="140dp"
         android:id="@+id/tv_waterUsageBox"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +98,7 @@
         android:id="@+id/tv_TodayBox"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
 
         app:layout_constraintStart_toStartOf="@+id/tv_waterUsageBox"
         app:layout_constraintTop_toBottomOf="@+id/tv_waterUsageBox"
@@ -133,7 +134,7 @@
     <TextView
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:id="@+id/tv_YesterdayBox"
 
 
@@ -173,7 +174,7 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="400dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/whitebutton_border"
         android:id="@+id/tv_HistoryBox"
 
         app:layout_constraintTop_toBottomOf="@+id/tv_TodayBox"
@@ -240,7 +241,16 @@
 
         app:layout_constraintTop_toTopOf="@+id/tv_HistoryBox" />
 
-
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigatin_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@navigation/bottom_nav"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
