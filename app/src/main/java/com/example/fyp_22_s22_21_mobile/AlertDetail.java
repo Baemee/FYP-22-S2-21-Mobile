@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class AlertDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_detail);
 
-        Button btn_Return = (Button) findViewById(R.id.btn_Return);
+        ImageView img_back = findViewById(R.id.img_back);
         TextView tv_AlertTitle = (TextView) findViewById(R.id.tv_AlertTitle);
         TextView tv_AlertDate = (TextView) findViewById(R.id.tv_AlertDate);
         TextView tv_AlertDetail = (TextView) findViewById(R.id.tv_AlertDetail);
@@ -109,7 +110,7 @@ public class AlertDetail extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
 
-        btn_Return.setOnClickListener(new View.OnClickListener() {
+        img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Alert.class);
