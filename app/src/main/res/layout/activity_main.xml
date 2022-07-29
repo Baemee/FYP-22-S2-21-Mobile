@@ -57,6 +57,7 @@
 
         app:layout_constraintBottom_toTopOf="@+id/et_Password"
         app:layout_constraintEnd_toEndOf="@+id/et_Password"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_UserName" />
 
     <EditText
@@ -67,6 +68,7 @@
         android:backgroundTint="@color/white"
         android:hint="   Username"
         android:inputType="text"
+        android:textSize="12sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
@@ -106,6 +108,7 @@
         android:backgroundTint="@color/white"
         android:hint="    Password"
         android:inputType="textPassword"
+        android:textSize="12sp"
 
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/imageView4"

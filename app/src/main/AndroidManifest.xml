@@ -14,6 +14,9 @@
         android:theme="@style/Theme.FYP22S2221Mobile"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ProfilePage"
+            android:exported="false" />
+        <activity
             android:name=".ReportPage"
             android:exported="false" />
         <activity
