@@ -8,8 +8,9 @@
     tools:context=".WaterUsage">
 
 
+
     <TextView
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="140dp"
         android:id="@+id/tv_waterUsageBox"
         android:background="@drawable/whitebutton_border"
@@ -17,66 +18,66 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_chartBox"
+        android:backgroundTint="@color/lighterblue"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_WaterUsage"
-        android:text="Your Water Usage"
+        android:id="@+id/tv_CurrentMonth"
+        android:text="Current Month : "
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="15dp"
+        android:textSize="15sp"
 
         app:layout_constraintTop_toTopOf="@+id/tv_waterUsageBox"
-        app:layout_constraintStart_toEndOf="@+id/tv_oval"
+        app:layout_constraintStart_toStartOf="@+id/tv_waterUsageBox"
+        app:layout_constraintEnd_toStartOf="@+id/tv_CostofUsage"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_CostofUsage"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_calMonth"
+        android:text="March"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_CurrentMonth"
+        app:layout_constraintStart_toStartOf="@+id/tv_CurrentMonth"
+        app:layout_constraintEnd_toEndOf="@+id/tv_CurrentMonth"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_CostofUsage"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:background="@drawable/whitebutton_border"
+
+        app:layout_constraintBottom_toTopOf="@+id/tv_TodayBox"
         app:layout_constraintEnd_toEndOf="@+id/tv_waterUsageBox"
-        app:layout_constraintBottom_toTopOf="@+id/tv_month"
-
-        />
-
-
-
-    <TextView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/circle"
-        android:id="@+id/tv_oval"
+        app:layout_constraintStart_toEndOf="@+id/tv_CurrentMonth"
         app:layout_constraintTop_toTopOf="@+id/tv_waterUsageBox"
-        app:layout_constraintStart_toStartOf="@id/tv_waterUsageBox"
-        app:layout_constraintEnd_toStartOf="@+id/tv_WaterUsage"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_WaterUsage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost of Usage :"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toEndOf="@+id/tv_CostofUsage"
+        app:layout_constraintStart_toStartOf="@+id/tv_CostofUsage"
+        app:layout_constraintTop_toTopOf="@+id/tv_CostofUsage"
         app:layout_constraintBottom_toTopOf="@+id/tv_Cost"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_month"
-        android:textSize="10sp"
-        android:text="This Month : "
-        android:textColor="@color/black"
-
-        app:layout_constraintTop_toBottomOf="@+id/tv_WaterUsage"
-        app:layout_constraintStart_toStartOf="@id/tv_WaterUsage"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_Cost"
-
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_calmonth"
-        android:hint="month"
-        android:textSize="10sp"
-        android:textColor="@color/black"
-
-        app:layout_constraintStart_toEndOf="@id/tv_month"
-        app:layout_constraintTop_toTopOf="@id/tv_month"
-        android:layout_marginStart="5dp"
-
 
         />
 
@@ -84,38 +85,42 @@
         android:id="@+id/tv_Cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:hint="$000"
         android:text="$382"
         android:textColor="@color/black"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_waterUsageBox"
+        android:textSize="15dp"
+
         app:layout_constraintStart_toStartOf="@+id/tv_WaterUsage"
-        app:layout_constraintTop_toBottomOf="@+id/tv_month"
-        android:layout_marginBottom="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_WaterUsage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_WaterUsage"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_CostofUsage"
+
         />
 
     <TextView
         android:id="@+id/tv_TodayBox"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="90dp"
+        android:layout_height="55dp"
         android:background="@drawable/whitebutton_border"
 
-        app:layout_constraintStart_toStartOf="@+id/tv_waterUsageBox"
-        app:layout_constraintTop_toBottomOf="@+id/tv_waterUsageBox"
-        app:layout_constraintBottom_toTopOf="@+id/tv_HistoryBox"/>
+        app:layout_constraintStart_toStartOf="@+id/tv_CostofUsage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_CostofUsage"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_waterUsageBox"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tv_Today"
+        android:layout_width="51dp"
+        android:layout_height="27dp"
         android:text="Today"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/tv_TodayBox"
+        app:layout_constraintBottom_toTopOf="@+id/tv_TodayL"
+        app:layout_constraintEnd_toEndOf="@id/tv_TodayBox"
         app:layout_constraintStart_toStartOf="@id/tv_TodayBox"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/tv_TodayBox"
+
         />
 
     <TextView
@@ -124,24 +129,26 @@
         android:id="@+id/tv_TodayL"
         android:textColor="@color/black"
         android:hint="40L"
-        android:textSize="40dp"
+        android:textSize="15dp"
 
         app:layout_constraintTop_toBottomOf="@+id/tv_Today"
         app:layout_constraintStart_toStartOf="@+id/tv_Today"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Today"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_TodayBox"
 
         />
 
     <TextView
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:background="@drawable/whitebutton_border"
         android:id="@+id/tv_YesterdayBox"
+        android:layout_width="90dp"
+        android:layout_height="55dp"
+        android:background="@drawable/whitebutton_border"
 
 
-        app:layout_constraintTop_toTopOf="@+id/tv_TodayBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_CostofUsage"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toEndOf="@+id/tv_TodayBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="@+id/tv_TodayBox" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -149,13 +156,13 @@
         android:id="@+id/tv_Yesterday"
         android:text="Yesterday"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="15dp"
         android:textStyle="bold"
 
         app:layout_constraintTop_toTopOf="@+id/tv_YesterdayBox"
         app:layout_constraintStart_toStartOf="@id/tv_YesterdayBox"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_YesterdayBox"
+        app:layout_constraintBottom_toTopOf="@+id/tv_YesterdayL"
         />
 
     <TextView
@@ -164,45 +171,144 @@
         android:id="@+id/tv_YesterdayL"
         android:textColor="@color/black"
         android:hint="84L"
-        android:textSize="40dp"
+        android:textSize="15dp"
 
         app:layout_constraintTop_toBottomOf="@+id/tv_Yesterday"
         app:layout_constraintStart_toStartOf="@+id/tv_Yesterday"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Yesterday"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_YesterdayBox"
 
         />
 
     <TextView
-        android:layout_width="300dp"
-        android:layout_height="400dp"
+        android:layout_width="400dp"
+        android:layout_height="160dp"
+        android:id="@+id/tv_chartBox"
+        android:background="@drawable/whitebutton_border"
+
+        app:layout_constraintTop_toBottomOf="@+id/tv_waterUsageBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_HistoryBox"
+        android:backgroundTint="@color/lighterblue"
+        />
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="250dp"
         android:background="@drawable/whitebutton_border"
         android:id="@+id/tv_HistoryBox"
+        android:backgroundTint="@color/lighterblue"
 
-        app:layout_constraintTop_toBottomOf="@+id/tv_TodayBox"
-        app:layout_constraintStart_toStartOf="@+id/tv_TodayBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_chartBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_waterUsageBox"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="70dp"
+
         />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_HistoryLength"
-        app:layout_constraintStart_toStartOf="@+id/tv_HistoryBox"
-        app:layout_constraintEnd_toStartOf="@+id/et_endDate"
-        app:layout_constraintBottom_toTopOf="@id/rv_waterUsageHistory"
-        android:id="@+id/et_startDate"
-        android:hint="2022-06-22"
-        android:textSize="15dp"
+        android:id="@+id/tv_Daily"
+        android:text="  Daily  "
+        android:textColor="@color/black"
+        android:background="@color/white"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_chartBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_chartBox"
+        app:layout_constraintEnd_toStartOf="@+id/tv_Weekly"
+        app:layout_constraintBottom_toTopOf="@+id/chart"
+
         />
 
-    <EditText
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_Weekly"
+        android:text="  Weekly  "
+        android:textColor="@color/black"
+        android:background="@color/white"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_Daily"
+        app:layout_constraintStart_toEndOf="@+id/tv_Daily"
+        app:layout_constraintEnd_toStartOf="@+id/tv_Monthly"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_Monthly"
+        android:text="  Monthly  "
+        android:textColor="@color/black"
+        android:background="@color/white"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_Weekly"
+        app:layout_constraintStart_toEndOf="@+id/tv_Weekly"
+        app:layout_constraintEnd_toStartOf="@+id/tv_Quarterly"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_Quarterly"
+        android:text="  Qarterly  "
+        android:textColor="@color/black"
+        android:background="@color/white"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_Monthly"
+        app:layout_constraintStart_toEndOf="@+id/tv_Monthly"
+        app:layout_constraintEnd_toStartOf="@+id/tv_Yearly"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_Yearly"
+        android:text="  Yearly  "
+        android:textColor="@color/black"
+        android:background="@color/white"
+
+        app:layout_constraintTop_toTopOf="@+id/tv_Quarterly"
+        app:layout_constraintStart_toEndOf="@+id/tv_Quarterly"
+        app:layout_constraintEnd_toEndOf="@+id/tv_chartBox"
+
+        />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_width="350dp"
+        android:layout_height="90dp"
+        app:layout_constraintTop_toTopOf="@+id/tv_chartBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_chartBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_chartBox"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_chartBox"
+        />
+
+    <TextView
+        android:id="@+id/et_startDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Pick a date"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@id/rv_waterUsageHistory"
+        app:layout_constraintEnd_toStartOf="@+id/et_endDate"
+        app:layout_constraintStart_toStartOf="@+id/tv_HistoryBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_HistoryLength"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/tv_HistoryLength"
         app:layout_constraintStart_toEndOf="@+id/et_startDate"
-        app:layout_constraintEnd_toEndOf="@+id/tv_HistoryBox"
+        app:layout_constraintEnd_toStartOf="@+id/tv_historyButton"
         app:layout_constraintBottom_toTopOf="@id/rv_waterUsageHistory"
         android:id="@+id/et_endDate"
-        android:hint="2022-07-22"
+        android:hint="Pick a date"
         android:textSize="15dp"
         />
 
@@ -218,12 +324,28 @@
         />
 
 
+    <TextView
+        android:id="@+id/tv_historyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="      Search      "
+        android:textAlignment="center"
+        android:textSize="15sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/et_endDate"
+        app:layout_constraintEnd_toEndOf="@+id/tv_HistoryBox"
+
+        app:layout_constraintStart_toEndOf="@+id/et_endDate"
+        app:layout_constraintTop_toTopOf="@+id/et_endDate"
+/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="280dp"
+        android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_HistoryBox"
         app:layout_constraintTop_toBottomOf="@+id/et_startDate"
         app:layout_constraintStart_toStartOf="@+id/tv_HistoryBox"
+        app:layout_constraintEnd_toEndOf="@+id/tv_HistoryBox"
         android:id="@+id/rv_waterUsageHistory"
 
         />
@@ -252,5 +374,113 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@navigation/bottom_nav"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/rl_start"
+    android:visibility="gone"
+
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    >
+
+
+
+        <TextView
+            android:id="@+id/tv_white"
+            android:layout_width="350dp"
+            android:layout_height="500dp"
+
+            android:background="@color/white"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <DatePicker
+            android:id="@+id/dp_startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="@+id/tv_white"
+            app:layout_constraintStart_toStartOf="@+id/tv_white"
+            app:layout_constraintTop_toTopOf="@+id/tv_white" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:id="@+id/btn_startConfirm"
+
+            app:layout_constraintTop_toBottomOf="@+id/dp_startDate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_end"
+        android:visibility="gone"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:id="@+id/tv_white_2"
+
+            android:background="@color/white"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <DatePicker
+            android:id="@+id/dp_endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toBottomOf="@+id/tv_white_2"
+            app:layout_constraintEnd_toEndOf="@+id/tv_white_2"
+            app:layout_constraintStart_toStartOf="@+id/tv_white_2"
+            app:layout_constraintTop_toTopOf="@+id/tv_white_2"
+
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:id="@+id/btn_endConfirm"
+
+            app:layout_constraintTop_toBottomOf="@+id/dp_endDate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

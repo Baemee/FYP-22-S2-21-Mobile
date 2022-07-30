@@ -48,7 +48,7 @@ public class WaterUsageHistory extends AppCompatActivity {
         setContentView(R.layout.activity_water_usage_history);
 
         TextView tv_Cost = (TextView) findViewById(R.id.tv_Cost);
-        TextView tv_calmonth = (TextView) findViewById(R.id.tv_calmonth);
+        TextView tv_calmonth = (TextView) findViewById(R.id.tv_calMonth);
         TextView tv_TodayL = (TextView) findViewById(R.id.tv_TodayL);
         TextView tv_YesterdayL = (TextView) findViewById(R.id.tv_YesterdayL);
         TextView tv_Today  = (TextView)findViewById(R.id.tv_Today);

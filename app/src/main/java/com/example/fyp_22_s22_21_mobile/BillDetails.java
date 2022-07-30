@@ -196,8 +196,8 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
             public void onResponse(JSONObject response) {
 
                 try {
-                    String result = response.getString("success");
-                    if (result == "true") {
+                    Boolean result = response.getBoolean("success");
+                    if (result = true) {
                         Toast.makeText(BillDetails.this, "Payment has bee successfully paid", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(BillDetails.this, "Failed to make a purchase_2", Toast.LENGTH_LONG).show();
@@ -218,7 +218,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String,String>();
-                headers.put("Authorization",key);
+                headers.put("Authorization", key);
                 return headers;
             }
         };

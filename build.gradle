@@ -21,9 +21,13 @@ repositories {
             username 'braintree_team_sdk'
             password 'AKCp8jQcoDy2hxSWhDAUQKXLDPDx6NYRkqrgFLRc3qDrayg6rrCbJpsKKyMwaykVL8FWusJpp'
         }
+
     }
 }
 
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
 
 task clean(type: Delete) {
