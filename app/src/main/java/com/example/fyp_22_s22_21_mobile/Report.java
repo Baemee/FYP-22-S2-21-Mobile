@@ -1,11 +1,13 @@
 package com.example.fyp_22_s22_21_mobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,6 +43,8 @@ public class Report extends AppCompatActivity {
     String date;
     String description;
     String reportId;
+    String customerId;
+    String createdAt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +54,37 @@ public class Report extends AppCompatActivity {
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
 
-        Button btn_Resolve = (Button)findViewById(R.id.btn_Resolve);
-        ImageView btn_Return = findViewById(R.id.img_back);
+        ImageView img_Return = findViewById(R.id.img_back);
 
-        btn_Resolve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        btn_Return.setOnClickListener(new View.OnClickListener() {
+        img_Return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ReportMain.class);
                 startActivity(intent);
+            }
+        });
+
+        // Bottom nav bar
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.Profile:
+                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Home:
+                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
             }
         });
         requestReportDetails(url);
