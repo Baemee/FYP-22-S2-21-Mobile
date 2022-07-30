@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/tv_ResolveBox"
-        android:layout_width="350dp"
-        android:layout_height="558dp"
+        android:layout_width="412dp"
+        android:layout_height="657dp"
 
         android:layout_marginTop="52dp"
         android:background="@drawable/whitebutton_border"
@@ -22,12 +22,14 @@
 
     <TextView
         android:id="@+id/tv_box"
-        android:layout_width="271dp"
-        android:layout_height="498dp"
+        android:layout_width="263dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="40dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_ResolveBox"
         app:layout_constraintEnd_toEndOf="@+id/tv_ResolveBox"
-        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox" />
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_report" />
 
     <TextView
         android:id="@+id/tv_ReportTitle"
@@ -58,13 +60,11 @@
         android:id="@+id/tv_reporttitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
         android:text="Title of issue"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/tv_report"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
+        app:layout_constraintStart_toStartOf="@+id/tv_box"
         app:layout_constraintTop_toBottomOf="@+id/tv_report" />
 
     <TextView
