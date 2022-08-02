@@ -12,24 +12,24 @@
         android:id="@+id/tv_CreateReportBox"
         android:layout_width="409dp"
         android:layout_height="664dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_box"
         android:layout_width="331dp"
-        android:layout_height="422dp"
+        android:layout_height="350dp"
         android:layout_marginBottom="156dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_CreateReportBox"
         app:layout_constraintEnd_toEndOf="@+id/tv_CreateReportBox"
         app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox" />
+        app:layout_constraintStart_toStartOf="@+id/tv_CreateReportBox"
+        app:layout_constraintTop_toBottomOf="@+id/tv_report" />
 
     <TextView
         android:id="@+id/textView8"
@@ -98,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="@+id/tv_box"
         app:layout_constraintStart_toStartOf="@+id/tv_box"
         app:layout_constraintTop_toBottomOf="@+id/et_ReportDescription"
-        app:layout_constraintVertical_bias="0.779" />
+ />
 
     <TextView
         android:id="@+id/tv_report"

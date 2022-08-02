@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,10 +89,34 @@ public class ReportMain extends AppCompatActivity {
         status[0]="";
         reportId[0]="";
 
+        //Search
+
+        SearchView searchView = (SearchView)findViewById(R.id.searchView);
+        final String[] search = new String[1];
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                //search
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                search[0] = s;
+                return true;
+            }
+        });
+
+
+
+        //Seach end
+
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                JSONObject[] jsonObject = new JSONObject[100];
+                JSONObject[] jsonObject = new JSONObject[1000];
                 JSONArray jsonArray = new JSONArray();
                 jsonArray = response.optJSONArray("result");
                 for(int i = 0; i < jsonArray.length(); i++) {

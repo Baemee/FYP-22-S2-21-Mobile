@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:id="@+id/vl_notificationContent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        android:textSize="15sp"
+        android:hint="This is content"
+
+
+        />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:id="@+id/iv_mark"
+        android:src="@drawable/read"
+
+        />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:id="@+id/iv_delete"
+
+        android:src="@drawable/trash"
+
+        />
+
+
+</LinearLayout>

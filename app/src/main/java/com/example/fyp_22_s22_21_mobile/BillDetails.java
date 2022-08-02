@@ -35,6 +35,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -255,15 +256,18 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     @Override
     public void onDropInSuccess(@NonNull DropInResult dropInResult) {
 
+        TextView tv_getbillId = (TextView)findViewById(R.id.tv_getBillId);
+
         PaymentMethodNonce paymentNonce = dropInResult.getPaymentMethodNonce();
 
         DropInPaymentMethod paymentMethodType = dropInResult.getPaymentMethodType();
         if (paymentMethodType != null) {
             Toast.makeText(BillDetails.this, paymentNonce.getString(), Toast.LENGTH_LONG).show();
             Nonce = paymentNonce.getString();
+            String billId_s = tv_getbillId.getText().toString();
 
             try {
-                jsonObject.put("billId", billId);
+                jsonObject.put("billId", billId_s);
                 jsonObject.put("paymentNonce", Nonce);
             } catch (JSONException e) {
                 e.printStackTrace();

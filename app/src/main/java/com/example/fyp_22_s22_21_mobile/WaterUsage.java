@@ -383,10 +383,6 @@ public class WaterUsage extends AppCompatActivity {
         });
 
 
-
-
-
-
                 //History of the water Usage
 
                 TextView et_startDate = findViewById(R.id.et_startDate);
@@ -475,6 +471,9 @@ public class WaterUsage extends AppCompatActivity {
                         String dateTotal[] = new String[1000];
                         String valueTotal[] = new String[1000];
                         double[] value = new double[1000];
+                        waterUsageData[] waterUsageData = new waterUsageData[1000];
+
+                        arrayList.clear();
 
 
 
@@ -494,6 +493,9 @@ public class WaterUsage extends AppCompatActivity {
                                     try {
                                         value[x] = response.getDouble("totalUsage");
                                         valueTotal[x] = String.valueOf(value[x]);
+                                        waterUsageData[x] = new waterUsageData(dateTotal[x], valueTotal[x]);
+                                        arrayList.add(waterUsageData[x]);
+                                        adapter.notifyDataSetChanged();
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -521,7 +523,7 @@ public class WaterUsage extends AppCompatActivity {
 
 
                         }
-                        adapter.notifyDataSetChanged();
+
 
 
                     }

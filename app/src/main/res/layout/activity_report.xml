@@ -16,26 +16,27 @@
         android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_box"
-        android:layout_width="263dp"
-        android:layout_height="320dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="15dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tv_ResolveBox"
-        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/tv_ResolveBox"
         app:layout_constraintTop_toBottomOf="@+id/tv_report" />
 
-    <TextView
+    <EditText
         android:id="@+id/tv_ReportTitle"
         android:layout_width="150dp"
         android:layout_height="20dp"
         android:background="@drawable/textview_border"
+        android:textSize="12sp"
+        android:text="Test value"
 
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -46,13 +47,29 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_reporttitle" />
 
     <Button
+        android:id="@+id/btn_Update"
+        android:layout_width="99dp"
+        android:layout_height="33dp"
+        android:background="@drawable/whitebutton_border"
+        android:text="Update"
+        android:visibility="visible"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Resolve"
+        app:layout_constraintStart_toStartOf="@+id/btn_Resolve"
+        android:layout_marginBottom="10sp"/>
+
+    <Button
         android:id="@+id/btn_Resolve"
         android:layout_width="99dp"
-        android:layout_height="44dp"
+        android:layout_height="33dp"
         android:background="@drawable/whitebutton_border"
         android:text="Resolve"
+        android:visibility="visible"
         android:textColor="@color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -84,17 +101,19 @@
         android:layout_width="150dp"
         android:layout_height="20dp"
         android:background="@drawable/textview_border"
+        android:textSize="12sp"
 
         app:layout_constraintEnd_toEndOf="@+id/tv_ReportTitle"
         app:layout_constraintStart_toStartOf="@+id/tv_ReportTitle"
         app:layout_constraintTop_toBottomOf="@+id/tv_reportdate" />
 
-    <TextView
+    <EditText
         android:id="@+id/tv_resolve"
         android:layout_width="214dp"
-        android:layout_height="148dp"
+        android:layout_height="180dp"
         android:background="@drawable/textview_border"
-
+        android:textAlignment="textStart"
+        android:textSize="12sp"
 
         app:layout_constraintEnd_toEndOf="@+id/tv_ResolveBox"
         app:layout_constraintHorizontal_bias="0.0"
@@ -125,6 +144,29 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_reportdate"
         app:layout_constraintTop_toBottomOf="@+id/tv_reportdate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_StatusText"
+        android:layout_marginTop="32dp"
+        android:text="Status"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/tv_resolve"
+        app:layout_constraintStart_toStartOf="@+id/tv_resolve" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:background="@drawable/textview_border"
+        android:textAlignment="center"
+        android:id="@+id/tv_Status"
+
+        app:layout_constraintStart_toEndOf="@+id/tv_StatusText"
+        app:layout_constraintTop_toTopOf="@+id/tv_StatusText"
+        android:layout_marginStart="20sp"
+
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

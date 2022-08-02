@@ -40,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Token = getSharedPreferences("user", MODE_PRIVATE);
+        SharedPreferences.Editor editor = Token.edit();
+
+        editor.clear();
+
+        editor.commit();
+
         Button btn_Login = findViewById(R.id.btn_Login);
         Button btn_Exit = (Button) findViewById(R.id.btn_Exit);
         EditText et_ID = findViewById(R.id.et_ID);
