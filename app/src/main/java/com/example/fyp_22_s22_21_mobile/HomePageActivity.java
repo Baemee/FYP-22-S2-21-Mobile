@@ -205,16 +205,6 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                if (!recyclerView.canScrollVertically(1)) {
-                    x++;
-                    requestNotification(false_request, x);
-                    requestNotification(true_request, x);
-                }
-            }
-        });
         //Notification
     }
 
