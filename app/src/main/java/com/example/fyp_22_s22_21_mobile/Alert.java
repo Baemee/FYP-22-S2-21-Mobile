@@ -54,6 +54,8 @@ public class Alert extends AppCompatActivity {
     String sgtDate;
     String testing;
 
+    int x = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +75,55 @@ public class Alert extends AppCompatActivity {
         rv_alert.setAdapter(adapter);
 
         //Shared Preference + Json
+        requestAlert(1);
+
+
+        rv_alert.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (!rv_alert.canScrollVertically(1)) {
+                    x++;
+                    requestAlert(x);
+                }
+            }
+        });
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Bottom nav bar
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.Profile:
+                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Home:
+                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    protected void requestAlert(int a) {
         Token = getSharedPreferences("user", MODE_PRIVATE);
         String key = Token.getString("token", String.valueOf(1));
-        String username = Token.getString("username", String.valueOf(1));
-        String userId = Token.getString("userId", String.valueOf(1));
 
         String[] alertId = new String[100];
         String[] alertTitle = new String[100];
@@ -88,7 +135,7 @@ public class Alert extends AppCompatActivity {
         alertTitle[0] = "";
         alertDescription[0] = "";
         createdAt[0] = "";
-        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + 1 +"&pageSize=" + 50;
+        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + a +"&pageSize=" + 15;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -143,37 +190,5 @@ public class Alert extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
-
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Bottom nav bar
-        // Initialize and assign variable
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-
-        // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch(item.getItemId())
-                {
-                    case R.id.Profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.Home:
-                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
     }
 }

@@ -122,6 +122,7 @@ public class Bills extends AppCompatActivity {
         String [] billMth = new String[100];
         String [] billYr = new String[100];
         String [] billDue = new String [100];
+        String [] billStatus = new String[100];
         BillData[] BillData = new BillData[100];
 
         billAmt[0] = "";
@@ -166,11 +167,10 @@ public class Bills extends AppCompatActivity {
                         createdAt[i] = sgtDate;
                         billDue[i] = sgtDue;
 
-                        BillData[i] = new BillData(billMth[i],billYr[i], billAmt[i], billId[i], billDue[i]);
+                        BillData[i] = new BillData(billAmt[i], billDue[i], billId[i]);
                         arrayList.add(BillData[i]);
-
-                        adapter.notifyDataSetChanged();
                     }
+                    adapter.notifyDataSetChanged();
                 }
                 catch (JSONException | ParseException e){
                     e.printStackTrace();

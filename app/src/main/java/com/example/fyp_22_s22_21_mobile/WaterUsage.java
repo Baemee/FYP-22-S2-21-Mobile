@@ -33,6 +33,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
@@ -116,6 +117,8 @@ public class WaterUsage extends AppCompatActivity {
         String price = String.valueOf(cost);
         tv_Cost.setText(price);
 
+
+
         long now = System.currentTimeMillis();
         dateNow = new Date(now);
         String getDate = simpleDate.format(dateNow); //get current time and change to yyyy-mm-dd format
@@ -126,6 +129,8 @@ public class WaterUsage extends AppCompatActivity {
         dateYesterday = new Date(now - 24 * 60 * 60 * 1000);
         String getDate_Y = simpleDate.format(dateYesterday); //get current time and change to yyyy-mm-dd format
         String urlYesterday = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + getDate_Y + "&toDate=" + getDate_Y + "&total=true";
+
+        getCostofWaterUsage(dateNow);
 
         String[] date = new String[100];
         int[] value = new int[100];
@@ -215,9 +220,6 @@ public class WaterUsage extends AppCompatActivity {
                 requestQueue.add(jsonObjectRequest_daily);
 
             }
-
-
-
 
             }
         });
@@ -566,6 +568,100 @@ public class WaterUsage extends AppCompatActivity {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 requestQueue.add(jsonObjectRequest);
+            }
+
+            protected void costWaterusage(String year, String month, double usage) {
+
+                TextView tv_Cost = (TextView)findViewById(R.id.tv_Cost);
+
+                Token = getSharedPreferences("user", MODE_PRIVATE);
+                key = "Bearer " + Token.getString("token", String.valueOf(1));
+
+                String url = getString(R.string.base_url) + "api/WaterRate/" + year + "/" + month;
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        int price = response.optInt("price");
+                        double totalCost = price * usage / 1000;
+                        String totalCost_s = "$" + String.format("%.2f", totalCost);
+                        tv_Cost.setText(totalCost_s);
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Response error", error.getMessage());
+                        Toast.makeText(WaterUsage.this,
+                                        "Error_1.",
+                                        Toast.LENGTH_LONG)
+                                .show();
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("Authorization", key);
+                        return headers;
+                    }
+                };
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(jsonObjectRequest);
+
+            }
+
+            protected void getCostofWaterUsage(Date date) {
+
+                Calendar cal_Monthly = Calendar.getInstance();
+                Calendar cal_Monthly_end = Calendar.getInstance();
+                cal_Monthly.setTime(date);
+                cal_Monthly.add(Calendar.MONTH, +0);
+
+                String date_s = simpleMonth_cal.format(cal_Monthly.getTime());
+                String year = simpleYear.format(cal_Monthly.getTime());
+                String month = simpleMonth.format(cal_Monthly.getTime());
+
+                Date date_end = cal_Monthly.getTime();
+                cal_Monthly_end.setTime(date_end);
+
+                int day_e = cal_Monthly.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+                Token = getSharedPreferences("user", MODE_PRIVATE);
+                key = "Bearer " + Token.getString("token", String.valueOf(1));
+
+                String url = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + date_s + "-01&toDate=" + date_s + "-" + day_e + "&total=true";
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        double usage = response.optDouble("totalUsage");
+
+                        costWaterusage(year,month,usage);
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Response error", error.getMessage());
+                        Toast.makeText(WaterUsage.this,
+                                        "Error_1.",
+                                        Toast.LENGTH_LONG)
+                                .show();
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("Authorization", key);
+                        return headers;
+                    }
+                };
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(jsonObjectRequest);
+
             }
 
     }

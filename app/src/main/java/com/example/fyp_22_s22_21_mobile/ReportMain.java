@@ -48,12 +48,14 @@ public class ReportMain extends AppCompatActivity {
 
     SharedPreferences Token;
     String key;
-    String url = "http://10.0.2.2:5000/api/ReportTicket/MyInfo?page="+1+"&pageSize="+50;
+    String url;
     String sgtDate;
 
     private ArrayList <reportData> arrayList;
     private reportDataAdapter adapter;
     public RecyclerView.LayoutManager layoutManager;
+
+    int x = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,6 @@ public class ReportMain extends AppCompatActivity {
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
-        String key = Token.getString("token", String.valueOf(1));
 
         ImageView img_back = findViewById(R.id.img_back);
         RecyclerView rv_report = findViewById(R.id.rv_report);
@@ -76,18 +77,17 @@ public class ReportMain extends AppCompatActivity {
         adapter = new reportDataAdapter(arrayList, this);
         rv_report.setAdapter(adapter);
 
-        String[] reportTitle = new String[100];
-        String[] reportDescription = new String[100];
-        String[] createdAt = new String[100];
-        String[] status = new String[100];
-        String [] reportId = new String[100];
-        reportData[] reportData = new reportData[100];
+        loadReport(1);
 
-        reportTitle[0]="";
-        reportDescription[0]="";
-        createdAt[0]="";
-        status[0]="";
-        reportId[0]="";
+        rv_report.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (!rv_report.canScrollVertically(1)) {
+                    x++;
+                    loadReport(x);
+                }
+            }
+        });
 
         //Search
 
@@ -109,17 +109,66 @@ public class ReportMain extends AppCompatActivity {
         });
 
 
-
         //Seach end
 
 
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Bottom nav bar
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.Profile:
+                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.Home:
+                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
+
+    protected void loadReport(int i) {
+
+        Token = getSharedPreferences("user", MODE_PRIVATE);
+        key = Token.getString("token", String.valueOf(1));
+
+        String[] reportTitle = new String[100];
+        String[] reportDescription = new String[100];
+        String[] createdAt = new String[100];
+        String[] status = new String[100];
+        String [] reportId = new String[100];
+        reportData[] reportData = new reportData[100];
+
+
+        url = getString(R.string.base_url) + "api/ReportTicket/MyInfo?page=" + i + "&pageSize="+ 5;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+
                 JSONObject[] jsonObject = new JSONObject[1000];
                 JSONArray jsonArray = new JSONArray();
                 jsonArray = response.optJSONArray("result");
                 for(int i = 0; i < jsonArray.length(); i++) {
+
 
                     jsonObject[i] = jsonArray.optJSONObject(i);
 
@@ -169,36 +218,6 @@ public class ReportMain extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
 
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        // Bottom nav bar
-        // Initialize and assign variable
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-
-        // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch(item.getItemId())
-                {
-                    case R.id.Profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.Home:
-                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
     }
 }
