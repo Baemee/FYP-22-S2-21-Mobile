@@ -163,7 +163,7 @@ public class notificationDataAdapter extends RecyclerView.Adapter<notificationDa
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-            int a = 9;
+
             }
         }, new Response.ErrorListener() {
             @Override

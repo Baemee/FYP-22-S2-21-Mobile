@@ -182,9 +182,9 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                                 tv_billId.append(billId + "\n");
                                 tv_billMth.append(mth + "\n");
                                 tv_billYr.append(yr + "\n");
-                                tv_rate.append(String.format("%.2f", rate) + "\n");
-                                tv_billAmount.append(String.format("%.2f", amount) + "\n");
-                                tv_billUsage.append(String.format("%.2f", usage) + "\n");
+                                tv_rate.append("$" + String.format("%.2f", rate) + "\n");
+                                tv_billAmount.append("$" + String.format("%.2f", amount) + "\n");
+                                tv_billUsage.append(String.format("%.2f", usage) + "L"+ "\n");
                                 tv_deadline.append(deadline + "\n");
                                 tv_payment.append(payment + "\n");
 

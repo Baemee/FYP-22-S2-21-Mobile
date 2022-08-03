@@ -182,7 +182,7 @@
 
     <TextView
         android:layout_width="400dp"
-        android:layout_height="160dp"
+        android:layout_height="200dp"
         android:id="@+id/tv_chartBox"
         android:background="@drawable/whitebutton_border"
 
@@ -237,52 +237,24 @@
         />
 
     <TextView
+        android:id="@+id/tv_Monthly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_Monthly"
+        android:background="@color/white"
         android:text="  Monthly  "
         android:textColor="@color/black"
-        android:background="@color/white"
 
-        app:layout_constraintTop_toTopOf="@+id/tv_Weekly"
         app:layout_constraintStart_toEndOf="@+id/tv_Weekly"
-        app:layout_constraintEnd_toStartOf="@+id/tv_Quarterly"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_Quarterly"
-        android:text="  Qarterly  "
-        android:textColor="@color/black"
-        android:background="@color/white"
-
-        app:layout_constraintTop_toTopOf="@+id/tv_Monthly"
-        app:layout_constraintStart_toEndOf="@+id/tv_Monthly"
-        app:layout_constraintEnd_toStartOf="@+id/tv_Yearly"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_Yearly"
-        android:text="  Yearly  "
-        android:textColor="@color/black"
-        android:background="@color/white"
-
-        app:layout_constraintTop_toTopOf="@+id/tv_Quarterly"
-        app:layout_constraintStart_toEndOf="@+id/tv_Quarterly"
+        app:layout_constraintTop_toTopOf="@+id/tv_Weekly"
         app:layout_constraintEnd_toEndOf="@+id/tv_chartBox"
 
         />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart"
-        android:layout_width="350dp"
-        android:layout_height="90dp"
-        app:layout_constraintTop_toTopOf="@+id/tv_chartBox"
+        android:layout_width="380dp"
+        android:layout_height="170dp"
+
         app:layout_constraintStart_toStartOf="@+id/tv_chartBox"
         app:layout_constraintEnd_toEndOf="@+id/tv_chartBox"
         app:layout_constraintBottom_toBottomOf="@+id/tv_chartBox"

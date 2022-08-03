@@ -60,6 +60,8 @@ public class HomePageActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayout;
     String false_request, true_request;
 
+    int x = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -197,14 +199,26 @@ public class HomePageActivity extends AppCompatActivity {
                 btn_WaterUsage.setVisibility(View.GONE);
                 cl_notification.setVisibility(View.VISIBLE);
 
-                requestNotification(false_request);
-                requestNotification(true_request);
+                requestNotification(false_request, 1);
+                requestNotification(true_request,1);
 
             }
-        }); //Notification
+        });
+
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (!recyclerView.canScrollVertically(1)) {
+                    x++;
+                    requestNotification(false_request, x);
+                    requestNotification(true_request, x);
+                }
+            }
+        });
+        //Notification
     }
 
-    protected void requestNotification(String mark) {
+    protected void requestNotification(String mark, int x) {
 
         recyclerView = (RecyclerView)findViewById(R.id.rv_notification);
         linearLayout = new LinearLayoutManager(this);
@@ -225,7 +239,7 @@ public class HomePageActivity extends AppCompatActivity {
         String[] vl_notificationContent = new String[100];
         notificationData[] notificationData = new notificationData[100];
 
-        String url = getString(R.string.base_url) + "api/Notification?isRead=" + mark + "&page=1&pageSize=32";
+        String url = getString(R.string.base_url) + "api/Notification?isRead=" + mark + "&page=" + x + "&pageSize=32";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -233,8 +247,6 @@ public class HomePageActivity extends AppCompatActivity {
 
                 JSONArray jsonArray = response.optJSONArray("result");
                 JSONObject[] jsonObjects = new JSONObject[100];
-
-
 
                 int count = response.optJSONObject("metadata").optInt("count");
 

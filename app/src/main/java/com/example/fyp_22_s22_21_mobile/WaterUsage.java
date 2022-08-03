@@ -144,8 +144,6 @@ public class WaterUsage extends AppCompatActivity {
         TextView tv_Daily = findViewById(R.id.tv_Daily);
         TextView tv_Weekly = findViewById(R.id.tv_Weekly);
         TextView tv_Monthly = findViewById(R.id.tv_Monthly);
-        TextView tv_Quarterly = findViewById(R.id.tv_Quarterly);
-        TextView tv_Yearly = findViewById(R.id.tv_Yearly);
 
         SharedPreferences waterUsage_value = getSharedPreferences("waterUsage_value", MODE_PRIVATE);
 
