@@ -159,7 +159,7 @@ public class ReportMain extends AppCompatActivity {
         reportData[] reportData = new reportData[100];
 
 
-        url = getString(R.string.base_url) + "api/ReportTicket/MyInfo?page=" + i + "&pageSize="+ 5;
+        url = getString(R.string.base_url) + "api/ReportTicket/MyInfo?page=" + i + "&pageSize="+ 20;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
