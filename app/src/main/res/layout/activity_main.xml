@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/textview_border"
                 android:backgroundTint="@color/white"
+                android:paddingStart="@dimen/bt_margin"
                 android:hint="   Username"
                 android:inputType="text"
                 android:textSize="12sp" />
@@ -90,6 +91,7 @@
                 android:background="@drawable/textview_border"
                 android:backgroundTint="@color/white"
                 android:hint="    Password"
+                android:paddingStart="@dimen/bt_margin"
                 android:inputType="textPassword"
                 android:textSize="12sp" />
 

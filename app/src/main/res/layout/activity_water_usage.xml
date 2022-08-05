@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,420 +7,429 @@
     android:background="@drawable/gradient_background"
     tools:context=".WaterUsage">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_waterUsageBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/bt_margin"
-            android:background="@drawable/whitebutton_border"
-            android:backgroundTint="@color/lighterblue"
+            android:orientation="vertical">
 
-            android:padding="@dimen/bt_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tv_CurrentMonth"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_waterUsageBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Current Month : "
-                android:textColor="@color/black"
-                android:textSize="15sp"
-
-                app:layout_constraintBottom_toBottomOf="@+id/tv_CostofUsage"
-                app:layout_constraintEnd_toStartOf="@+id/tv_CostofUsage"
-                app:layout_constraintStart_toStartOf="@+id/cl_waterUsageBox"
-                app:layout_constraintTop_toTopOf="@+id/cl_waterUsageBox"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_calMonth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="March"
-                android:textColor="@color/black"
-
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_CurrentMonth"
-                app:layout_constraintStart_toStartOf="@+id/tv_CurrentMonth"
-                app:layout_constraintTop_toBottomOf="@+id/tv_CurrentMonth"
-
-                />
-
-            <LinearLayout
-                android:id="@+id/tv_CostofUsage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_margin="@dimen/bt_margin"
                 android:background="@drawable/whitebutton_border"
-                android:gravity="center"
-                android:orientation="vertical"
+                android:backgroundTint="@color/lighterblue"
+
                 android:padding="@dimen/bt_margin"
-
-                app:layout_constraintBottom_toTopOf="@+id/tv_TodayBox"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cl_waterUsageBox"
-
-                >
-
-                <TextView
-                    android:id="@+id/tv_WaterUsage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cost of Usage :"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tv_Cost"
+                    android:id="@+id/tv_CurrentMonth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="$000"
-                    android:text="$382"
+                    android:text="Current Month : "
                     android:textColor="@color/black"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_CostofUsage"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_CostofUsage"
+                    app:layout_constraintStart_toStartOf="@+id/cl_waterUsageBox"
+                    app:layout_constraintTop_toTopOf="@+id/cl_waterUsageBox"
 
                     />
-            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_calMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="March"
+                    android:textColor="@color/black"
+
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_CurrentMonth"
+                    app:layout_constraintStart_toStartOf="@+id/tv_CurrentMonth"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CurrentMonth"
+
+                    />
+
+                <LinearLayout
+                    android:id="@+id/tv_CostofUsage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/bt_margin"
+                    android:background="@drawable/whitebutton_border"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/bt_margin"
+
+                    app:layout_constraintBottom_toTopOf="@+id/tv_TodayBox"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/cl_waterUsageBox"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_WaterUsage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cost of Usage :"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_Cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="$000"
+                        android:text="$382"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+
+                        />
+                </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/tv_TodayBox"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/tv_TodayBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="@dimen/bt_margin"
+                    android:background="@drawable/whitebutton_border"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/bt_margin"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_YesterdayBox"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_YesterdayBox"
+                    app:layout_constraintTop_toTopOf="@id/tv_YesterdayBox">
+
+                    <TextView
+                        android:id="@+id/tv_Today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Today"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_TodayL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="40L"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tv_YesterdayBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/bt_margin"
+                    android:background="@drawable/whitebutton_border"
+
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/bt_margin"
+                    app:layout_constraintBottom_toBottomOf="@+id/cl_waterUsageBox"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_CostofUsage">
+
+                    <TextView
+                        android:id="@+id/tv_Yesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yesterday"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_YesterdayL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="84L"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_chartBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
+                android:layout_margin="@dimen/bt_margin"
+                android:background="@drawable/whitebutton_border"
+                android:backgroundTint="@color/lighterblue"
+
+                android:padding="@dimen/bt_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_waterUsageBox">
+
+                <TextView
+                    android:id="@+id/tv_Daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="  Daily  "
+                    android:textColor="@color/black"
+
+                    app:layout_constraintBottom_toTopOf="@+id/chart"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_Weekly"
+                    app:layout_constraintStart_toStartOf="@+id/cl_chartBox"
+                    app:layout_constraintTop_toTopOf="@+id/cl_chartBox"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_Weekly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="  Weekly  "
+                    android:textColor="@color/black"
+
+                    app:layout_constraintEnd_toStartOf="@+id/tv_Monthly"
+                    app:layout_constraintStart_toEndOf="@+id/tv_Daily"
+                    app:layout_constraintTop_toTopOf="@+id/tv_Daily"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_Monthly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:text="  Monthly  "
+                    android:textColor="@color/black"
+
+                    app:layout_constraintEnd_toEndOf="@+id/cl_chartBox"
+                    app:layout_constraintStart_toEndOf="@+id/tv_Weekly"
+                    app:layout_constraintTop_toTopOf="@+id/tv_Weekly"
+
+                    />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_margin="@dimen/bt_margin"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_Weekly" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_HistoryBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/bt_margin"
+                android:layout_marginTop="@dimen/bt_margin"
                 android:layout_marginEnd="@dimen/bt_margin"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/whitebutton_border"
-                android:gravity="center"
-                android:orientation="vertical"
+                android:backgroundTint="@color/lighterblue"
                 android:padding="@dimen/bt_margin"
 
-                app:layout_constraintBottom_toBottomOf="@+id/tv_YesterdayBox"
-                app:layout_constraintEnd_toStartOf="@+id/tv_YesterdayBox"
-                app:layout_constraintTop_toTopOf="@id/tv_YesterdayBox">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_chartBox">
 
                 <TextView
-                    android:id="@+id/tv_Today"
+                    android:id="@+id/tv_HistoryLength"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Today"
+                    android:layout_marginStart="10dp"
+                    android:text="History of your water usage"
                     android:textColor="@color/black"
+
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_TodayL"
+                    android:id="@+id/et_startDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="40L"
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/tv_YesterdayBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_margin="@dimen/bt_margin"
-                android:background="@drawable/whitebutton_border"
-
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="@dimen/bt_margin"
-                app:layout_constraintBottom_toBottomOf="@+id/cl_waterUsageBox"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_CostofUsage">
-
-                <TextView
-                    android:id="@+id/tv_Yesterday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yesterday"
-                    android:textColor="@color/black"
+                    android:layout_margin="@dimen/bt_margin"
+                    android:hint="Pick start date"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_HistoryLength"
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
-                    android:id="@+id/tv_YesterdayL"
+                    android:id="@+id/et_endDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="84L"
+                    android:layout_marginStart="@dimen/bt_margin"
+                    android:hint="Pick end date"
+                    android:textSize="15dp"
+
+                    app:layout_constraintBottom_toBottomOf="@id/et_startDate"
+                    app:layout_constraintStart_toEndOf="@+id/et_startDate"
+                    app:layout_constraintTop_toTopOf="@+id/et_startDate" />
+
+
+                <TextView
+                    android:id="@+id/tv_historyButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/bt_margin"
+                    android:background="@color/white"
+                    android:text="      Search      "
+                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:textSize="15sp"
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_chartBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/bt_margin"
-            android:background="@drawable/whitebutton_border"
-            android:backgroundTint="@color/lighterblue"
+                    app:layout_constraintBottom_toBottomOf="@id/et_endDate"
+                    app:layout_constraintStart_toEndOf="@+id/et_endDate"
+                    app:layout_constraintTop_toTopOf="@+id/et_endDate" />
 
-            android:padding="@dimen/bt_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_waterUsageBox">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_waterUsageHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/bt_margin"
+                    android:paddingBottom="@dimen/bt_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_startDate" />
 
-            <TextView
-                android:id="@+id/tv_Daily"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="  Daily  "
-                android:textColor="@color/black"
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                app:layout_constraintBottom_toTopOf="@+id/chart"
-                app:layout_constraintEnd_toStartOf="@+id/tv_Weekly"
-                app:layout_constraintStart_toStartOf="@+id/cl_chartBox"
-                app:layout_constraintTop_toTopOf="@+id/cl_chartBox"
+        </LinearLayout>
+    </ScrollView>
 
-                />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rl_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
 
-            <TextView
-                android:id="@+id/tv_Weekly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="  Weekly  "
-                android:textColor="@color/black"
-
-                app:layout_constraintEnd_toStartOf="@+id/tv_Monthly"
-                app:layout_constraintStart_toEndOf="@+id/tv_Daily"
-                app:layout_constraintTop_toTopOf="@+id/tv_Daily"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_Monthly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:text="  Monthly  "
-                android:textColor="@color/black"
-
-                app:layout_constraintEnd_toEndOf="@+id/cl_chartBox"
-                app:layout_constraintStart_toEndOf="@+id/tv_Weekly"
-                app:layout_constraintTop_toTopOf="@+id/tv_Weekly"
-
-                />
-
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/chart"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_margin="@dimen/bt_margin"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_Weekly" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_HistoryBox"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_margin="@dimen/bt_margin"
-            android:background="@drawable/whitebutton_border"
-            android:backgroundTint="@color/lighterblue"
-            android:padding="@dimen/bt_margin"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_chartBox">
-
-            <TextView
-                android:id="@+id/tv_HistoryLength"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="History of your water usage"
-                android:textColor="@color/black"
-
-                android:textSize="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/et_startDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/bt_margin"
-                android:hint="Pick start date"
-                android:textSize="15dp"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_HistoryLength"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <TextView
-                android:id="@+id/et_endDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/bt_margin"
-                android:hint="Pick end date"
-                android:textSize="15dp"
-
-                app:layout_constraintBottom_toBottomOf="@id/et_startDate"
-                app:layout_constraintStart_toEndOf="@+id/et_startDate"
-                app:layout_constraintTop_toTopOf="@+id/et_startDate" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
-            <TextView
-                android:id="@+id/tv_historyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/bt_margin"
-                android:background="@color/white"
-                android:text="      Search      "
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15sp"
+        <TextView
+            android:id="@+id/tv_white"
+            android:layout_width="350dp"
+            android:layout_height="500dp"
 
-                app:layout_constraintBottom_toBottomOf="@id/et_endDate"
-                app:layout_constraintStart_toEndOf="@+id/et_endDate"
-                app:layout_constraintTop_toTopOf="@+id/et_endDate" />
+            android:background="@color/white"
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_waterUsageHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/bt_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_startDate"
-
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:background="?android:attr/windowBackground"
-            app:itemIconTint="@drawable/selector"
-            app:itemTextColor="@drawable/selector"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:menu="@navigation/bottom_nav" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/rl_start"
+        <DatePicker
+            android:id="@+id/dp_startDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="@+id/tv_white"
+            app:layout_constraintStart_toStartOf="@+id/tv_white"
+            app:layout_constraintTop_toTopOf="@+id/tv_white" />
 
-
-            <TextView
-                android:id="@+id/tv_white"
-                android:layout_width="350dp"
-                android:layout_height="500dp"
-
-                android:background="@color/white"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <DatePicker
-                android:id="@+id/dp_startDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                app:layout_constraintEnd_toEndOf="@+id/tv_white"
-                app:layout_constraintStart_toStartOf="@+id/tv_white"
-                app:layout_constraintTop_toTopOf="@+id/tv_white" />
-
-            <Button
-                android:id="@+id/btn_startConfirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Confirm"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dp_startDate"
-
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/rl_end"
+        <Button
+            android:id="@+id/btn_startConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:text="Confirm"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/dp_startDate"
 
-            <TextView
-                android:id="@+id/tv_white_2"
-                android:layout_width="350dp"
-                android:layout_height="400dp"
-
-                android:background="@color/white"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <DatePicker
-                android:id="@+id/dp_endDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                app:layout_constraintBottom_toBottomOf="@+id/tv_white_2"
-                app:layout_constraintEnd_toEndOf="@+id/tv_white_2"
-                app:layout_constraintStart_toStartOf="@+id/tv_white_2"
-                app:layout_constraintTop_toTopOf="@+id/tv_white_2"
-
-                />
-
-            <Button
-                android:id="@+id/btn_endConfirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Confirm"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dp_endDate"
-
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rl_end"
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:visibility="gone"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_white_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <DatePicker
+            android:id="@+id/dp_endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="@+id/tv_white_2"
+            app:layout_constraintStart_toStartOf="@+id/tv_white_2"
+            app:layout_constraintTop_toTopOf="@+id/tv_white_2"
+
+            />
+
+        <Button
+            android:id="@+id/btn_endConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dp_endDate"
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@navigation/bottom_nav" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
