@@ -171,7 +171,7 @@ public class Alert extends AppCompatActivity {
         alertTitle[0] = "";
         alertDescription[0] = "";
         createdAt[0] = "";
-        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + a +"&pageSize=" + 15;
+        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + a +"&pageSize=" + 32;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

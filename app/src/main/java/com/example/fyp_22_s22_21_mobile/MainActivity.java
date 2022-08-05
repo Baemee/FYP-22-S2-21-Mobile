@@ -74,8 +74,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             String jsonKey = response.getString("token");
+                            String address = response.getJSONObject("user").getString("address");
                             String userId = response.getJSONObject("user").getString("userId");
                             String username = response.getJSONObject("user").getString("username");
+                            String createdAt = response.getJSONObject("user").getString("createdAt");
                             String fullName= response.getJSONObject("user").getString("fullName");
                             String gender = response.getJSONObject("user").getString("gender");
                             String email = response.getJSONObject("user").getString("email");
@@ -85,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = Token.edit();
                             editor.putString("token", jsonKey);
                             editor.putString("username", username);
+                            editor.putString("address",address);
                             editor.putString("userId",userId);
+                            editor.putString("createdAt",createdAt);
                             editor.putString("password",password);
                             editor.putString("fullName",fullName);
                             editor.putString("gender", gender);

@@ -41,12 +41,15 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </TextView>
 
     <TextView
         android:id="@+id/tv_box"
         android:layout_width="332dp"
-        android:layout_height="65dp"
+        android:layout_height="210dp"
         android:layout_marginTop="56dp"
 
         android:background="@drawable/textview_border"
@@ -55,30 +58,222 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_backbox" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="56dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_box"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_userID"
+        android:text="User ID :"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        android:layout_marginStart="5sp"
         app:layout_constraintStart_toStartOf="@+id/tv_box"
         app:layout_constraintTop_toTopOf="@+id/tv_box"
-        app:layout_constraintVertical_bias="0.55"
-        app:srcCompat="@drawable/ic_baseline_person_outline_24" />
+        />
 
     <TextView
-        android:id="@+id/tv_userID"
-        android:layout_width="89dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="20dp"
-        android:text="userId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_userId_user"
+        android:text="testing nubmer"
         android:textColor="@color/black"
-        android:textSize="20dp"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_userID"
+        app:layout_constraintTop_toTopOf="@+id/tv_userID"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_userName"
+        android:text="User Name :"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_box"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/tv_box"
-        app:layout_constraintVertical_bias="0.525" />
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_userID"
+        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_userName_user"
+        android:text="testing username"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_userName"
+        app:layout_constraintTop_toTopOf="@+id/tv_userName"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_fullName"
+        android:text="Full Name :"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_userName"
+        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_fullName_user"
+        android:text="Test User"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_fullName"
+        app:layout_constraintTop_toTopOf="@+id/tv_fullName"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_address"
+        android:text="Address :"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fullName"
+        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_address_user"
+        android:text="Clementi"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_address"
+        app:layout_constraintTop_toTopOf="@+id/tv_address"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_dateCreate"
+        android:text="Created :"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_address"
+        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_dateCreate_user"
+        android:text="2022-07-26"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_dateCreate"
+        app:layout_constraintTop_toTopOf="@+id/tv_dateCreate"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_Gender"
+        android:text="Gender :"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dateCreate"
+        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_Gender_user"
+        android:text="Male"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_Gender"
+        app:layout_constraintTop_toTopOf="@+id/tv_Gender"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_email"
+        android:text="E-mail :"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Gender"
+        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_email_user"
+        android:text="testing@testing.com"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_email"
+        app:layout_constraintTop_toTopOf="@+id/tv_email"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_phone"
+        android:text="Phone Number :"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+        android:layout_marginTop="5sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email"
+        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_phone_user"
+        android:text="67845982"
+        android:textColor="@color/black"
+
+        android:layout_marginStart="10sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_phone"
+        app:layout_constraintTop_toTopOf="@+id/tv_phone"
+        />
+
 
     <TextView
         android:id="@+id/textView16"
@@ -89,7 +284,7 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/btn_changePwd"
         app:layout_constraintTop_toBottomOf="@+id/tv_box" />
 
     <androidx.appcompat.widget.AppCompatButton

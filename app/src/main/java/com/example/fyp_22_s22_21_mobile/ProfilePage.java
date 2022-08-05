@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfilePage extends AppCompatActivity {
 
+    SharedPreferences Token;
+    String username, address, userId, createdAt, password,fullName, gender, email, phone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +25,9 @@ public class ProfilePage extends AppCompatActivity {
 
         Button btn_pwd = findViewById(R.id.btn_changePwd);
         ImageView img_back = findViewById(R.id.img_back);
+
+        Token = getSharedPreferences("user", MODE_PRIVATE);
+        userId = Token.getString("userId", String.valueOf(1));
 
         btn_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
