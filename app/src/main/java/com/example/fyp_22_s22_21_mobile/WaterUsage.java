@@ -105,8 +105,6 @@ public class WaterUsage extends AppCompatActivity {
         TextView tv_CalMonth = findViewById(R.id.tv_calMonth);
         TextView tv_TodayL = findViewById(R.id.tv_TodayL);
         TextView tv_YesterdayL = findViewById(R.id.tv_YesterdayL);
-        TextView tv_Today = findViewById(R.id.tv_Today);
-        TextView tv_HistoryBox = findViewById(R.id.tv_HistoryBox);
 
         // Get current month name
         String[] nameOfMonths = new DateFormatSymbols(Locale.getDefault()).getMonths();
