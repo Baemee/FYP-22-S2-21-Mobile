@@ -80,8 +80,7 @@
         android:text="testing nubmer"
         android:textColor="@color/black"
 
-        android:layout_marginStart="10sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_userID"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
         app:layout_constraintTop_toTopOf="@+id/tv_userID"
         />
 
@@ -134,8 +133,7 @@
         android:text="Test User"
         android:textColor="@color/black"
 
-        android:layout_marginStart="10sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_fullName"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
         app:layout_constraintTop_toTopOf="@+id/tv_fullName"
         />
 
@@ -161,8 +159,7 @@
         android:text="Clementi"
         android:textColor="@color/black"
 
-        android:layout_marginStart="10sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_address"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
         app:layout_constraintTop_toTopOf="@+id/tv_address"
         />
 
@@ -188,8 +185,7 @@
         android:text="2022-07-26"
         android:textColor="@color/black"
 
-        android:layout_marginStart="10sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_dateCreate"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
         app:layout_constraintTop_toTopOf="@+id/tv_dateCreate"
         />
 
@@ -215,8 +211,7 @@
         android:text="Male"
         android:textColor="@color/black"
 
-        android:layout_marginStart="10sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_Gender"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
         app:layout_constraintTop_toTopOf="@+id/tv_Gender"
         />
 
@@ -242,8 +237,7 @@
         android:text="testing@testing.com"
         android:textColor="@color/black"
 
-        android:layout_marginStart="10sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_email"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
         app:layout_constraintTop_toTopOf="@+id/tv_email"
         />
 
@@ -251,7 +245,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_phone"
-        android:text="Phone Number :"
+        android:text="Phone :"
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -269,8 +263,7 @@
         android:text="67845982"
         android:textColor="@color/black"
 
-        android:layout_marginStart="10sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_phone"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
         app:layout_constraintTop_toTopOf="@+id/tv_phone"
         />
 
