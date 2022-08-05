@@ -26,6 +26,18 @@
         app:layout_constraintTop_toTopOf="@+id/btn_WaterUsage"
         app:layout_constraintVertical_bias="1.0" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:srcCompat="@drawable/ic_baseline_person_outline_24" />
+
     <TextView
         android:id="@+id/tv_Welcome"
         android:layout_width="wrap_content"
@@ -108,36 +120,28 @@
         />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_alert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_person_outline_24" />
+        android:layout_marginEnd="@dimen/bt_margin"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tv_userID"
+        app:layout_constraintEnd_toStartOf="@id/img_logout"
+        app:layout_constraintTop_toTopOf="@+id/tv_userID"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:srcCompat="@drawable/ic_baseline_notifications_24" />
 
     <ImageView
         android:id="@+id/img_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/img_alert"
-        app:layout_constraintStart_toEndOf="@+id/img_alert"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_alert"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/exit_1" />
-
-    <ImageView
-        android:id="@+id/img_alert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_userID"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_userID"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_baseline_notifications_24" />
 
     <View
         android:id="@+id/view"

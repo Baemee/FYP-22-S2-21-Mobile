@@ -1,29 +1,13 @@
 package com.example.fyp_22_s22_21_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.fyp_22_s22_21_mobile.support.alertData;
-import com.example.fyp_22_s22_21_mobile.support.alertDataAdapter;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -52,7 +36,7 @@ public class WaterUsageHistory extends AppCompatActivity {
         TextView tv_TodayL = (TextView) findViewById(R.id.tv_TodayL);
         TextView tv_YesterdayL = (TextView) findViewById(R.id.tv_YesterdayL);
         TextView tv_Today  = (TextView)findViewById(R.id.tv_Today);
-        TextView tv_historybox = (TextView) findViewById(R.id.tv_HistoryBox);
+        TextView tv_historybox = (TextView) findViewById(R.id.cl_HistoryBox);
 
         String month = df.format(currentCalendar.get(Calendar.MONTH) + 1);
         switch (month) {
