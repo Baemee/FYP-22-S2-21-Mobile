@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_reporttitle"
         app:layout_constraintTop_toBottomOf="@+id/tv_reporttitle" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Update"
         android:layout_width="99dp"
         android:layout_height="33dp"
@@ -54,12 +54,13 @@
         android:text="Update"
         android:visibility="visible"
         android:textColor="@color/black"
+        android:backgroundTint="#87CEEB"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_Resolve"
         app:layout_constraintStart_toStartOf="@+id/btn_Resolve"
         android:layout_marginBottom="10sp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Resolve"
         android:layout_width="99dp"
         android:layout_height="33dp"
@@ -68,6 +69,7 @@
         android:visibility="visible"
         android:textColor="@color/black"
         android:textSize="12sp"
+        android:backgroundTint="#87CEEB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_box"
         app:layout_constraintEnd_toEndOf="parent"

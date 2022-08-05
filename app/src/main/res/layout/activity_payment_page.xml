@@ -167,6 +167,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/whitebutton_border"
         android:text="Proceed to pay"
+        android:backgroundTint="#87CEEB"
 
         android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="@+id/backgroundsquare"

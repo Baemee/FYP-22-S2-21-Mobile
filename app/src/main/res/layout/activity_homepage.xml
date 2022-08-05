@@ -46,17 +46,15 @@
         android:id="@+id/tv_userID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="152dp"
         android:hint="userID"
         android:textColor="@color/black"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_Welcome"
-        app:layout_constraintEnd_toStartOf="@+id/img_alert"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tv_Welcome"
         app:layout_constraintTop_toTopOf="@+id/tv_Welcome"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_marginStart="10sp"
+    />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_WaterUsage"
@@ -76,9 +74,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-
-        app:layout_constraintTop_toTopOf="@+id/btn_Report" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Report"
         style="@style/button"
@@ -96,22 +91,6 @@
         app:layout_constraintStart_toStartOf="@+id/btn_WaterUsage"
         app:layout_constraintTop_toBottomOf="@+id/btn_WaterUsage" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_Alerts"
-        style="@style/button"
-        android:layout_width="105dp"
-        android:layout_height="80dp"
-        android:text="Alert"
-        android:background="@drawable/whitebutton_border"
-        android:backgroundTint="#FAF0E6"
-        android:textAlignment="center"
-        android:visibility="visible"
-
-        app:layout_constraintTop_toTopOf="@id/btn_Report"
-        app:layout_constraintStart_toStartOf="@id/btn_Bills"
-
-        />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -127,7 +106,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@navigation/bottom_nav"
         />
-
 
     <ImageView
         android:id="@+id/imageView2"

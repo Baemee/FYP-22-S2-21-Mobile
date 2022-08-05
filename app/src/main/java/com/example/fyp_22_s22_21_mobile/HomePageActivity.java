@@ -78,7 +78,6 @@ public class HomePageActivity extends AppCompatActivity {
         ImageView btn_Alerts = findViewById(R.id.img_alert);
         Button btn_Bills = (Button) findViewById(R.id.btn_Bills);
         Button btn_Report = (Button) findViewById(R.id.btn_Report);
-        Button btn_broadcastAlerts = (Button) findViewById(R.id.btn_Alerts);
         ImageView btn_Logout = findViewById(R.id.img_logout);
         ImageView img_alert = findViewById(R.id.img_alert);
         ImageView iv_Exit =  findViewById(R.id.iv_exit);
@@ -132,15 +131,6 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
-        btn_broadcastAlerts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Alert.class);
-                startActivity(intent);
-
-            }
-        });
-
         // Bottom nav bar
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -166,6 +156,9 @@ public class HomePageActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         //notification start
 
         recyclerView = (RecyclerView)findViewById(R.id.rv_notification);
@@ -180,11 +173,13 @@ public class HomePageActivity extends AppCompatActivity {
         iv_Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 cl_notification.setVisibility(View.GONE);
                 btn_Bills.setVisibility(View.VISIBLE);
                 btn_Report.setVisibility(View.VISIBLE);
                 btn_WaterUsage.setVisibility(View.VISIBLE);
                 btn_broadcastAlerts.setVisibility(View.VISIBLE);
+                 */
 
             }
         });
@@ -193,6 +188,10 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(getApplicationContext(), Alert.class);
+                startActivity(intent);
+
+                /*
                 btn_Bills.setVisibility(View.GONE);
                 btn_Report.setVisibility(View.GONE);
                 btn_broadcastAlerts.setVisibility(View.GONE);
@@ -201,6 +200,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                 requestNotification(false_request, 1);
                 requestNotification(true_request,1);
+                 */
 
             }
         });
@@ -208,7 +208,7 @@ public class HomePageActivity extends AppCompatActivity {
         //Notification
     }
 
-    protected void requestNotification(String mark, int x) {
+     /* protected void requestNotification(String mark, int x) {
 
         recyclerView = (RecyclerView)findViewById(R.id.rv_notification);
         linearLayout = new LinearLayoutManager(this);
@@ -288,5 +288,7 @@ public class HomePageActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
+
+      */
 
 }
