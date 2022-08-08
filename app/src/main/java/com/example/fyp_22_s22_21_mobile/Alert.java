@@ -251,6 +251,7 @@ public class Alert extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                arrayList.clear();
                 JSONObject[] jsonObject = new JSONObject[100];
                 JSONArray jsonArray = new JSONArray();
                 jsonArray = response.optJSONArray("result");
