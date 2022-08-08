@@ -72,23 +72,11 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
     private void createPaymentModule() {
         DropInRequest dropInRequest = new DropInRequest();
-        dropInRequest.setGooglePayRequest(getGooglePayRequest());
         dropInRequest.setMaskCardNumber(false);
 
 
         dropInClient = new DropInClient(this, dropInRequest, SANDBOX_KEY);
         dropInClient.setListener(this);
-    }
-
-    private GooglePayRequest getGooglePayRequest() {
-        GooglePayRequest googlePayRequest = new GooglePayRequest();
-        googlePayRequest.setTransactionInfo(TransactionInfo.newBuilder()
-                .setTotalPrice("1.00")
-                .setCurrencyCode("USD")
-                .setTotalPriceStatus(WalletConstants.TOTAL_PRICE_STATUS_FINAL)
-                .build());
-        googlePayRequest.setEmailRequired(true);
-        return googlePayRequest;
     }
 
     @Override
@@ -157,6 +145,8 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         TextView tv_deadline = findViewById(R.id.tv_getDateline);
         TextView tv_payment = findViewById(R.id.tv_getPayment);
 
+        Button btn_payment = findViewById(R.id.btn_payment);
+
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -174,10 +164,14 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                                 deadline = response.getJSONObject(i).getString("deadline");
                                 payment = response.getJSONObject(i).getString("payment");
 
-                                if (payment.equals("null"))
+                                if (payment.equals("null")) {
                                     payment = "Unpaid";
-                                else
+                                }
+                                else {
                                     payment = "Paid";
+                                    btn_payment.setVisibility(View.GONE);
+                                }
+
 
                                 tv_billId.append(billId + "\n");
                                 tv_billMth.append(mth + "\n");
@@ -232,6 +226,8 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                requestBillsDetails(url);
 
             }
         }, new Response.ErrorListener() {

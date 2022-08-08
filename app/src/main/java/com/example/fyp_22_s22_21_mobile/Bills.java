@@ -48,11 +48,10 @@ public class Bills extends AppCompatActivity {
 
     SharedPreferences Token;
     String key;
-    String url = "http://10.0.2.2:5000/api/Bill/MyInfo";
+    String url;;
     String sgtDate;
     String sgtDue;
-    double amount;
-    double usage;
+    SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
 
     private ArrayList<BillData> arrayList;
     private BillDataAdapter adapter;
@@ -67,6 +66,12 @@ public class Bills extends AppCompatActivity {
         key = "Bearer " + Token.getString("token", String.valueOf(1));
 
         ImageView img_back = findViewById(R.id.img_back);
+
+        long now = System.currentTimeMillis();
+        Date dateNow = new Date(now);
+        String getDate = simpleDate.format(dateNow); //get current time and change to yyyy-mm-dd format
+
+        url = getString(R.string.base_url) + "api/Bill/MyInfo?fromDate=2022-01-01&toDate=" + getDate;
 
         requestBills(url);
 
@@ -123,6 +128,7 @@ public class Bills extends AppCompatActivity {
         String [] billYr = new String[100];
         String [] billDue = new String [100];
         String [] billStatus = new String[100];
+        String [] billTitle = new String[100];
         BillData[] BillData = new BillData[100];
 
         billAmt[0] = "";
@@ -151,6 +157,7 @@ public class Bills extends AppCompatActivity {
                         billMth[i]=jsonObject[i].optString("month");
                         billYr[i]=jsonObject[i].optString("year");
                         billDue[i]=jsonObject[i].optString("deadline");
+                        billTitle[i]=jsonObject[i].optString("title");
 
                         sgtDate = createdAt[i];
                         sgtDue = billDue[i];
@@ -167,7 +174,7 @@ public class Bills extends AppCompatActivity {
                         createdAt[i] = sgtDate;
                         billDue[i] = sgtDue;
 
-                        BillData[i] = new BillData(billAmt[i], billDue[i], billId[i]);
+                        BillData[i] = new BillData(billTitle[i], billAmt[i], billDue[i], billId[i]);
                         arrayList.add(BillData[i]);
                     }
                     adapter.notifyDataSetChanged();

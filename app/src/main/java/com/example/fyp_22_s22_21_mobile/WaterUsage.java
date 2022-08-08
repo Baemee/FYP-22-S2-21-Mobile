@@ -1,14 +1,18 @@
 package com.example.fyp_22_s22_21_mobile;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -30,21 +34,27 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
 
 public class WaterUsage extends AppCompatActivity {
 
@@ -59,9 +69,9 @@ public class WaterUsage extends AppCompatActivity {
     SimpleDateFormat simpleMonth_cal = new SimpleDateFormat("yyyy-MM");
     Calendar currentCalendar = Calendar.getInstance();
     Date dateNow, dateYesterday, dateHistory;
-    Date date_start, date_end;
+    Date date_start, date_end, date_daily;
     String key, getDate_Start, getDate_End;
-    String date_s, date_e;
+    String date_s, date_e, date_d;
     ArrayList<BarEntry> chartData;
     int year_s, month_s, day_s;
     int year_e, month_e, day_e;
@@ -74,7 +84,7 @@ public class WaterUsage extends AppCompatActivity {
     private waterUsageDataAdapter adapter;
     public RecyclerView.LayoutManager layoutManager;
 
-    waterUsageData[] waterUsageData = new waterUsageData[1000];
+    waterUsageData waterUsageData;
 
     private BarChart barChart;
 
@@ -88,6 +98,12 @@ public class WaterUsage extends AppCompatActivity {
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
+
+        ConstraintLayout rl_Daily = findViewById(R.id.rl_Daily);
+        DatePicker dp_Daily = findViewById(R.id.dp_Daily);
+        Button btn_dailyConfirm = findViewById(R.id.btn_dailyConfirm);
+
+        TextView tv_showdaily = findViewById(R.id.tv_showdaily);
 
         barChart = (BarChart) findViewById(R.id.chart);
 
@@ -115,6 +131,29 @@ public class WaterUsage extends AppCompatActivity {
         String price = String.valueOf(cost);
         tv_Cost.setText(price);
 
+
+        // Bottom nav bar
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.Profile:
+                        startActivity(new Intent(getApplicationContext(), ProfilePage.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.Home:
+                        startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
 
         long now = System.currentTimeMillis();
@@ -148,23 +187,50 @@ public class WaterUsage extends AppCompatActivity {
         tv_Daily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                rl_Daily.setVisibility(View.VISIBLE);
+
+                dp_Daily.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+
+                    @Override
+                    public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
+                        int year_d = year;
+                        int month_d = month + 1;
+                        int day_d = day;
+                        date_d = String.valueOf(year_d) + "-" + String.valueOf(month_d) + "-" + String.valueOf(day_d);
+                        try {
+                            date_daily = simpleDate.parse(date_d);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+
+        btn_dailyConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                rl_Daily.setVisibility(View.GONE);
+                tv_showdaily.setText("Date end : " + date_d);
+
                 chartData.clear();
+                String[] date_chartDaily = new String[50];
+                String[] day_chartDaily = new String[50];
+                int[] daily_day = new int[50];
+                int[] daily_intValue = new int[50];
+                double[] testing_value = new double[50];
+                double[] daily_value = new double[50];
+                String[] url_daily = new String[50];
+                barChartData[] barChartData = new barChartData[50];
 
-               String[] date_chartDaily = new String[10];
-               String[] day_chartDaily = new String[10];
-               int[] daily_day = new int[10];
-               int[] daily_intValue = new int[10];
-               double[] testing_value = new double[10];
-               double[] daily_value = new double[10];
-               String[] url_daily = new String[10];
-               barChartData[] barChartData = new barChartData[10];
-
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 30; i++) {
 
 
                     Calendar cal_daily = Calendar.getInstance();
-                    cal_daily.setTime(dateNow);
-                    cal_daily.add(Calendar.DATE, -7 + i);
+                    cal_daily.setTime(date_daily);
+                    cal_daily.add(Calendar.DATE, -29 + i);
                     date_chartDaily[i] = simpleDate.format(cal_daily.getTime());
 
                     day_chartDaily[i] = simpleDay.format(cal_daily.getTime()); // get day
@@ -180,9 +246,9 @@ public class WaterUsage extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
 
                             daily_value[x] = response.optDouble("totalUsage");
-                            chartData.add(new BarEntry(daily_day[x], (float) daily_value[x]));
+                            chartData.add(new BarEntry(x, (float) daily_value[x]));
 
-                            BarDataSet barDataSet = new BarDataSet(chartData, "daily");
+                            BarDataSet barDataSet = new BarDataSet(chartData, "waterUsage/L");
                             barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
                             barDataSet.setValueTextColor(Color.BLACK);
                             barDataSet.setValueTextSize(15f);
@@ -196,34 +262,40 @@ public class WaterUsage extends AppCompatActivity {
 
                         }
                     }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Response error", error.getMessage());
-                        Toast.makeText(WaterUsage.this,
-                                        "Error_Daily.",
-                                        Toast.LENGTH_LONG)
-                                .show();
-                    }
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("Authorization", key);
-                        return headers;
-                    }
-                };
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(jsonObjectRequest_daily);
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Response error", error.getMessage());
+                            Toast.makeText(WaterUsage.this,
+                                            "Error_Daily.",
+                                            Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    }) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("Authorization", key);
+                            return headers;
+                        }
+                    };
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    requestQueue.add(jsonObjectRequest_daily);
 
-            }
+                }
 
             }
         });
+
+
+
+
+
 
         tv_Weekly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 chartData.clear();
+                tv_showdaily.setText("");
 
                 String[] date_chartWeekly = new String[10];
                 String[] date_chartWeekly_end = new String[10];
@@ -262,7 +334,7 @@ public class WaterUsage extends AppCompatActivity {
                             weekly_value[x] = response.optDouble("totalUsage");
                             chartData.add(new BarEntry(weekOfyear[x], (float) weekly_value[x]));
 
-                            BarDataSet barDataSet = new BarDataSet(chartData, "daily");
+                            BarDataSet barDataSet = new BarDataSet(chartData, "waterUsage/L");
                             barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
                             barDataSet.setValueTextColor(Color.BLACK);
                             barDataSet.setValueTextSize(15f);
@@ -303,6 +375,7 @@ public class WaterUsage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 chartData.clear();
+                tv_showdaily.setText("");
 
                 String[] date_chartMonthly = new String[15];
                 String[] date_chartMonthly_end = new String[15];
@@ -328,7 +401,6 @@ public class WaterUsage extends AppCompatActivity {
                     lastdayofMonth[i] = cal_Monthly.getActualMaximum(Calendar.DAY_OF_MONTH);
 
 
-
                     date_Month[i] = cal_Monthly.get(Calendar.MONTH);
 
                     url_weekly[i] = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + date_chartMonthly[i] + "-01&toDate=" + date_chartMonthly[i] + "-" + lastdayofMonth[i] + "&total=true";
@@ -342,7 +414,7 @@ public class WaterUsage extends AppCompatActivity {
                             montly_value[x] = response.optDouble("totalUsage");
                             chartData.add(new BarEntry(date_Month[x], (float) montly_value[x]));
 
-                            BarDataSet barDataSet = new BarDataSet(chartData, "daily");
+                            BarDataSet barDataSet = new BarDataSet(chartData, "waterUsage/L");
                             barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
                             barDataSet.setValueTextColor(Color.BLACK);
                             barDataSet.setValueTextSize(15f);
@@ -351,7 +423,7 @@ public class WaterUsage extends AppCompatActivity {
 
                             barChart.setFitBars(true);
                             barChart.setData(barData);
-                            barChart.getDescription().setText("bar Chart");
+                            barChart.getDescription().setText("L");
                             barChart.animateY(2000);
 
                         }
@@ -376,288 +448,300 @@ public class WaterUsage extends AppCompatActivity {
                     requestQueue.add(jsonObjectRequest_weekly);
 
                 }
-                int a = 9;
             }
         });
 
 
-                //History of the water Usage
+        //History of the water Usage
 
-                TextView et_startDate = findViewById(R.id.et_startDate);
-                TextView et_endDate = findViewById(R.id.et_endDate);
+        TextView et_startDate = findViewById(R.id.et_startDate);
+        TextView et_endDate = findViewById(R.id.et_endDate);
 
-                DatePicker datePicker_start = findViewById(R.id.dp_startDate);
-                DatePicker datePicker_end = findViewById(R.id.dp_endDate);
+        DatePicker datePicker_start = findViewById(R.id.dp_startDate);
+        DatePicker datePicker_end = findViewById(R.id.dp_endDate);
 
-                TextView tv_historyButton = findViewById(R.id.tv_historyButton);
+        TextView tv_historyButton = findViewById(R.id.tv_historyButton);
 
-                Button btn_startConfirm = findViewById(R.id.btn_startConfirm);
-                Button btn_endConfirm = findViewById(R.id.btn_endConfirm);
+        Button btn_startConfirm = findViewById(R.id.btn_startConfirm);
+        Button btn_endConfirm = findViewById(R.id.btn_endConfirm);
 
-                rl_start = (ConstraintLayout) findViewById(R.id.rl_start);
-                rl_end = (ConstraintLayout) findViewById(R.id.rl_end);
+        rl_start = (ConstraintLayout) findViewById(R.id.rl_start);
+        rl_end = (ConstraintLayout) findViewById(R.id.rl_end);
 
-                et_startDate.setText("Pick a date");
-                et_endDate.setText("Pick a date");
+        et_startDate.setText("Pick a date");
+        et_endDate.setText("Pick a date");
 
-                et_startDate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        rl_start.setVisibility(rl_start.VISIBLE);
-                    }
-                });
-                et_endDate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        rl_end.setVisibility(rl_end.VISIBLE);
-                    }
-                });
+        MaterialDatePicker.Builder<Pair<Long, Long>> builder = MaterialDatePicker.Builder.dateRangePicker();
+        builder.setTitleText("Select a Range of Date");
+        final MaterialDatePicker materialDatePickerH = builder.build();
 
-                datePicker_start.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-                    @Override
-                    public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
-                        year_s = year;
-                        month_s = month + 1;
-                        day_s = day;
-                        date_s = String.valueOf(year_s) + "-" + String.valueOf(month_s) + "-" + String.valueOf(day_s);
-                        try {
-                            date_start = simpleDate.parse(date_s);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+        et_startDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                datePicker_end.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
-                    @Override
-                    public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
-                        year_e = year;
-                        month_e = month + 1;
-                        day_e = day;
-                        date_e = String.valueOf(year_e) + "-" + String.valueOf(month_e) + "-" + String.valueOf(day_e);
-                        try {
-                            date_end = simpleDate.parse(date_e);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+               rl_start.setVisibility(rl_start.VISIBLE);
+            }
+        });
 
-                btn_startConfirm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+        et_endDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rl_end.setVisibility(rl_end.VISIBLE);
+            }
+        });
 
-                        et_startDate.setText(simpleDate.format(date_start));
-                        rl_start.setVisibility(rl_start.GONE);
-                    }
-                });
+        datePicker_start.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
+                year_s = year;
+                month_s = month + 1;
+                day_s = day;
+                date_s = String.valueOf(year_s) + "-" + String.valueOf(month_s) + "-" + String.valueOf(day_s);
+                try {
+                    date_start = simpleDate.parse(date_s);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
-                btn_endConfirm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        et_endDate.setText(simpleDate.format(date_end));
-                        rl_end.setVisibility(rl_end.GONE);
-                    }
-                });
-
-                tv_historyButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        long diff = date_end.getTime() - date_start.getTime();
-                        int days = (int) (diff / 86400000);
-                        String dateTotal[] = new String[1000];
-                        String valueTotal[] = new String[1000];
-                        double[] value = new double[1000];
-                        waterUsageData[] waterUsageData = new waterUsageData[1000];
-
-                        arrayList.clear();
+        datePicker_end.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
+                year_e = year;
+                month_e = month + 1;
+                day_e = day;
+                date_e = String.valueOf(year_e) + "-" + String.valueOf(month_e) + "-" + String.valueOf(day_e);
+                try {
+                    date_end = simpleDate.parse(date_e);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
 
-                        for (int i = 0; i <= days; i++) {
-                            int x = i;
 
-                            Calendar cal = Calendar.getInstance();
-                            cal.setTime(date_start);
-                            cal.add(Calendar.DATE, +1 * i);
-                            dateTotal[i] = simpleDate.format(cal.getTime());
+        btn_startConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_startDate.setText(date_s);
+                rl_start.setVisibility(rl_start.GONE);
+            }
+        });
 
-                            String url = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + dateTotal[i] + "&toDate=" + dateTotal[i] + "&total=true";
+        btn_endConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_endDate.setText(date_e);
+                rl_end.setVisibility(rl_end.GONE);
+            }
+        });
 
-                            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    try {
-                                        value[x] = response.getDouble("totalUsage");
-                                        valueTotal[x] = String.valueOf(value[x]);
-                                        waterUsageData[x] = new waterUsageData(dateTotal[x], valueTotal[x]);
-                                        arrayList.add(waterUsageData[x]);
-                                        adapter.notifyDataSetChanged();
+        tv_historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }, new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Log.e("Response error", error.getMessage());
-                                    Toast.makeText(WaterUsage.this,
-                                                    "Error_1.",
-                                                    Toast.LENGTH_LONG)
-                                            .show();
-                                }
-                            }) {
-                                @Override
-                                public Map<String, String> getHeaders() throws AuthFailureError {
-                                    HashMap<String, String> headers = new HashMap<String, String>();
-                                    headers.put("Authorization", key);
-                                    return headers;
-                                }
-                            };
-                            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                            requestQueue.add(jsonObjectRequest);
+                String date_s = simpleDate.format(date_start);
+                String date_e = simpleDate.format(date_end);
 
-
-                        }
-
-
-
-                    }
-                });
-
+                requestHistoryWaterUsage(date_s, date_e);
 
             }
-
-            protected void requestWaterUsageTotal(TextView displayView, String url) {
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            Double totalUsage = response.getDouble("totalUsage");
-                            String totalUsage_formatted = format2dp.format(totalUsage) + "L";
-                            displayView.setText(totalUsage_formatted);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Response error", error.getMessage());
-                        Toast.makeText(WaterUsage.this,
-                                        "An error occurred.",
-                                        Toast.LENGTH_LONG)
-                                .show();
-                    }
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("Authorization", key);
-                        return headers;
-                    }
-                };
-
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(jsonObjectRequest);
-            }
-
-            protected void costWaterusage(String year, String month, double usage) {
-
-                TextView tv_Cost = (TextView)findViewById(R.id.tv_Cost);
-
-                Token = getSharedPreferences("user", MODE_PRIVATE);
-                key = "Bearer " + Token.getString("token", String.valueOf(1));
-
-                String url = getString(R.string.base_url) + "api/WaterRate/" + year + "/" + month;
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        int price = response.optInt("price");
-                        double totalCost = price * usage / 1000;
-                        String totalCost_s = "$" + String.format("%.2f", totalCost);
-                        tv_Cost.setText(totalCost_s);
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Response error", error.getMessage());
-                        Toast.makeText(WaterUsage.this,
-                                        "Error_1.",
-                                        Toast.LENGTH_LONG)
-                                .show();
-                    }
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("Authorization", key);
-                        return headers;
-                    }
-                };
-
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(jsonObjectRequest);
-
-            }
-
-            protected void getCostofWaterUsage(Date date) {
-
-                Calendar cal_Monthly = Calendar.getInstance();
-                Calendar cal_Monthly_end = Calendar.getInstance();
-                cal_Monthly.setTime(date);
-                cal_Monthly.add(Calendar.MONTH, +0);
-
-                String date_s = simpleMonth_cal.format(cal_Monthly.getTime());
-                String year = simpleYear.format(cal_Monthly.getTime());
-                String month = simpleMonth.format(cal_Monthly.getTime());
-
-                Date date_end = cal_Monthly.getTime();
-                cal_Monthly_end.setTime(date_end);
-
-                int day_e = cal_Monthly.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-                Token = getSharedPreferences("user", MODE_PRIVATE);
-                key = "Bearer " + Token.getString("token", String.valueOf(1));
-
-                String url = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + date_s + "-01&toDate=" + date_s + "-" + day_e + "&total=true";
-
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        double usage = response.optDouble("totalUsage");
-
-                        costWaterusage(year,month,usage);
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Response error", error.getMessage());
-                        Toast.makeText(WaterUsage.this,
-                                        "Error_1.",
-                                        Toast.LENGTH_LONG)
-                                .show();
-                    }
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("Authorization", key);
-                        return headers;
-                    }
-                };
-
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                requestQueue.add(jsonObjectRequest);
-
-            }
+        });
 
     }
+
+    protected void requestWaterUsageTotal(TextView displayView, String url) {
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    Double totalUsage = response.getDouble("totalUsage");
+                    String totalUsage_formatted = format2dp.format(totalUsage) + "L";
+                    displayView.setText(totalUsage_formatted);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Response error", error.getMessage());
+                Toast.makeText(WaterUsage.this,
+                                "An error occurred.",
+                                Toast.LENGTH_LONG)
+                        .show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", key);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    protected void costWaterusage(String year, String month, double usage) {
+
+        TextView tv_Cost = (TextView) findViewById(R.id.tv_Cost);
+
+        Token = getSharedPreferences("user", MODE_PRIVATE);
+        key = "Bearer " + Token.getString("token", String.valueOf(1));
+
+        String url = getString(R.string.base_url) + "api/WaterRate/" + year + "/" + month;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                int price = response.optInt("price");
+                double totalCost = price * usage / 1000;
+                String totalCost_s = "$" + String.format("%.2f", totalCost);
+                tv_Cost.setText(totalCost_s);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Response error", error.getMessage());
+                Toast.makeText(WaterUsage.this,
+                                "Error_1.",
+                                Toast.LENGTH_LONG)
+                        .show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", key);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    protected void getCostofWaterUsage(Date date) {
+
+        Calendar cal_Monthly = Calendar.getInstance();
+        Calendar cal_Monthly_end = Calendar.getInstance();
+        cal_Monthly.setTime(date);
+        cal_Monthly.add(Calendar.MONTH, +0);
+
+        String date_s = simpleMonth_cal.format(cal_Monthly.getTime());
+        String year = simpleYear.format(cal_Monthly.getTime());
+        String month = simpleMonth.format(cal_Monthly.getTime());
+
+        Date date_end = cal_Monthly.getTime();
+        cal_Monthly_end.setTime(date_end);
+
+        int day_e = cal_Monthly.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        Token = getSharedPreferences("user", MODE_PRIVATE);
+        key = "Bearer " + Token.getString("token", String.valueOf(1));
+
+        String url = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + date_s + "-01&toDate=" + date_s + "-" + day_e + "&total=true";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                double usage = response.optDouble("totalUsage");
+
+                costWaterusage(year, month, usage);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Response error", error.getMessage());
+                Toast.makeText(WaterUsage.this,
+                                "Error_1.",
+                                Toast.LENGTH_LONG)
+                        .show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", key);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    protected void requestHistoryWaterUsage(String date_s, String date_e) {
+
+        arrayList.clear();
+
+
+        String url = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + date_s + "&toDate=" + date_e + "&total=true";
+        String dateTotal = date_s + "~" + date_e;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    Double value = response.getDouble("totalUsage");
+                    String valueTotal = String.valueOf(value);
+                    waterUsageData = new waterUsageData(0, dateTotal, valueTotal);
+                    arrayList.add(waterUsageData);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Response error", error.getMessage());
+                Toast.makeText(WaterUsage.this,
+                                "Error_1.",
+                                Toast.LENGTH_LONG)
+                        .show();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", key);
+                return headers;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    class compareX implements Comparator<waterUsageData> {
+        @Override
+        public int compare(waterUsageData t1, waterUsageData t2) {
+
+            LocalDate d1 = LocalDate.parse(t1.getVl_waterUsageHistoryDate());
+            LocalDate d2 = LocalDate.parse(t2.getVl_waterUsageHistoryDate());
+
+            int result = d1.compareTo(d2);
+
+            if (result < 0) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+
+    }
+
+}

@@ -5,11 +5,13 @@ public class BillData {
     private String vl_BillAmt;
     private String vl_BillDue;
     private String BillId;
+    private String billTitle;
 
-    public BillData(String vl_BillAmt, String vl_BillDue, String BillId) {
+    public BillData(String billTitle, String vl_BillAmt, String vl_BillDue, String BillId) {
 
         this.vl_BillAmt = vl_BillAmt;
         this.vl_BillDue = vl_BillDue;
+        this.billTitle = billTitle;
         this.BillId = BillId;
     }
 
@@ -35,5 +37,13 @@ public class BillData {
 
     public void setBillId(String billId) {
         BillId = billId;
+    }
+
+    public String getBillTitle() {
+        return billTitle;
+    }
+
+    public void setBillTitle(String billTitle) {
+        this.billTitle = billTitle;
     }
 }

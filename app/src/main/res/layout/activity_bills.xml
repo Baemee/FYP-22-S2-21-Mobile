@@ -28,7 +28,7 @@
         android:layout_marginStart="24dp"
         android:lines="2"
         android:maxLines="2"
-        android:text="BillID"
+        android:text="Title"
 
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="@+id/tv_BillAmount"

@@ -40,7 +40,8 @@ public class waterUsageDataAdapter extends RecyclerView.Adapter<waterUsageDataAd
     public void onBindViewHolder(@NonNull waterUsageDataAdapter.CustomViewHolder holder, int position) {
 
         holder.vl_waterUsageHistoryDate.setText(arrayList.get(position).getVl_waterUsageHistoryDate());
-        holder.vL_waterUsageHistory.setText(arrayList.get(position).getVl_waterUsageHistory());
+        Double value = Double.valueOf(arrayList.get(position).getVl_waterUsageHistory());
+        holder.vL_waterUsageHistory.setText(String.format("%.2f", value) + "L");
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

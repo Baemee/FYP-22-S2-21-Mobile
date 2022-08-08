@@ -26,11 +26,9 @@ public class ProfilePage extends AppCompatActivity {
 
         Button btn_pwd = findViewById(R.id.btn_changePwd);
         ImageView img_back = findViewById(R.id.img_back);
-        TextView tv_userId = findViewById(R.id.tv_userId_user);
         TextView tv_userName = findViewById(R.id.tv_userName_user);
         TextView tv_fullName = findViewById(R.id.tv_fullName_user);
         TextView tv_address = findViewById(R.id.tv_address_user);
-        TextView tv_dateCreate = findViewById(R.id.tv_dateCreate_user);
         TextView tv_Gender = findViewById(R.id.tv_Gender_user);
         TextView tv_email = findViewById(R.id.tv_email_user);
         TextView tv_phone = findViewById(R.id.tv_phone_user);
@@ -45,11 +43,9 @@ public class ProfilePage extends AppCompatActivity {
         email = Token.getString("email", String.valueOf("null"));
         phone = Token.getString("phones", String.valueOf("null"));
 
-        tv_userId.setText(userId);
         tv_userName.setText(username);
         tv_fullName.setText(fullName);
         tv_address.setText(address);
-        tv_dateCreate.setText(createdAt);
         tv_Gender.setText(gender);
         tv_email.setText(email);
         tv_phone.setText(phone);
