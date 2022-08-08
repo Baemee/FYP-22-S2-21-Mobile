@@ -246,7 +246,7 @@ public class WaterUsage extends AppCompatActivity {
                         public void onResponse(JSONObject response) {
 
                             daily_value[x] = response.optDouble("totalUsage");
-                            chartData.add(new BarEntry(x, (float) daily_value[x]));
+                            chartData.add(new BarEntry(daily_day[x], (float) daily_value[x]));
 
                             BarDataSet barDataSet = new BarDataSet(chartData, "waterUsage/L");
                             barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);

@@ -287,7 +287,6 @@ public class Alert extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
-        adapter.notifyDataSetChanged();
 
     }
 }
