@@ -233,6 +233,7 @@ public class Alert extends AppCompatActivity {
     }
 
     protected void searchAlert(String search, int a) {
+        arrayList.clear();
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         String key = Token.getString("token", String.valueOf(1));
