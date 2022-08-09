@@ -34,14 +34,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_alert"
-        android:layout_width="349dp"
+        android:layout_width="340dp"
         android:layout_height="421dp"
         android:background="@color/white"
         android:paddingBottom="40dp"
+        android:textAlignment="center"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_alert_search"
@@ -121,39 +123,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_AlertBox" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="Date"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/rv_alert" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:text="Title"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:text="Description"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintStart_toEndOf="@+id/textView3" />
 
     <View
         android:id="@+id/view"
