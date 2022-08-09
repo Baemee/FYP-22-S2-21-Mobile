@@ -197,7 +197,6 @@ public class Report extends AppCompatActivity {
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         String key = Token.getString("token", String.valueOf(1));
-        String username = Token.getString("username", String.valueOf(1));
         String userId = Token.getString("userId", String.valueOf(1));
         Intent intent = getIntent();
         reportId = intent.getStringExtra("reportId");
@@ -228,6 +227,8 @@ public class Report extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 requestReportDetails(url);
+                Toast.makeText(Report.this, "Update has been successfully updated", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(),ReportMain.class));
             }
         }, new Response.ErrorListener() {
             @Override

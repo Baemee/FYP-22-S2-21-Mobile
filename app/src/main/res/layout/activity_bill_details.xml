@@ -219,6 +219,7 @@
         android:layout_marginTop="29dp"
         android:background="@drawable/whitebutton_border"
         android:backgroundTint="#FFE4C4"
+        android:visibility="visible"
         android:text="Payment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

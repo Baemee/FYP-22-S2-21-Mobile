@@ -11,7 +11,7 @@
         android:id="@+id/tv_backbox"
         android:layout_width="410dp"
         android:layout_height="634dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/whitebutton_border"
         android:backgroundTint="@color/lightblue"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,9 +47,9 @@
     </TextView>
 
     <TextView
-        android:id="@+id/ll_box"
+        android:id="@+id/tv_box"
         android:layout_width="332dp"
-        android:layout_height="210dp"
+        android:layout_height="160dp"
         android:layout_marginTop="56dp"
 
         android:background="@drawable/textview_border"
@@ -61,32 +61,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_userID"
-        android:text="User ID :"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-
-        android:layout_marginTop="5sp"
-        android:layout_marginStart="5sp"
-        app:layout_constraintStart_toStartOf="@+id/ll_box"
-        app:layout_constraintTop_toTopOf="@+id/ll_box"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_userId_user"
-        android:text="testing nubmer"
-        android:textColor="@color/black"
-
-        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
-        app:layout_constraintTop_toTopOf="@+id/tv_userID"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tv_userName"
         android:text="User Name :"
         android:textSize="15sp"
@@ -94,8 +68,9 @@
         android:textColor="@color/black"
 
         android:layout_marginTop="5sp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_userID"
-        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+        android:layout_marginStart="5sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_box"
+        app:layout_constraintTop_toTopOf="@+id/tv_box"
 
         />
 
@@ -122,7 +97,7 @@
 
         android:layout_marginTop="5sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_userName"
-        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName"
 
         />
 
@@ -148,7 +123,7 @@
 
         android:layout_marginTop="5sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_fullName"
-        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName"
 
         />
 
@@ -164,45 +139,18 @@
         />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_dateCreate"
-        android:text="Created :"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-
-        android:layout_marginTop="5sp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_address"
-        app:layout_constraintStart_toStartOf="@+id/tv_userID"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_dateCreate_user"
-        android:text="2022-07-26"
-        android:textColor="@color/black"
-
-        app:layout_constraintStart_toStartOf="@+id/tv_userName_user"
-        app:layout_constraintTop_toTopOf="@+id/tv_dateCreate"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tv_Gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Gender :"
+        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
 
-        android:layout_marginTop="5sp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dateCreate"
-        app:layout_constraintStart_toStartOf="@+id/tv_userID"
-
-        />
+        app:layout_constraintStart_toStartOf="@+id/tv_userName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_address"
+        android:layout_marginTop="5dp"
+     />
 
     <TextView
         android:layout_width="wrap_content"
@@ -226,7 +174,7 @@
 
         android:layout_marginTop="5sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_Gender"
-        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName"
 
         />
 
@@ -252,7 +200,7 @@
 
         android:layout_marginTop="5sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_email"
-        app:layout_constraintStart_toStartOf="@+id/tv_userID"
+        app:layout_constraintStart_toStartOf="@+id/tv_userName"
 
         />
 
@@ -278,7 +226,7 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/btn_changePwd"
-        app:layout_constraintTop_toBottomOf="@+id/ll_box" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_box" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_changePwd"
@@ -288,9 +236,9 @@
         android:text="     Change Password"
         android:background="@drawable/whitebox"
         android:gravity="left|center_vertical"
-        app:layout_constraintEnd_toEndOf="@+id/ll_box"
+        app:layout_constraintEnd_toEndOf="@+id/tv_box"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ll_box"
+        app:layout_constraintStart_toStartOf="@+id/tv_box"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <ImageView
@@ -304,19 +252,42 @@
         app:layout_constraintTop_toTopOf="@+id/btn_changePwd"
         app:srcCompat="@drawable/forward" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_updateProf"
+        android:layout_width="332dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:text="     Update Profile"
+        android:background="@drawable/whitebox"
+        android:gravity="left|center_vertical"
+        app:layout_constraintEnd_toEndOf="@+id/btn_changePwd"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_changePwd"
+        app:layout_constraintTop_toBottomOf="@+id/btn_changePwd" />
+
+    <ImageView
+        android:id="@+id/img_forward2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:translationZ="45dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_updateProf"
+        app:layout_constraintEnd_toEndOf="@+id/btn_updateProf"
+        app:layout_constraintTop_toTopOf="@+id/btn_updateProf"
+        app:srcCompat="@drawable/forward" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
         android:background="?android:attr/windowBackground"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@navigation/bottom_nav"/>
+        app:menu="@navigation/bottom_nav" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

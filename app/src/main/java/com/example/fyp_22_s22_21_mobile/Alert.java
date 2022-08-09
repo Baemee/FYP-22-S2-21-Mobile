@@ -57,7 +57,7 @@ public class Alert extends AppCompatActivity {
     String sgtDate;
     String testing;
 
-    String search = "";
+    String search;
     String regex = ".*[a-zA-Z].*";
 
     int x = 1;
@@ -102,27 +102,33 @@ public class Alert extends AppCompatActivity {
             }
         });
 
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                arrayList.clear();
+                requestAlert(1);
+                return false;
+            }
+        });
 
+        //
+        rv_alert.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (!rv_alert.canScrollVertically(1)) {
+                    search = searchView.getQuery().toString();
+                    if (!search.contains(regex)) {
+                        x++;
+                        requestAlert(x);
+                    } else {
+                        y++;
+                        searchAlert(search, y);
 
-
-                //
-                rv_alert.setOnScrollListener(new RecyclerView.OnScrollListener() {
-                    @Override
-                    public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                        if (!rv_alert.canScrollVertically(1)) {
-                            search = searchView.getQuery().toString();
-                            if(!search.contains(regex)) {
-                                x++;
-                                requestAlert(x);
-                            } else {
-                                y++;
-                                searchAlert(search, y);
-
-                            }
-
-                        }
                     }
-                });
+
+                }
+            }
+        });
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,22 +140,21 @@ public class Alert extends AppCompatActivity {
 
         // Bottom nav bar
         // Initialize and assign variable
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch(item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.Profile:
-                        startActivity(new Intent(getApplicationContext(),ProfilePage.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), ProfilePage.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.Home:
-                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
@@ -171,14 +176,14 @@ public class Alert extends AppCompatActivity {
         alertTitle[0] = "";
         alertDescription[0] = "";
         createdAt[0] = "";
-        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + a +"&pageSize=" + 32;
+        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + a + "&pageSize=" + 32;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 JSONObject[] jsonObject = new JSONObject[100];
                 JSONArray jsonArray = new JSONArray();
                 jsonArray = response.optJSONArray("result");
-                for(int i = 0; i < jsonArray.length(); i++) {
+                for (int i = 0; i < jsonArray.length(); i++) {
 
                     jsonObject[i] = jsonArray.optJSONObject(i);
 
@@ -188,7 +193,7 @@ public class Alert extends AppCompatActivity {
                     createdAt[i] = jsonObject[i].optString("createdAt");
 
                     sgtDate = createdAt[i];
-                    try{
+                    try {
                         //Convert UTC to SGT
                         DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
                         utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -198,8 +203,7 @@ public class Alert extends AppCompatActivity {
                         sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
                         sgtDate = sgtFormat.format(utcDate);
                         createdAt[i] = sgtDate;
-                    }
-                    catch (ParseException e){
+                    } catch (ParseException e) {
                         e.printStackTrace();
                     }
 
@@ -218,8 +222,8 @@ public class Alert extends AppCompatActivity {
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String,String>();
-                headers.put("Authorization","Bearer " + key);
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer " + key);
                 return headers;
             }
         };
@@ -229,6 +233,8 @@ public class Alert extends AppCompatActivity {
     }
 
     protected void searchAlert(String search, int a) {
+        arrayList.clear();
+
         Token = getSharedPreferences("user", MODE_PRIVATE);
         String key = Token.getString("token", String.valueOf(1));
 
@@ -242,14 +248,15 @@ public class Alert extends AppCompatActivity {
         alertTitle[0] = "";
         alertDescription[0] = "";
         createdAt[0] = "";
-        url = getString(R.string.base_url) + "api/BroadcastAlert/Search?keyword=" + search + "&page=" + a +"&pageSize=" + 32;
+        url = getString(R.string.base_url) + "api/BroadcastAlert/Search?keyword=" + search + "&page=" + a + "&pageSize=" + 32;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                arrayList.clear();
                 JSONObject[] jsonObject = new JSONObject[100];
                 JSONArray jsonArray = new JSONArray();
                 jsonArray = response.optJSONArray("result");
-                for(int i = 0; i < jsonArray.length(); i++) {
+                for (int i = 0; i < jsonArray.length(); i++) {
 
                     jsonObject[i] = jsonArray.optJSONObject(i);
 
@@ -258,25 +265,8 @@ public class Alert extends AppCompatActivity {
                     alertDescription[i] = jsonObject[i].optString("alertDescription");
                     createdAt[i] = jsonObject[i].optString("createdAt");
 
-                    sgtDate = createdAt[i];
-                    try{
-                        //Convert UTC to SGT
-                        DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-                        utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-                        Date utcDate = utcFormat.parse(sgtDate);
-
-                        DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy");
-                        sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
-                        sgtDate = sgtFormat.format(utcDate);
-                        createdAt[i] = sgtDate;
-                    }
-                    catch (ParseException e){
-                        e.printStackTrace();
-                    }
-
                     alertData[i] = new alertData(createdAt[i], alertTitle[i], alertDescription[i], alertId[i]);
                     arrayList.add(alertData[i]);
-
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -289,8 +279,8 @@ public class Alert extends AppCompatActivity {
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String,String>();
-                headers.put("Authorization","Bearer " + key);
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer " + key);
                 return headers;
             }
         };

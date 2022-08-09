@@ -38,6 +38,11 @@ public class alertDataAdapter extends RecyclerView.Adapter<alertDataAdapter.Cust
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull alertDataAdapter.CustomViewHolder holder, int position) {
 
         holder.vl_Date.setText(arrayList.get(position).getVl_Date());
@@ -45,9 +50,10 @@ public class alertDataAdapter extends RecyclerView.Adapter<alertDataAdapter.Cust
         holder.vl_description.setText(arrayList.get(position).getVl_description());
         alertId[position] = arrayList.get(position).getAlert_Id();
 
-        holder.itemView.setTag(position);
+        //holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
                 Intent intent = new Intent(context, AlertDetail.class);
                 intent.putExtra("alertId", alertId[position]);

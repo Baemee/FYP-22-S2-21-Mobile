@@ -38,6 +38,18 @@
         android:layout_height="421dp"
         android:background="@color/white"
         android:paddingBottom="40dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_alert_search"
+        android:layout_width="349dp"
+        android:layout_height="421dp"
+        android:background="@color/white"
+        android:paddingBottom="40dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="@+id/textView15"
         app:layout_constraintStart_toStartOf="@+id/textView15" />

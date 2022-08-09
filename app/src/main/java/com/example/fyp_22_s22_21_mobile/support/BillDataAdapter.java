@@ -41,7 +41,7 @@ public class BillDataAdapter extends RecyclerView.Adapter<BillDataAdapter.Custom
         String amount = arrayList.get(position).getVl_BillAmt();
         double amount_d = Double.parseDouble(amount);
 
-        holder.vl_BillId.setText(arrayList.get(position).getBillId());
+        holder.vl_BillId.setText(arrayList.get(position).getBillTitle());
         holder.vl_BillDate.setText(arrayList.get(position).getVl_BillDue());
         holder.vl_BillAmount.setText("$" + String.format("%.2f", amount_d));
         BillId[position]=arrayList.get(position).getBillId();

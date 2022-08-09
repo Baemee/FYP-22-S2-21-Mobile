@@ -27,7 +27,9 @@ import com.braintreepayments.api.DropInPaymentMethod;
 import com.braintreepayments.api.DropInRequest;
 import com.braintreepayments.api.DropInResult;
 import com.braintreepayments.api.GooglePayRequest;
+import com.braintreepayments.api.PayPalRequest;
 import com.braintreepayments.api.PaymentMethodNonce;
+import com.example.fyp_22_s22_21_mobile.support.alertData;
 import com.google.android.gms.wallet.TransactionInfo;
 import com.google.android.gms.wallet.WalletConstants;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -54,7 +56,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
     SharedPreferences Token;
     String key;
-    String url = "http://10.0.2.2:5000/" + "api/Bill/MyInfo";
+    String url;
     String checkoutURL = "http://10.0.2.2:5000/" + "api/Payment";
     String billId, Nonce;
     int mth;
@@ -72,7 +74,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
     private void createPaymentModule() {
         DropInRequest dropInRequest = new DropInRequest();
-        dropInRequest.setGooglePayRequest(getGooglePayRequest());
         dropInRequest.setPayPalDisabled(true);
         dropInRequest.setMaskCardNumber(false);
 
@@ -80,24 +81,22 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         dropInClient.setListener(this);
     }
 
-    private GooglePayRequest getGooglePayRequest() {
-        GooglePayRequest googlePayRequest = new GooglePayRequest();
-        googlePayRequest.setTransactionInfo(TransactionInfo.newBuilder()
-                .setTotalPrice("1.00")
-                .setCurrencyCode("USD")
-                .setTotalPriceStatus(WalletConstants.TOTAL_PRICE_STATUS_FINAL)
-                .build());
-        googlePayRequest.setEmailRequired(true);
-        return googlePayRequest;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
 
+
+
+        Intent getIntent = getIntent();
+        String billId = getIntent.getStringExtra("billId");
+
+        url = "http://10.0.2.2:5000/" + "api/Bill/MyInfo/" + billId;
+
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));
+
+        requestBillsDetails(url);
 
         Button btn_payment = findViewById(R.id.btn_payment);
         Button btn_back = findViewById(R.id.btn_back);
@@ -113,13 +112,9 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         btn_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), PaymentPage.class);
-//                startActivity(intent);
                 dropInClient.launchDropInForResult(BillDetails.this, 1111);
             }
         });
-
-        requestBillsDetails(url);
         createPaymentModule();
 
         // Bottom nav bar
@@ -157,55 +152,56 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         TextView tv_deadline = findViewById(R.id.tv_getDateline);
         TextView tv_payment = findViewById(R.id.tv_getPayment);
 
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            int length = response.length();
+        Button btn_payment = findViewById(R.id.btn_payment);
 
-                            for (int i = 0; i < length; i++) {
-                                billId = response.getJSONObject(i).getString("billId");
-                                mth = response.getJSONObject(i).getInt("month");
-                                yr = response.getJSONObject(i).getInt("year");
-                                rate = response.getJSONObject(i).getDouble("rate");
-                                amount = response.getJSONObject(i).getDouble("amount");
-                                usage = response.getJSONObject(i).getDouble("totalUsage");
-                                deadline = response.getJSONObject(i).getString("deadline");
-                                payment = response.getJSONObject(i).getString("payment");
+        Token = getSharedPreferences("user", MODE_PRIVATE);
+        key = "Bearer " + Token.getString("token", String.valueOf(1));
 
-                                if (payment.equals("null"))
-                                    payment = "Unpaid";
-                                else
-                                    payment = "Paid";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
 
-                                tv_billId.append(billId + "\n");
-                                tv_billMth.append(mth + "\n");
-                                tv_billYr.append(yr + "\n");
-                                tv_rate.append("$" + String.format("%.2f", rate) + "\n");
-                                tv_billAmount.append("$" + String.format("%.2f", amount) + "\n");
-                                tv_billUsage.append(String.format("%.2f", usage) + "L"+ "\n");
-                                tv_deadline.append(deadline + "\n");
-                                tv_payment.append(payment + "\n");
+                try {
+                    rate = response.getDouble("rate");
+                    billId = response.getString("billId");
+                    mth = response.getInt("month");
+                    yr = response.getInt("year");
+                    amount = response.getDouble("amount");
+                    usage = response.getDouble("totalUsage");
+                    deadline = response.getString("deadline");
+                    payment = response.getString("payment");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+                if (payment=="null") {
+                    payment = "Unpaid";
+                }
+                else {
+                    payment = "Paid";
+                    btn_payment.setVisibility(View.GONE);
+                }
+
+                tv_billId.setText(billId );
+                tv_billMth.setText(String.valueOf(mth));
+                tv_billYr.setText(String.valueOf(yr));
+                tv_rate.setText("$" + String.format("%.2f", rate));
+                tv_billAmount.setText("$" + String.format("%.2f", amount));
+                tv_billUsage.setText(String.format("%.2f", usage) + "L");
+                tv_deadline.setText(deadline);
+                tv_payment.setText(payment);
+
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("Response error", error.getMessage());
-                Toast.makeText(BillDetails.this,
-                                "An error occurred.",
-                                Toast.LENGTH_LONG)
-                        .show();
+                Toast.makeText(BillDetails.this, "Error", Toast.LENGTH_LONG).show();
+                error.printStackTrace();
             }
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
+                Map<String, String> headers = new HashMap<String, String>();
                 headers.put("Authorization", key);
                 return headers;
             }
@@ -213,6 +209,9 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
+
+
+
     }
 
     protected void requestPayment(JSONObject jsonObject, String checkoutURL) {
@@ -221,23 +220,10 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
             @Override
             public void onResponse(JSONObject response) {
 
-                try {
-                    Boolean result = response.getBoolean("success");
-                    if (result = true) {
-                        Toast.makeText(BillDetails.this, "Payment has bee successfully paid", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(BillDetails.this, "Failed to make a purchase_2", Toast.LENGTH_LONG).show();
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(BillDetails.this, "Failed to make a purchase_1", Toast.LENGTH_LONG).show();
                 error.printStackTrace();
             }
         }) {
@@ -262,7 +248,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
         DropInPaymentMethod paymentMethodType = dropInResult.getPaymentMethodType();
         if (paymentMethodType != null) {
-            Toast.makeText(BillDetails.this, paymentNonce.getString(), Toast.LENGTH_LONG).show();
             Nonce = paymentNonce.getString();
             String billId_s = tv_getbillId.getText().toString();
 
@@ -272,8 +257,10 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             requestPayment(jsonObject, checkoutURL);
+            Toast.makeText(BillDetails.this, "Payment Successful", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), Bills.class);
+            startActivity(intent);
         }
 
     }
