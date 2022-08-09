@@ -8,27 +8,56 @@
     tools:context=".Bills">
 
 
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="@dimen/bt_margin"
+        android:layout_marginTop="@dimen/bt_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
     <TextView
+        android:id="@+id/tv_TopTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bills"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toTopOf="@+id/img_back" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tv_BillBox"
-        android:layout_width="366dp"
-        android:layout_height="391dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/bt_margin"
+        android:padding="@dimen/bt_margin"
         android:background="@drawable/blackstroke"
         android:backgroundTint="@color/lightblue"
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_TopTitle">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_bills"
-        android:layout_width="365dp"
-        android:layout_height="349dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
-        app:layout_constraintEnd_toEndOf="@+id/tv_BillBox"
-        app:layout_constraintStart_toStartOf="@+id/tv_BillBox"
-        app:layout_constraintTop_toTopOf="@+id/tv_BillBox" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bills"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_BillBox"
+            app:layout_constraintEnd_toEndOf="@+id/tv_BillBox"
+            app:layout_constraintStart_toStartOf="@+id/tv_BillBox"
+            app:layout_constraintTop_toTopOf="@+id/tv_BillBox" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -42,31 +71,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@navigation/bottom_nav"/>
-
-    <ImageView
-        android:id="@+id/img_back"
-        android:layout_width="43dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_TopTitle"
-        app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
-
-    <TextView
-        android:id="@+id/tv_TopTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="168dp"
-        android:text="Bills"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@navigation/bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

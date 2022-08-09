@@ -7,64 +7,85 @@
     android:background="@drawable/gradient_background"
     tools:context=".AlertDetail">
 
-    <TextView
-        android:id="@+id/tv_AlertDetailBox"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/whitebutton_border"
-
-        android:backgroundTint="@color/lightblue"
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="43dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="@dimen/bt_margin"
+        android:layout_marginTop="@dimen/bt_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <TextView
-        android:id="@+id/tv_AlertTitle"
+        android:id="@+id/tv_TopTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/whitebox"
-        android:padding="3dp"
-        android:text="Title"
-        android:textAlignment="center"
+        android:text="Alert"
         android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toTopOf="@+id/img_back" />
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_AlertDetail"
-        app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="@+id/tv_AlertDetailBox" />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_AlertDate"
-        android:text="YY/MM/DD"
-        android:textColor="@color/black"
-        android:background="@drawable/whitebox"
-        android:textAlignment="center"
-        android:padding="3dp"
+        android:paddingBottom="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_TopTitle">
 
-        app:layout_constraintTop_toBottomOf="@+id/tv_AlertTitle"
-        app:layout_constraintStart_toStartOf="@+id/tv_AlertDetail"
-        app:layout_constraintBottom_toTopOf="@+id/tv_AlertDetail"
+        <LinearLayout
+            android:id="@+id/ll_AlertDetailBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/bt_margin"
+            android:background="@drawable/whitebutton_border"
+            android:backgroundTint="@color/lightblue"
+            android:orientation="vertical"
+            android:padding="@dimen/bt_margin">
 
-        />
+            <TextView
+                android:id="@+id/tv_AlertTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bt_margin"
+                android:background="@drawable/whitebox"
+                android:padding="@dimen/bt_padding"
+                android:text="Title"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/tv_AlertDetail"
-        android:text="Details"
-        android:textColor="@color/black"
-        android:background="@drawable/whitebox"
-        android:padding="3dp"
+            <TextView
+                android:id="@+id/tv_AlertDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bt_margin"
+                android:background="@drawable/whitebox"
+                android:padding="@dimen/bt_padding"
+                android:text="YY/MM/DD"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
 
-        app:layout_constraintTop_toBottomOf="@+id/tv_AlertTitle"
-        app:layout_constraintStart_toStartOf="@+id/tv_AlertDetailBox"
-        app:layout_constraintEnd_toEndOf="@+id/tv_AlertDetailBox"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_AlertDetailBox"
+            <TextView
+                android:id="@+id/tv_AlertDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bt_margin"
+                android:background="@drawable/whitebox"
+                android:padding="@dimen/bt_padding"
+                android:text="Details"
+                android:textColor="@color/black" />
 
-        />
+        </LinearLayout>
+
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -78,43 +99,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@navigation/bottom_nav"/>
+        app:menu="@navigation/bottom_nav" />
 
-    <ImageView
-        android:id="@+id/img_back"
-        android:layout_width="43dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_TopTitle"
-        app:layout_constraintHorizontal_bias="0.078"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
-
-    <TextView
-        android:id="@+id/tv_TopTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="168dp"
-        android:text="Alerts"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="24dp"
-        android:text="Alert Details"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_AlertDetailBox" />
 </androidx.constraintlayout.widget.ConstraintLayout>
