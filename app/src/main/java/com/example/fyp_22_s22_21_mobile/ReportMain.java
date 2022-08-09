@@ -89,30 +89,6 @@ public class ReportMain extends AppCompatActivity {
             }
         });
 
-        //Search
-
-        SearchView searchView = (SearchView)findViewById(R.id.searchView);
-        final String[] search = new String[1];
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                //search
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                search[0] = s;
-                return true;
-            }
-        });
-
-
-        //Seach end
-
-
-
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
