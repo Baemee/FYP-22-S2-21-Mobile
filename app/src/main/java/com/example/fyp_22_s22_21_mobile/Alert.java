@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,11 +51,17 @@ public class Alert extends AppCompatActivity {
     private alertDataAdapter adapter;
     public RecyclerView.LayoutManager layoutManager;
 
+    SearchView searchView;
+
     String url;
     String sgtDate;
     String testing;
 
+    String search = "";
+    String regex = ".*[a-zA-Z].*";
+
     int x = 1;
+    int y = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,19 +81,48 @@ public class Alert extends AppCompatActivity {
         adapter = new alertDataAdapter(arrayList, this);
         rv_alert.setAdapter(adapter);
 
+        searchView = findViewById(R.id.searchView);
+
         //Shared Preference + Json
         requestAlert(1);
 
+        //Search
 
-        rv_alert.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                if (!rv_alert.canScrollVertically(1)) {
-                    x++;
-                    requestAlert(x);
-                }
+            public boolean onQueryTextSubmit(String s) {
+                arrayList.clear();
+                searchAlert(s, 1);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
             }
         });
+
+
+
+
+                //
+                rv_alert.setOnScrollListener(new RecyclerView.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                        if (!rv_alert.canScrollVertically(1)) {
+                            search = searchView.getQuery().toString();
+                            if(!search.contains(regex)) {
+                                x++;
+                                requestAlert(x);
+                            } else {
+                                y++;
+                                searchAlert(search, y);
+
+                            }
+
+                        }
+                    }
+                });
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +171,7 @@ public class Alert extends AppCompatActivity {
         alertTitle[0] = "";
         alertDescription[0] = "";
         createdAt[0] = "";
-        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + a +"&pageSize=" + 15;
+        url = "http://10.0.2.2:5000/api/BroadcastAlert?page=" + a +"&pageSize=" + 32;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -190,5 +226,77 @@ public class Alert extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
+    }
+
+    protected void searchAlert(String search, int a) {
+        Token = getSharedPreferences("user", MODE_PRIVATE);
+        String key = Token.getString("token", String.valueOf(1));
+
+        String[] alertId = new String[100];
+        String[] alertTitle = new String[100];
+        String[] alertDescription = new String[100];
+        String[] createdAt = new String[100];
+        alertData[] alertData = new alertData[100];
+
+        alertId[0] = "";
+        alertTitle[0] = "";
+        alertDescription[0] = "";
+        createdAt[0] = "";
+        url = getString(R.string.base_url) + "api/BroadcastAlert/Search?keyword=" + search + "&page=" + a +"&pageSize=" + 32;
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                JSONObject[] jsonObject = new JSONObject[100];
+                JSONArray jsonArray = new JSONArray();
+                jsonArray = response.optJSONArray("result");
+                for(int i = 0; i < jsonArray.length(); i++) {
+
+                    jsonObject[i] = jsonArray.optJSONObject(i);
+
+                    alertId[i] = jsonObject[i].optString("alertId");
+                    alertTitle[i] = jsonObject[i].optString("alertTitle");
+                    alertDescription[i] = jsonObject[i].optString("alertDescription");
+                    createdAt[i] = jsonObject[i].optString("createdAt");
+
+                    sgtDate = createdAt[i];
+                    try{
+                        //Convert UTC to SGT
+                        DateFormat utcFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                        utcFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                        Date utcDate = utcFormat.parse(sgtDate);
+
+                        DateFormat sgtFormat = new SimpleDateFormat("dd-MMM-yyyy");
+                        sgtFormat.setTimeZone(TimeZone.getTimeZone("Asia/Singapore"));
+                        sgtDate = sgtFormat.format(utcDate);
+                        createdAt[i] = sgtDate;
+                    }
+                    catch (ParseException e){
+                        e.printStackTrace();
+                    }
+
+                    alertData[i] = new alertData(createdAt[i], alertTitle[i], alertDescription[i], alertId[i]);
+                    arrayList.add(alertData[i]);
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Alert.this, "Error", Toast.LENGTH_LONG).show();
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String,String>();
+                headers.put("Authorization","Bearer " + key);
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+
     }
 }
