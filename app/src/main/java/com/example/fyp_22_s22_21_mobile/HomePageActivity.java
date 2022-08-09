@@ -124,6 +124,9 @@ public class HomePageActivity extends AppCompatActivity {
         btn_Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferences.Editor editor = Token.edit();
+                editor.clear();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
