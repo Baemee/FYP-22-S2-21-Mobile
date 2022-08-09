@@ -56,7 +56,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     SharedPreferences Token;
     String key;
     String url;
-    String checkoutURL = "http://10.0.2.2:5000/" + "api/Payment";
+    String checkoutURL = getString(R.string.base_url) + "api/Payment";
     String billId, Nonce;
     int mth;
     int yr;
@@ -86,7 +86,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         Intent getIntent = getIntent();
         String billId = getIntent.getStringExtra("billId");
 
-        url = "http://10.0.2.2:5000/" + "api/Bill/MyInfo/" + billId;
+        url = getString(R.string.base_url) + "api/Bill/MyInfo/" + billId;
 
         Token = getSharedPreferences("user", MODE_PRIVATE);
         key = "Bearer " + Token.getString("token", String.valueOf(1));

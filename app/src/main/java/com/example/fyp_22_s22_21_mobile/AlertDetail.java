@@ -64,7 +64,7 @@ public class AlertDetail extends AppCompatActivity {
         String username = Token.getString("username", String.valueOf(1));
         String userId = Token.getString("userId", String.valueOf(1));
 
-        url = "http://10.0.2.2:5000/api/BroadcastAlert/" + alertId;
+        url = getString(R.string.base_url) +"api/BroadcastAlert/" + alertId;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

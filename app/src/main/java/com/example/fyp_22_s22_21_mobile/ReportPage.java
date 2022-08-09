@@ -12,7 +12,8 @@ import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ReportPage extends AppCompatActivity {
+public class
+ReportPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

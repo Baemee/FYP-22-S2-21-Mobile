@@ -95,7 +95,7 @@ public class Report extends AppCompatActivity {
 
         Intent intent = getIntent();
         reportId = intent.getStringExtra("reportId");
-        url = "http://10.0.2.2:5000/" + "api/ReportTicket/MyInfo/" + reportId;
+        url = getString(R.string.base_url) + "api/ReportTicket/MyInfo/" + reportId;
         requestReportDetails(url);
 
         String url_update = getString(R.string.base_url) + "api/ReportTicket";
