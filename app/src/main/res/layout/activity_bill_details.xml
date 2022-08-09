@@ -7,235 +7,213 @@
     android:background="@drawable/gradient_background"
     tools:context=".BillDetails">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="374dp"
-        android:layout_height="410dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/lightblue"
-
+    <ScrollView
+        android:id="@+id/sv_Scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bt_margin"
+        android:paddingBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_payment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/tv_billid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Bill ID"
+        <LinearLayout
+            android:id="@+id/ll_VertLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/bt_margin"
+            android:background="@color/lightblue"
+            android:orientation="vertical"
+            android:padding="@dimen/bt_margin">
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_billmonth"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.811" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_getBillId"
-        android:layout_width="296dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/white"
+                <TextView
+                    android:id="@+id/tv_billid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bill ID"
+                    android:textColor="@color/black" />
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_getbillMth"
-        app:layout_constraintStart_toEndOf="@+id/tv_billid"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.821" />
+                <TextView
+                    android:id="@+id/tv_getBillId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/bt_margin" />
 
-    <TextView
-        android:id="@+id/tv_billmonth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Month"
+            </LinearLayout>
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_year"
-        app:layout_constraintEnd_toStartOf="@+id/tv_getbillMth"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_billid" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_getbillMth"
-        android:layout_width="56dp"
-        android:layout_height="20dp"
-        android:background="@color/white"
-        android:layout_marginBottom="16dp"
+                <TextView
+                    android:id="@+id/tv_billmonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin"
+                    android:text="Month"
+                    android:textColor="@color/black" />
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_getBillYr"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_getBillId" />
+                <TextView
+                    android:id="@+id/tv_getbillMth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Year"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_billusage"
-        app:layout_constraintEnd_toStartOf="@+id/tv_getBillYr"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_billmonth" />
+                <TextView
+                    android:id="@+id/tv_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin"
+                    android:text="Year"
+                    android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/tv_getBillYr"
-        android:layout_width="59dp"
-        android:layout_height="20dp"
-        android:background="@color/white"
-        android:layout_marginBottom="16dp"
+                <TextView
+                    android:id="@+id/tv_getBillYr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin" />
+            </LinearLayout>
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_getWaterUsage"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_getbillMth" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_billusage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="Usage"
+                <TextView
+                    android:id="@+id/tv_billusage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin"
+                    android:text="Usage"
+                    android:textColor="@color/black" />
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_rate"
-        app:layout_constraintEnd_toStartOf="@+id/tv_getWaterUsage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_year" />
+                <TextView
+                    android:id="@+id/tv_getWaterUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_getWaterUsage"
-        android:layout_width="105dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="12dp"
-        android:background="@color/white"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        app:layout_constraintBottom_toTopOf="@+id/getRate"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_getBillYr" />
+                <TextView
+                    android:id="@+id/tv_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin"
+                    android:text="Rate"
+                    android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/tv_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="Rate"
+                <TextView
+                    android:id="@+id/getRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin" />
+            </LinearLayout>
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_amount"
-        app:layout_constraintEnd_toStartOf="@+id/getRate"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_billusage" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/getRate"
-        android:layout_width="63dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="12dp"
-        android:background="@color/white"
+                <TextView
+                    android:id="@+id/tv_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin"
+                    android:text="Amount"
+                    android:textColor="@color/black" />
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_getBillAmount"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_getWaterUsage" />
+                <TextView
+                    android:id="@+id/tv_getBillAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="12dp"
-        android:text="Amount"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_deadline"
-        app:layout_constraintEnd_toStartOf="@+id/tv_getBillAmount"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_rate" />
+                <TextView
+                    android:id="@+id/tv_deadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin"
+                    android:text="Deadline"
+                    android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/tv_getBillAmount"
-        android:layout_width="108dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/white"
+                <TextView
+                    android:id="@+id/tv_getDateline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin" />
+            </LinearLayout>
 
-        app:layout_constraintBottom_toTopOf="@+id/tv_getDateline"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/getRate" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_deadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="Deadline"
-        app:layout_constraintBottom_toTopOf="@+id/tv_payment"
-        app:layout_constraintEnd_toStartOf="@+id/tv_getDateline"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_amount" />
+                <TextView
+                    android:id="@+id/tv_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin"
+                    android:text="Payment"
+                    android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/tv_getDateline"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="12dp"
-        android:background="@color/white"
-
-        app:layout_constraintBottom_toTopOf="@+id/tv_getPayment"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_getBillAmount" />
-
-    <TextView
-        android:id="@+id/tv_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-
-        android:text="Payment"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/tv_getPayment"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_deadline" />
-
-    <TextView
-        android:id="@+id/tv_getPayment"
-        android:layout_width="106dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="72dp"
-
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_getDateline" />
+                <TextView
+                    android:id="@+id/tv_getPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/bt_margin" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_payment"
-        android:layout_width="110dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="29dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bt_margin"
         android:background="@drawable/whitebutton_border"
         android:backgroundTint="#FFE4C4"
-        android:visibility="visible"
         android:text="Payment"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_back"
-        android:layout_width="99dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bt_margin"
         android:background="@drawable/whitebutton_border"
         android:backgroundTint="#E0FFFF"
         android:text="Back"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_payment" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -249,6 +227,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@navigation/bottom_nav"/>
+        app:menu="@navigation/bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
