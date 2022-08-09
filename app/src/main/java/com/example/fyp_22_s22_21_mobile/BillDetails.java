@@ -53,7 +53,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     private static final String SANDBOX_KEY = "sandbox_d5y6j6pb_cfmsx5n4w9rxwxw9";
     private static final String MERCHANT_SERVER_URL = "https://sdk-sample-merchant-server.herokuapp.com";
 
-
     SharedPreferences Token;
     String key;
     String url;
@@ -68,9 +67,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     String payment;
 
     private DropInClient dropInClient;
-
     JSONObject jsonObject = new JSONObject();
-
 
     private void createPaymentModule() {
         DropInRequest dropInRequest = new DropInRequest();
@@ -85,8 +82,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_details);
-
-
 
         Intent getIntent = getIntent();
         String billId = getIntent.getStringExtra("billId");
@@ -181,7 +176,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                     payment = "Paid";
                     btn_payment.setVisibility(View.GONE);
                 }
-
                 tv_billId.setText(billId );
                 tv_billMth.setText(String.valueOf(mth));
                 tv_billYr.setText(String.valueOf(yr));
@@ -209,9 +203,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
-
-
-
     }
 
     protected void requestPayment(JSONObject jsonObject, String checkoutURL) {
@@ -234,7 +225,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                 return headers;
             }
         };
-
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
     }
@@ -262,15 +252,10 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
             Intent intent = new Intent(getApplicationContext(), Bills.class);
             startActivity(intent);
         }
-
     }
 
     @Override
     public void onDropInFailure(@NonNull Exception e) {
         Toast.makeText(BillDetails.this, "Failed to make a purchase", Toast.LENGTH_LONG).show();
     }
-
-
-
-
 }

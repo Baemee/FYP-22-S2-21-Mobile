@@ -41,7 +41,6 @@ public class updateProfile extends AppCompatActivity {
     String username, address, userId,  fullName, gender, email, phone, password;
     String key;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,8 +90,6 @@ public class updateProfile extends AppCompatActivity {
             }
         });
     }
-
-
     protected void setProf() {
 
         EditText et_fullName = findViewById(R.id.et_fullName);
@@ -110,7 +107,6 @@ public class updateProfile extends AppCompatActivity {
         et_address.setText(address);
         et_email.setText(email);
         et_Phone.setText(phone);
-
     }
 
     protected void updateProf() {
@@ -135,60 +131,69 @@ public class updateProfile extends AppCompatActivity {
         phone = String.valueOf(et_phone.getText());
 
         String url = getString(R.string.base_url) + "api/Customer/MyInfo";
-
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("updatePassword", false);
-            jsonObject.put("password", password);
-            jsonObject.put("username", username);
-            jsonObject.put("userId", userId);
-            jsonObject.put("fullName", fullName);
-            jsonObject.put("gender", gender);
-            jsonObject.put("email", email);
-            jsonObject.put("phone", phone);
-            jsonObject.put("address", address);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (fullName.equals("")) {
+            Toast.makeText(updateProfile.this, "Name cannot be empty!", Toast.LENGTH_LONG).show();
         }
+        else if (address.equals("")) {
+            Toast.makeText(updateProfile.this, "Address cannot be empty!", Toast.LENGTH_LONG).show();
+        }
+        else if (email.equals("")) {
+            Toast.makeText(updateProfile.this, "Email cannot be empty!", Toast.LENGTH_LONG).show();
+        }
+        else if (phone.equals("")) {
+            Toast.makeText(updateProfile.this, "Phone cannot be empty!", Toast.LENGTH_LONG).show();
+        }
+        else {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("updatePassword", false);
+                jsonObject.put("password", password);
+                jsonObject.put("username", username);
+                jsonObject.put("userId", userId);
+                jsonObject.put("fullName", fullName);
+                jsonObject.put("gender", gender);
+                jsonObject.put("email", email);
+                jsonObject.put("phone", phone);
+                jsonObject.put("address", address);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                SharedPreferences.Editor editor = Token.edit();
-                editor.putString("fullName", fullName);
-                editor.putString("email", email);
-                editor.putString("phone", phone);
-                editor.putString("address", address);
-                editor.apply();
-
-                Toast.makeText(updateProfile.this, "Profile has been successfully updated", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-                startActivity(intent);
-
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Response error", error.getMessage());
-                Toast.makeText(updateProfile.this,
-                                "Error_Daily.",
-                                Toast.LENGTH_LONG)
-                        .show();
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", key);
-                return headers;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(jsonObjectRequest);
 
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                    SharedPreferences.Editor editor = Token.edit();
+                    editor.putString("fullName", fullName);
+                    editor.putString("email", email);
+                    editor.putString("phone", phone);
+                    editor.putString("address", address);
+                    editor.apply();
+
+                    Toast.makeText(updateProfile.this, "Profile has been successfully updated", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
+                    startActivity(intent);
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    //Log.e("Response error", error.getMessage());
+                    Toast.makeText(updateProfile.this,"An error occurred. Network response code " + error.networkResponse.statusCode,
+                                    Toast.LENGTH_LONG)
+                            .show();
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Authorization", key);
+                    return headers;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(jsonObjectRequest);
+        }
     }
-
-
 }
