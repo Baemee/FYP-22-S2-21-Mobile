@@ -27,6 +27,7 @@ import com.braintreepayments.api.DropInPaymentMethod;
 import com.braintreepayments.api.DropInRequest;
 import com.braintreepayments.api.DropInResult;
 import com.braintreepayments.api.GooglePayRequest;
+import com.braintreepayments.api.PayPalRequest;
 import com.braintreepayments.api.PaymentMethodNonce;
 import com.example.fyp_22_s22_21_mobile.support.alertData;
 import com.google.android.gms.wallet.TransactionInfo;
@@ -75,7 +76,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         DropInRequest dropInRequest = new DropInRequest();
         dropInRequest.setMaskCardNumber(false);
 
-
         dropInClient = new DropInClient(this, dropInRequest, SANDBOX_KEY);
         dropInClient.setListener(this);
     }
@@ -111,8 +111,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         btn_payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), PaymentPage.class);
-//                startActivity(intent);
                 dropInClient.launchDropInForResult(BillDetails.this, 1111);
             }
         });
@@ -180,7 +178,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                 }
                 else {
                     payment = "Paid";
-                    //btn_payment.setVisibility(View.GONE);
+                    btn_payment.setVisibility(View.GONE);
                 }
 
                 tv_billId.setText(billId );
@@ -225,7 +223,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(BillDetails.this, "Failed to make a purchase_1", Toast.LENGTH_LONG).show();
                 error.printStackTrace();
             }
         }) {
@@ -250,7 +247,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
         DropInPaymentMethod paymentMethodType = dropInResult.getPaymentMethodType();
         if (paymentMethodType != null) {
-            Toast.makeText(BillDetails.this, paymentNonce.getString(), Toast.LENGTH_LONG).show();
             Nonce = paymentNonce.getString();
             String billId_s = tv_getbillId.getText().toString();
 

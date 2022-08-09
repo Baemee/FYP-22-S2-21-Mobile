@@ -25,6 +25,7 @@ public class ProfilePage extends AppCompatActivity {
         setContentView(R.layout.activity_profile_page);
 
         Button btn_pwd = findViewById(R.id.btn_changePwd);
+        Button btn_updateProf = findViewById(R.id.btn_updateProf);
         ImageView img_back = findViewById(R.id.img_back);
         TextView tv_userName = findViewById(R.id.tv_userName_user);
         TextView tv_fullName = findViewById(R.id.tv_fullName_user);
@@ -41,7 +42,7 @@ public class ProfilePage extends AppCompatActivity {
         fullName = Token.getString("fullName", String.valueOf(1));
         gender = Token.getString("gender", String.valueOf("null"));
         email = Token.getString("email", String.valueOf("null"));
-        phone = Token.getString("phones", String.valueOf("null"));
+        phone = Token.getString("phone", String.valueOf("null"));
 
         tv_userName.setText(username);
         tv_fullName.setText(fullName);
@@ -49,6 +50,14 @@ public class ProfilePage extends AppCompatActivity {
         tv_Gender.setText(gender);
         tv_email.setText(email);
         tv_phone.setText(phone);
+
+        btn_updateProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), updateProfile.class);
+                startActivity(intent);
+            }
+        });
 
         btn_pwd.setOnClickListener(new View.OnClickListener() {
             @Override
