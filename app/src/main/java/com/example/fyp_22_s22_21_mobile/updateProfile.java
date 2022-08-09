@@ -156,6 +156,13 @@ public class updateProfile extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
 
+                SharedPreferences.Editor editor = Token.edit();
+                editor.putString("fullName", fullName);
+                editor.putString("email", email);
+                editor.putString("phone", phone);
+                editor.putString("address", address);
+                editor.apply();
+
                 Toast.makeText(updateProfile.this, "Profile has been successfully updated", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                 startActivity(intent);
