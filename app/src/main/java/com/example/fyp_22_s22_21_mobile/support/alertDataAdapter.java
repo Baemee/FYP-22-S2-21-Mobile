@@ -47,7 +47,7 @@ public class alertDataAdapter extends RecyclerView.Adapter<alertDataAdapter.Cust
 
         holder.vl_Date.setText(arrayList.get(position).getVl_Date());
         holder.vl_title.setText(arrayList.get(position).getVl_title());
-        holder.vl_description.setText(arrayList.get(position).getVl_description());
+        //holder.vl_description.setText(arrayList.get(position).getVl_description());
         alertId[position] = arrayList.get(position).getAlert_Id();
 
         //holder.itemView.setTag(position);
@@ -79,7 +79,7 @@ public class alertDataAdapter extends RecyclerView.Adapter<alertDataAdapter.Cust
             super(itemView);
             this.vl_Date = (TextView) itemView.findViewById(R.id.vl_Date);
             this.vl_title = (TextView) itemView.findViewById(R.id.vl_title);
-            this.vl_description = (TextView) itemView.findViewById(R.id.vl_description);
+            //this.vl_description = (TextView) itemView.findViewById(R.id.vl_description);
         }
     }
 
