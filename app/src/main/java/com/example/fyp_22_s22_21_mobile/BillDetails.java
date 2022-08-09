@@ -257,6 +257,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                 e.printStackTrace();
             }
             requestPayment(jsonObject, checkoutURL);
+            Toast.makeText(BillDetails.this, "Payment Successful", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), Bills.class);
             startActivity(intent);
         }
