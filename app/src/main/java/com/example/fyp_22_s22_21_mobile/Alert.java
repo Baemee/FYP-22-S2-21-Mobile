@@ -71,7 +71,6 @@ public class Alert extends AppCompatActivity {
         ImageView img_back = findViewById(R.id.img_back);
         RecyclerView rv_alert = findViewById(R.id.rv_alert);
         rv_alert.setHasFixedSize(true);
-        TextView tv_test = (TextView) findViewById(R.id.tv_test);
 
         layoutManager = new LinearLayoutManager(this);
         rv_alert.setLayoutManager(layoutManager);
