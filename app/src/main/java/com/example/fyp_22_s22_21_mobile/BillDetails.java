@@ -73,8 +73,8 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     private void createPaymentModule() {
         DropInRequest dropInRequest = new DropInRequest();
         dropInRequest.setGooglePayRequest(getGooglePayRequest());
+        dropInRequest.setPayPalDisabled(true);
         dropInRequest.setMaskCardNumber(false);
-
 
         dropInClient = new DropInClient(this, dropInRequest, SANDBOX_KEY);
         dropInClient.setListener(this);
