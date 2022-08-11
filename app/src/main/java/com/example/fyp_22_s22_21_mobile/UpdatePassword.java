@@ -89,6 +89,7 @@ public class UpdatePassword extends AppCompatActivity {
                     Toast.makeText(UpdatePassword.this, "Please enter a password", Toast.LENGTH_LONG).show();
                 }
                 else {
+
                     JSONObject jsonObject = new JSONObject();
                     try {
                         jsonObject.put("updatePassword", true);
@@ -121,14 +122,21 @@ public class UpdatePassword extends AppCompatActivity {
 
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(UpdatePassword.this,
-                                            "An error occurred. Network response code " + error.networkResponse.statusCode,
-                                            Toast.LENGTH_LONG)
-                                    .show();
-                            NetworkResponse networkResponse = error.networkResponse;
-                            String errorString = new String(networkResponse.data);
-                            Log.i("Test", errorString);
 
+                            if (error.networkResponse.statusCode == 400) {
+                                Toast.makeText(UpdatePassword.this, "Password must contain at least on capital, small letter and special character", Toast.LENGTH_LONG).show();
+                                et_NewPassword.setText("");
+                                et_ConfirmPassword.setText("");
+
+                            } else {
+                                Toast.makeText(UpdatePassword.this,
+                                                "An error occurred. Network response code " + error.networkResponse.statusCode,
+                                                Toast.LENGTH_LONG)
+                                        .show();
+                                NetworkResponse networkResponse = error.networkResponse;
+                                String errorString = new String(networkResponse.data);
+                                Log.i("Test", errorString);
+                            }
                         }
                     }) {
                         @Override
