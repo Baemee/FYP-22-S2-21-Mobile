@@ -70,7 +70,7 @@ public class UpdatePassword extends AppCompatActivity {
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                 startActivity(intent);
             }
         });

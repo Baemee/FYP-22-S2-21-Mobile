@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/bt_margin"
-                android:background="@drawable/whitebox"
+                android:background="@drawable/whitebutton_border"
                 android:gravity="left|center_vertical"
                 android:textAlignment="center"
                 android:text="Update Profile"

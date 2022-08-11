@@ -92,7 +92,7 @@ public class ReportMain extends AppCompatActivity {
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ReportPage.class);
                 startActivity(intent);
             }
         });

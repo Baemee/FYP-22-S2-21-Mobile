@@ -164,12 +164,10 @@ public class Bills extends AppCompatActivity {
                         arrayList.add(BillData[i]);
                         adapter.notifyDataSetChanged();
                     }
-
                 }
                 catch (JSONException e){
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -185,59 +183,7 @@ public class Bills extends AppCompatActivity {
                 return headers;
             }
         };
-
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonArrayRequest);
-
     }
 }
-/*
-        TextView tv_billDate = findViewById(R.id.tv_billDate);
-        TextView tv_billAmount = findViewById(R.id.tv_billAmount);
-        TextView tv_billUsage = findViewById(R.id.tv_billUsage);
-
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            int length = response.length();
-
-                            for(int i = 0; i<length; i++)
-                            {
-                                date = response.getJSONObject(i).getString("title");
-                                amount = response.getJSONObject(i).getDouble("amount");
-                                usage = response.getJSONObject(i).getDouble("totalUsage");
-                                //status = response.getJSONObject(i).getString("Payment");
-
-                                tv_billDate.append(date+"\n");
-                                tv_billAmount.append(String.format("%.2f",amount)+"\n");
-                                tv_billUsage.append(String.format("%.2f",usage)+"\n");
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Response error", error.getMessage());
-                Toast.makeText(Bills.this,
-                                "An error occurred.",
-                                Toast.LENGTH_LONG)
-                        .show();
-            }
-        })
-        {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", key);
-                return headers;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(jsonObjectRequest);
-    }
-}*/
