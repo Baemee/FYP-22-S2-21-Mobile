@@ -124,7 +124,7 @@ public class UpdatePassword extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
 
                             if (error.networkResponse.statusCode == 400) {
-                                Toast.makeText(UpdatePassword.this, "Password must contain at least on capital, small letter and special character", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UpdatePassword.this, "Password must contain at least one capital, small letter and special character", Toast.LENGTH_LONG).show();
                                 et_NewPassword.setText("");
                                 et_ConfirmPassword.setText("");
 

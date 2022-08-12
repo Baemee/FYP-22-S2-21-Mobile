@@ -256,6 +256,6 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
 
     @Override
     public void onDropInFailure(@NonNull Exception e) {
-        Toast.makeText(BillDetails.this, "Failed to make a purchase", Toast.LENGTH_LONG).show();
+        Toast.makeText(BillDetails.this, "Payment failed", Toast.LENGTH_LONG).show();
     }
 }
