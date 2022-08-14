@@ -189,7 +189,8 @@ public class WaterUsage extends AppCompatActivity {
             public void onClick(View view) {
 
                 rl_Daily.setVisibility(View.VISIBLE);
-
+                long maxDate = System.currentTimeMillis();
+                dp_Daily.setMaxDate(maxDate);
                 dp_Daily.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
 
                     @Override
@@ -490,6 +491,9 @@ public class WaterUsage extends AppCompatActivity {
             }
         });
 
+        long maxDate = System.currentTimeMillis();
+        datePicker_start.setMaxDate(maxDate);
+        datePicker_end.setMaxDate(maxDate);
         datePicker_start.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
@@ -504,7 +508,6 @@ public class WaterUsage extends AppCompatActivity {
                 }
             }
         });
-
         datePicker_end.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
@@ -543,10 +546,15 @@ public class WaterUsage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String date_s = simpleDate.format(date_start);
-                String date_e = simpleDate.format(date_end);
+                String date_s = et_startDate.getText().toString();
+                String date_e = et_endDate.getText().toString();
 
-                requestHistoryWaterUsage(date_s, date_e);
+                if(date_s.contains("0") && date_e.contains("0")){
+                    requestHistoryWaterUsage(date_s, date_e);
+                } else{
+                    Toast.makeText(WaterUsage.this, "Please choose Date", Toast.LENGTH_LONG).show();
+                }
+
 
             }
         });
