@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">WSM Mobile</string>
     <string name="base_url">http://10.0.2.2:5000/</string>
     <string name="Login"><b><u>Login</u></b></string>
 
