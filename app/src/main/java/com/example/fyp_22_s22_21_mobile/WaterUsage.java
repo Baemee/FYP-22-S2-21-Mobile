@@ -76,6 +76,8 @@ public class WaterUsage extends AppCompatActivity {
     int year_s, month_s, day_s;
     int year_e, month_e, day_e;
 
+    private int check = -10;
+
     double test_value = 0.00;
 
     private int liter;
@@ -195,15 +197,16 @@ public class WaterUsage extends AppCompatActivity {
 
                     @Override
                     public void onDateChanged(DatePicker datePicker, int year, int month, int day) {
-                        int year_d = year;
-                        int month_d = month + 1;
-                        int day_d = day;
-                        date_d = String.valueOf(year_d) + "-" + String.valueOf(month_d) + "-" + String.valueOf(day_d);
-                        try {
-                            date_daily = simpleDate.parse(date_d);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
+                            int year_d = year;
+                            int month_d = month + 1;
+                            int day_d = day;
+                            date_d = String.valueOf(year_d) + "-" + String.valueOf(month_d) + "-" + String.valueOf(day_d);
+                            check = year;
+                            try {
+                                date_daily = simpleDate.parse(date_d);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                     }
                 });
             }
@@ -213,76 +216,87 @@ public class WaterUsage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                rl_Daily.setVisibility(View.GONE);
-                tv_showdaily.setText("Date end : " + date_d);
+                if(check > 0) {
 
-                chartData.clear();
-                String[] date_chartDaily = new String[50];
-                String[] day_chartDaily = new String[50];
-                int[] daily_day = new int[50];
-                int[] daily_intValue = new int[50];
-                double[] testing_value = new double[50];
-                double[] daily_value = new double[50];
-                String[] url_daily = new String[50];
-                barChartData[] barChartData = new barChartData[50];
+                    rl_Daily.setVisibility(View.GONE);
+                    tv_showdaily.setText("Date end : " + date_d);
 
-                for (int i = 0; i < 30; i++) {
+                    chartData.clear();
+                    String[] date_chartDaily = new String[50];
+                    String[] day_chartDaily = new String[50];
+                    int[] daily_day = new int[50];
+                    int[] daily_intValue = new int[50];
+                    double[] testing_value = new double[50];
+                    double[] daily_value = new double[50];
+                    String[] url_daily = new String[50];
+                    barChartData[] barChartData = new barChartData[50];
+
+                    for (int i = 0; i < 30; i++) {
 
 
-                    Calendar cal_daily = Calendar.getInstance();
-                    cal_daily.setTime(date_daily);
-                    cal_daily.add(Calendar.DATE, -29 + i);
-                    date_chartDaily[i] = simpleDate.format(cal_daily.getTime());
+                        Calendar cal_daily = Calendar.getInstance();
+                        cal_daily.setTime(date_daily);
+                        cal_daily.add(Calendar.DATE, -29 + i);
+                        date_chartDaily[i] = simpleDate.format(cal_daily.getTime());
 
-                    day_chartDaily[i] = simpleDay.format(cal_daily.getTime()); // get day
+                        day_chartDaily[i] = simpleDay.format(cal_daily.getTime()); // get day
 
-                    daily_day[i] = Integer.valueOf(day_chartDaily[i]);
+                        daily_day[i] = Integer.valueOf(day_chartDaily[i]);
 
-                    url_daily[i] = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + date_chartDaily[i] + "&toDate=" + date_chartDaily[i] + "&total=true";
+                        url_daily[i] = getString(R.string.base_url) + "api/WaterUsage/MyInfo?fromDate=" + date_chartDaily[i] + "&toDate=" + date_chartDaily[i] + "&total=true";
 
-                    int x = i;
+                        int x = i;
 
-                    JsonObjectRequest jsonObjectRequest_daily = new JsonObjectRequest(Request.Method.GET, url_daily[i], null, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
+                        JsonObjectRequest jsonObjectRequest_daily = new JsonObjectRequest(Request.Method.GET, url_daily[i], null, new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
 
-                            daily_value[x] = response.optDouble("totalUsage");
-                            chartData.add(new BarEntry(daily_day[x], (float) daily_value[x]));
+                                daily_value[x] = response.optDouble("totalUsage");
+                                chartData.add(new BarEntry(daily_day[x], (float) daily_value[x]));
 
-                            BarDataSet barDataSet = new BarDataSet(chartData, "waterUsage/L");
-                            barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-                            barDataSet.setValueTextColor(Color.BLACK);
-                            barDataSet.setValueTextSize(15f);
+                                BarDataSet barDataSet = new BarDataSet(chartData, "waterUsage/L");
+                                barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+                                barDataSet.setValueTextColor(Color.BLACK);
+                                barDataSet.setValueTextSize(15f);
 
-                            BarData barData = new BarData(barDataSet);
+                                BarData barData = new BarData(barDataSet);
 
-                            barChart.setFitBars(true);
-                            barChart.setData(barData);
-                            barChart.getDescription().setText("bar Chart");
-                            barChart.animateY(2000);
+                                barChart.setFitBars(true);
+                                barChart.setData(barData);
+                                barChart.getDescription().setText("bar Chart");
+                                barChart.animateY(2000);
 
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("Response error", error.getMessage());
-                            Toast.makeText(WaterUsage.this,
-                                            "Error_Daily.",
-                                            Toast.LENGTH_LONG)
-                                    .show();
-                        }
-                    }) {
-                        @Override
-                        public Map<String, String> getHeaders() throws AuthFailureError {
-                            HashMap<String, String> headers = new HashMap<String, String>();
-                            headers.put("Authorization", key);
-                            return headers;
-                        }
-                    };
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                    requestQueue.add(jsonObjectRequest_daily);
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("Response error", error.getMessage());
+                                Toast.makeText(WaterUsage.this,
+                                                "Error_Daily.",
+                                                Toast.LENGTH_LONG)
+                                        .show();
+                            }
+                        }) {
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+                                HashMap<String, String> headers = new HashMap<String, String>();
+                                headers.put("Authorization", key);
+                                return headers;
+                            }
+                        };
+                        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                        requestQueue.add(jsonObjectRequest_daily);
 
+                    }
+
+                } else {
+                    Toast.makeText(WaterUsage.this,
+                                    "Please Choose a Date.",
+                                    Toast.LENGTH_LONG)
+                            .show();
                 }
+
+
 
             }
         });
