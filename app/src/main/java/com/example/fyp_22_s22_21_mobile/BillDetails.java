@@ -56,7 +56,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
     SharedPreferences Token;
     String key;
     String url;
-    String checkoutURL = getString(R.string.base_url) + "api/Payment";
+    String checkoutURL;
     String billId, Nonce;
     int mth;
     int yr;
@@ -247,6 +247,9 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            checkoutURL = getString(R.string.base_url) + "api/Payment/ClientToken";
+
             requestPayment(jsonObject, checkoutURL);
             Toast.makeText(BillDetails.this, "Payment Successful", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), Bills.class);
