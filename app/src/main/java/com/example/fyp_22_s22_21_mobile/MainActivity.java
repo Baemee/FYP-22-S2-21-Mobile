@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
                         if(error.networkResponse.statusCode == 401) // unauthorized
                             Toast.makeText(MainActivity.this, "Invalid username or password" , Toast.LENGTH_LONG).show();
                         else
@@ -117,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
                                             "An error occurred. Network response code " + error.networkResponse.statusCode ,
                                             Toast.LENGTH_LONG)
                                     .show();
+
+
                     }
                 });
 

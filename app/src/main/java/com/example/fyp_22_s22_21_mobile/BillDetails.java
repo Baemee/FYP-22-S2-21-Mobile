@@ -182,7 +182,7 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                 tv_rate.setText("$" + String.format("%.2f", rate));
                 tv_billAmount.setText("$" + String.format("%.2f", amount));
                 tv_billUsage.setText(String.format("%.2f", usage) + "L");
-                tv_deadline.setText(deadline);
+                tv_deadline.setText(deadline.substring(0,10));
                 tv_payment.setText(payment);
 
             }
@@ -210,7 +210,9 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, checkoutURL, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                Toast.makeText(BillDetails.this, "Payment Successful", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), Bills.class);
+                startActivity(intent);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -227,6 +229,8 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
+
+
     }
 
     @Override
@@ -248,12 +252,10 @@ public class BillDetails extends AppCompatActivity implements DropInListener {
                 e.printStackTrace();
             }
 
-            checkoutURL = getString(R.string.base_url) + "api/Payment/ClientToken";
+            checkoutURL = getString(R.string.base_url) + "api/Payment";
 
             requestPayment(jsonObject, checkoutURL);
-            Toast.makeText(BillDetails.this, "Payment Successful", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getApplicationContext(), Bills.class);
-            startActivity(intent);
+
         }
     }
 
