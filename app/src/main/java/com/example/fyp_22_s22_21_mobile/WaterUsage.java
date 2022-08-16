@@ -108,6 +108,7 @@ public class WaterUsage extends AppCompatActivity {
         TextView tv_showdaily = findViewById(R.id.tv_showdaily);
 
         barChart = (BarChart) findViewById(R.id.chart);
+        barChart.setMaxVisibleValueCount(0);
 
         RecyclerView rv_waterUsageHistory = (RecyclerView) findViewById(R.id.rv_waterUsageHistory);
 
