@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/textview_border"
                 android:backgroundTint="@color/white"
+                android:textColor="@color/black"
                 android:paddingStart="@dimen/bt_margin"
                 android:hint="   Username"
                 android:inputType="text"
@@ -90,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/textview_border"
                 android:backgroundTint="@color/white"
+                android:textColor="@color/black"
                 android:hint="    Password"
                 android:paddingStart="@dimen/bt_margin"
                 android:inputType="textPassword"
@@ -114,6 +116,7 @@
                 android:layout_margin="@dimen/bt_margin"
                 android:background="@drawable/whitebutton_border"
                 android:text="Login"
+                android:textColor="@color/black"
                 android:textSize="15sp" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -122,6 +125,7 @@
                 android:layout_height="40dp"
                 android:layout_margin="@dimen/bt_margin"
                 android:background="@drawable/whitebutton_border"
+                android:textColor="@color/black"
                 android:text="Exit"
                 android:textSize="15sp" />
 

@@ -147,6 +147,7 @@
                     app:flow_verticalAlign="top"
                     android:gravity="top|start"
                     android:padding="@dimen/bt_margin"
+                    android:textColor="@color/black"
 
                     app:layout_constraintEnd_toEndOf="@+id/tv_ResolveBox"
                     app:layout_constraintHorizontal_bias="0.0"
